@@ -142,12 +142,12 @@ local LeftScrollFrame = Create("ScrollingFrame", LeftBar, {
 Create("UIListLayout", LeftScrollFrame)
 
 -- RightFrame para Tabs
-local RightScrollFrame = Create("Frame", MainFrame, {
+local RightScrollFrame = Create("ScrollingFrame", MainFrame, {
     Name = "RightScrollFrame",
-    BackgroundColor3 = Color3.fromRGB(30, 30, 30),
+    BackgroundColor3 = Color3.fromRGB(35, 35, 35),
     BorderSizePixel = 0,
-    Size = UDim2.new(0.8, 0, 0.9, 0),
-    Position = UDim2.new(0.2, 0, 0.1, 0)
+    Size = UDim2.new(1, 0, 1, 0),
+    Position = UDim2.new(0.2, 0, 0.1, 0),
 })
 Corner(RightScrollFrame)
 
@@ -194,7 +194,7 @@ function DarkLib:MakeTab(Config)
         TabFrame.Visible = true
     end)
 
-    return TabFrame
+    --return TabFrame
 end
 
 return DarkLib
