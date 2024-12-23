@@ -166,7 +166,9 @@ function DarkLib:MakeTab(Config)
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
         Size = UDim2.new(1, -10, 0, 30),
         TextWrapped = false,
-        ClipsDescendants = true
+        ClipsDescendants = true,
+        TextXAlignment = Enum.TextXAlignment.Left,
+        TextTruncate = "AtEnd"
     })
     Corner(TabButton, UDim.new(0.1, 0))
 
