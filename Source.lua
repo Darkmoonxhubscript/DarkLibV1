@@ -139,6 +139,7 @@ local LeftScrollFrame = Create("ScrollingFrame", LeftBar, {
     BorderSizePixel = 0,
     Size = UDim2.new(1, 0, 1, 0),
     ScrollBarThickness = 0,
+    ElasticBehavior = Enum.ElasticBehavior.Never
 })
 Create("UIListLayout", LeftScrollFrame)
 
@@ -177,7 +178,7 @@ function MakeTab(Config)
         Size = UDim2.new(1, -10, 0, 30),
         TextWrapped = false,
         ClipsDescendants = true,
-        TextXAlignment = Enum.TextXAlignment.Left,
+        TextXAlignment = Enum.TextXAlignment.Center,
         TextTruncate = "AtEnd",
         Position = UDim2.new(0, 0, 0, 0)  -- Ajustado para alinhar
     })
@@ -188,12 +189,13 @@ function MakeTab(Config)
         BackgroundTransparency = 1,
         Size = UDim2.new(1, 0, 1, 0),
         Visible = false,  -- Inicialmente invisível
+        AutomaticSize = Enum.AutomaticSize.X,
         ScrollBarThickness = 0,
         AutomaticCanvasSize = Enum.AutomaticSize.Y
     })
 
     Create("UIListLayout", TabFrame, {
-        Padding = UDim.new(0, 5),
+        Padding = UDim.new(0, 7),
         SortOrder = Enum.SortOrder.LayoutOrder
     })
 
