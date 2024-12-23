@@ -152,12 +152,21 @@ local RightScrollFrame = Create("Frame", MainFrame, {
 Corner(RightScrollFrame)
 
 local Tabs = {}
+local SelectedTab = ""  -- Agora é uma string representando o nome da aba selecionada
+local FirstTab = nil  -- Variável para armazenar o nome da primeira tab
 
 function MakeTab(Config)
     local TabName = Config.Name or "Tab"
     local TabButton
     local TabFrame
 
+    -- Se for a primeira tab, armazena o nome e marca como selecionada
+    if not FirstTab then
+        FirstTab = TabName
+        SelectedTab = TabName  -- Atualiza SelectedTab com o nome da primeira aba
+    end
+
+    -- Ajustar a posição X para alinhar com LeftBar
     TabButton = Create("TextButton", LeftScrollFrame, {
         Text = TabName,
         TextColor3 = Color3.new(1, 1, 1),
@@ -168,15 +177,16 @@ function MakeTab(Config)
         TextWrapped = false,
         ClipsDescendants = true,
         TextXAlignment = Enum.TextXAlignment.Left,
-        TextTruncate = "AtEnd"
+        TextTruncate = "AtEnd",
+        Position = UDim2.new(0, 0, 0, 0)  -- Ajustado para alinhar
     })
-    Corner(TabButton, UDim.new(0.1, 0))
+    Corner(TabButton, UDim.new(0.1, 0))  -- Cantos arredondados
 
     TabFrame = Create("ScrollingFrame", RightScrollFrame, {
         Name = TabName,
         BackgroundTransparency = 1,
         Size = UDim2.new(1, 0, 1, 0),
-        Visible = false,
+        Visible = false,  -- Inicialmente invisível
         CanvasSize = UDim2.new(0, 0, 0, 10),
         ScrollBarThickness = 5,
         AutomaticCanvasSize = Enum.AutomaticSize.Y
@@ -189,11 +199,19 @@ function MakeTab(Config)
 
     Tabs[TabName] = TabFrame
 
+    -- Se for a primeira tab, faz ela visível
+    if SelectedTab == TabName then
+        TabFrame.Visible = true
+    end
+
     TabButton.MouseButton1Click:Connect(function()
+        -- Esconde todas as tabs
         for _, frame in pairs(Tabs) do
             frame.Visible = false
         end
+        -- Mostra a tab clicada
         TabFrame.Visible = true
+        SelectedTab = TabName  -- Atualiza SelectedTab para a aba selecionada
     end)
 
     return TabFrame
