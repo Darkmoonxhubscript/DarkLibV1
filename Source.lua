@@ -180,16 +180,16 @@ function MakeTab(Config)
         ClipsDescendants = true,
         TextXAlignment = Enum.TextXAlignment.Center,
         TextTruncate = "AtEnd",
+        AutomaticSize = Enum.AutomaticSize.X,
         Position = UDim2.new(0, 0, 0, 0)  -- Ajustado para alinhar
     })
-    Corner(TabButton, UDim.new(0.1, 0))  -- Cantos arredondados
+    Corner(TabButton, UDim.new(0.3, 0))  -- Cantos arredondados
 
     TabFrame = Create("ScrollingFrame", RightScrollFrame, {
         Name = TabName,
         BackgroundTransparency = 1,
         Size = UDim2.new(1, 0, 1, 0),
         Visible = false,  -- Inicialmente invisível
-        AutomaticSize = Enum.AutomaticSize.X,
         ScrollBarThickness = 0,
         AutomaticCanvasSize = Enum.AutomaticSize.Y
     })
