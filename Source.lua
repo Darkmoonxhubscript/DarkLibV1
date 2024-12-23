@@ -153,7 +153,7 @@ Corner(RightScrollFrame)
 
 local Tabs = {}
 
-function DarkLib:MakeTab(Config)
+function MakeTab(Config)
     local TabName = Config.Name or "Tab"
     local TabButton
     local TabFrame
