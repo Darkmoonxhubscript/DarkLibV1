@@ -138,6 +138,7 @@ local LeftScrollFrame = Create("ScrollingFrame", LeftBar, {
     BackgroundColor3 = Color3.fromRGB(35, 35, 35),
     BorderSizePixel = 0,
     Size = UDim2.new(1, 0, 1, 0),
+    ScrollBarThickness = 0,
 })
 Create("UIListLayout", LeftScrollFrame)
 
@@ -187,8 +188,7 @@ function MakeTab(Config)
         BackgroundTransparency = 1,
         Size = UDim2.new(1, 0, 1, 0),
         Visible = false,  -- Inicialmente invisível
-        CanvasSize = UDim2.new(0, 0, 0, 10),
-        ScrollBarThickness = 5,
+        ScrollBarThickness = 0,
         AutomaticCanvasSize = Enum.AutomaticSize.Y
     })
 
