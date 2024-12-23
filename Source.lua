@@ -138,8 +138,6 @@ local LeftScrollFrame = Create("ScrollingFrame", LeftBar, {
     BackgroundColor3 = Color3.fromRGB(35, 35, 35),
     BorderSizePixel = 0,
     Size = UDim2.new(1, 0, 1, 0),
-    ScrollBarThickness = 0,
-    ScrollBarVisibility = Enum.ScrollBarVisibility.None
 })
 Create("UIListLayout", LeftScrollFrame)
 
