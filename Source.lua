@@ -194,7 +194,7 @@ function DarkLib:MakeTab(Config)
         TabFrame.Visible = true
     end)
 
-    --return TabFrame
+    return TabFrame
 end
 
 return DarkLib
