@@ -129,7 +129,7 @@ local LeftBar = Create("Frame", MainFrame, {
     Name = "LeftBar",
     BackgroundColor3 = Color3.fromRGB(35, 35, 35),
     Size = UDim2.new(0.2, 0, 0.9, 0),
-    Position = UDim2.new(0, 20, 0.1, 0)
+    Position = UDim2.new(0, 0, 0.1, 0)
 })
 Corner(LeftBar, UDim.new(0.05, 0))
 
