@@ -141,7 +141,9 @@ local LeftScrollFrame = Create("ScrollingFrame", LeftBar, {
     ScrollBarThickness = 0,
     ElasticBehavior = Enum.ElasticBehavior.Never
 })
-Create("UIListLayout", LeftScrollFrame)
+Create("UIListLayout", LeftScrollFrame, {
+  Padding = UDim.new(0, 5),
+})
 
 -- RightFrame para Tabs
 local RightScrollFrame = Create("Frame", MainFrame, {
