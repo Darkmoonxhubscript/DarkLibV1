@@ -7,7 +7,6 @@ Welcome My First Library
 local UIS = game:GetService("UserInputService")
 local CoreGui = game:GetService("CoreGui")
 
---SetProps, Create Functions By Redz9999
 local function SetProps(Instance, Props)
     if Props then
         for prop, value in pairs(Props) do
