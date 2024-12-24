@@ -13,16 +13,27 @@ Loads The Library (It Must Be At The Beginning Of The Script,
 ```
 ## AddInfo
 ```luau
-AddInfo({
-    Title = "DarkMoonHub Library"
-})
+AddInfo({Title = "DarkMoonHub Library"})
 ```
 ```luau
 --[[
 Title ="DarkMoonHub Library" >> UI Title
 ]]
 ```
-
+## Create Notification
+```luau
+local Notify = NewNotify({
+    Title = "Notification Title",
+    Description = "Notification Description.",
+    Time = 10
+})
+```
+```
+Local Notify >> Notification Variable (Opcional)
+Title = "Notification Title" >> Notification Title That Will Show
+Description = "Notification Description." >> Notification Description That Will Show
+Time = 10 >> Notification Duration
+```
 ## Create Tab
 ```luau
 local TabName = MakeTab({Name = "TabName"})
@@ -45,7 +56,7 @@ local Button = AddButton({
 ```
 ```luau
 --[[
-local Button >> Button Shortcut (It is not necessary to always put)
+local Button >> Button Shortcut (Opcional)
 Tab = "MyTab" >> Button Tab
 Text = "ButtonText" >> Button Text
 Callback = function(Value) -button press function
