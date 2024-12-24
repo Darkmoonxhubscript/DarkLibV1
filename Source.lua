@@ -1,4 +1,3 @@
--- Funções iniciais
 local UIS = game:GetService("UserInputService")
 local CoreGui = game:GetService("CoreGui")
 
@@ -72,13 +71,11 @@ local function MakeDrag(Instance)
     end)
 end
 
--- Criação da Interface
 local ScreenGui = Create("ScreenGui", CoreGui, {
     Name = "DarkLibrary",
     ResetOnSpawn = false
 })
 
--- Fundo principal (Interface central)
 local MainFrame = Create("Frame", ScreenGui, {
     BackgroundColor3 = Color3.fromRGB(30, 30, 30),
     Size = UDim2.new(0.5, 0, 0.6, 0),
@@ -98,7 +95,7 @@ local TopBar = Create("Frame", MainFrame, {
 })
 Corner(TopBar, UDim.new(0.2, 0))
 
--- Título
+-- Title
 Create("TextLabel", TopBar, {
     Name = "Title",
     Text = "DarkLib",
@@ -112,7 +109,7 @@ Create("TextLabel", TopBar, {
     BackgroundTransparency = 1
 })
 
--- Botão "X" para fechar
+-- Close
 local CloseButton = Create("TextButton", TopBar, {
     Text = "X",
     TextColor3 = Color3.new(1, 1, 1),
@@ -147,7 +144,7 @@ Create("UIListLayout", LeftScrollFrame, {
   Padding = UDim.new(0, 5),
 })
 
--- RightFrame para Tabs
+-- RightFrame
 local RightScrollFrame = Create("Frame", MainFrame, {
     Name = "RightScrollFrame",
     BackgroundColor3 = Color3.fromRGB(30, 30, 30),
@@ -158,21 +155,21 @@ local RightScrollFrame = Create("Frame", MainFrame, {
 Corner(RightScrollFrame)
 
 local Tabs = {}
-local SelectedTab = ""  -- Agora é uma string representando o nome da aba selecionada
-local FirstTab = nil  -- Variável para armazenar o nome da primeira tab
+local SelectedTab = "" 
+local FirstTab = nil 
 
 function MakeTab(Config)
     local TabName = Config.Name or "Tab"
     local TabButton
     local TabFrame
 
-    -- Se for a primeira tab, armazena o nome e marca como selecionada
+    
     if not FirstTab then
         FirstTab = TabName
-        SelectedTab = TabName  -- Atualiza SelectedTab com o nome da primeira aba
+        SelectedTab = TabName  
     end
 
-    -- Ajustar a posição X para alinhar com LeftBar
+    
     TabButton = Create("TextButton", LeftScrollFrame, {
         Text = TabName,
         TextColor3 = Color3.new(1, 1, 1),
@@ -185,15 +182,15 @@ function MakeTab(Config)
         TextXAlignment = Enum.TextXAlignment.Center,
         TextTruncate = "AtEnd",
         AutomaticSize = Enum.AutomaticSize.X,
-        Position = UDim2.new(0, 0, 0, 0)  -- Ajustado para alinhar
+        Position = UDim2.new(0, 0, 0, 0)  
     })
-    Corner(TabButton, UDim.new(0.3, 0))  -- Cantos arredondados
+    Corner(TabButton, UDim.new(0.3, 0))  
 
     TabFrame = Create("ScrollingFrame", RightScrollFrame, {
         Name = TabName,
         BackgroundTransparency = 1,
         Size = UDim2.new(1, 0, 1, 0),
-        Visible = false,  -- Inicialmente invisível
+        Visible = false,  
         ScrollBarThickness = 0,
         AutomaticCanvasSize = Enum.AutomaticSize.Y
     })
@@ -205,19 +202,19 @@ function MakeTab(Config)
 
     Tabs[TabName] = TabFrame
 
-    -- Se for a primeira tab, faz ela visível
+    
     if SelectedTab == TabName then
         TabFrame.Visible = true
     end
 
     TabButton.MouseButton1Click:Connect(function()
-        -- Esconde todas as tabs
+        
         for _, frame in pairs(Tabs) do
             frame.Visible = false
         end
-        -- Mostra a tab clicada
+        
         TabFrame.Visible = true
-        SelectedTab = TabName  -- Atualiza SelectedTab para a aba selecionada
+        SelectedTab = TabName 
     end)
 
     return TabFrame
