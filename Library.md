@@ -7,7 +7,8 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Darkmoonxhubscript/Da
 ```
 ```luau
 --[[
-Loads The Library (It Must Be At The Beginning Of The Script, Mandatory)
+Loads The Library (It Must Be At The Beginning Of The Script,
+ Mandatory)
 ]]
 ```
 
