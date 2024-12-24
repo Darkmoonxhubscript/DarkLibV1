@@ -7,6 +7,7 @@ Welcome My First Library
 local UIS = game:GetService("UserInputService")
 local CoreGui = game:GetService("CoreGui")
 
+--SetProps, Create Functions By Redz9999
 local function SetProps(Instance, Props)
     if Props then
         for prop, value in pairs(Props) do
@@ -78,11 +79,12 @@ local function MakeDrag(Instance)
 end
 
 local ScreenGui = Create("ScreenGui", CoreGui, {
-    Name = "DarkLibrary",
+    Name = "DarkLibraryV1",
     ResetOnSpawn = false
 })
 
 local MainFrame = Create("Frame", ScreenGui, {
+    Name = "MainFrame"
     BackgroundColor3 = Color3.fromRGB(30, 30, 30),
     Size = UDim2.new(0.5, 0, 0.6, 0),
     Position = UDim2.new(0.5, 0, 0.5, 0),
@@ -117,6 +119,7 @@ Create("TextLabel", TopBar, {
 
 -- Close
 local CloseButton = Create("TextButton", TopBar, {
+    Name = "Close"
     Text = "X",
     TextColor3 = Color3.new(1, 1, 1),
     Font = Enum.Font.Cartoon,
@@ -131,7 +134,7 @@ end)
 
 -- LeftBar
 local LeftBar = Create("Frame", MainFrame, {
-    Name = "LeftBar",
+    Name = "TabBar",
     BackgroundColor3 = Color3.fromRGB(35, 35, 35),
     Size = UDim2.new(0.2, 0, 0.9, 0),
     Position = UDim2.new(0, 0, 0.1, 0)
@@ -139,7 +142,7 @@ local LeftBar = Create("Frame", MainFrame, {
 Corner(LeftBar, UDim.new(0.05, 0))
 
 local LeftScrollFrame = Create("ScrollingFrame", LeftBar, {
-    Name = "LeftScrollFrame",
+    Name = "TabsScrollFrame",
     BackgroundColor3 = Color3.fromRGB(35, 35, 35),
     BorderSizePixel = 0,
     Size = UDim2.new(1, 0, 1, 0),
@@ -152,7 +155,7 @@ Create("UIListLayout", LeftScrollFrame, {
 
 -- RightFrame
 local RightScrollFrame = Create("Frame", MainFrame, {
-    Name = "RightScrollFrame",
+    Name = "Containers",
     BackgroundColor3 = Color3.fromRGB(30, 30, 30),
     BorderSizePixel = 0,
     Size = UDim2.new(0.8, 0, 0.9, 0),
@@ -177,6 +180,7 @@ function MakeTab(Config)
 
     
     TabButton = Create("TextButton", LeftScrollFrame, {
+        Name = "TabButton"
         Text = TabName,
         TextColor3 = Color3.new(1, 1, 1),
         Font = Enum.Font.Cartoon,
