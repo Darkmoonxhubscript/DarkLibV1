@@ -28,13 +28,11 @@ local Notify = NewNotify({
     Time = 10
 })
 ```
-```luau
---[[
+```
 Local Notify >> Notification Variable (Opcional)
 Title = "Notification Title" >> Notification Title That Will Show
 Description = "Notification Description." >> Notification Description That Will Show
 Time = 10 >> Notification Duration
-]]
 ```
 ## Create Tab
 ```luau
@@ -44,6 +42,20 @@ local TabName = MakeTab({Name = "TabName"})
 --[[
 local TabName >> TabName Variable
 Name = "TabName" >> UI Button TabName
+]]
+```
+## Add a Section
+```luau
+local Section = AddSection({
+  Tab = "Tab",
+  Text = "Text"
+})
+```
+```luau
+--[[
+local Section >> Section Variable (Opcional)
+Tab = "Tab" >> Tab That Section Will Be Created
+Text = "Text" >> Text Of Section
 ]]
 ```
 ## Add a Button
