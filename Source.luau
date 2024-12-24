@@ -34,10 +34,11 @@ local function Corner(parent, radius)
     })
 end
 
-local function Stroke(parent, Colorstk)
+local function Stroke(parent, Colorstk, Thickness)
     local new = Create("UIStroke", parent, {
         ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
-        Color = Colorstk or Color3.fromRGB(120, 120, 120)
+        Color = Colorstk or Color3.fromRGB(120, 120, 120),
+        Thickness = Thickness or 0.1
     })
     return new
 end
