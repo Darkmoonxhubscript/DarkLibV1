@@ -22,3 +22,23 @@ local TabName >> TabName Variable
 Name = "TabName" >> UI Button TabName
 ]]
 ```
+## Add a Button
+```luau
+local Button = AddButton({
+  Tab = "MyTab",
+  Text = "ButtonText",
+  Callback = function()
+   --Button Action Here
+  end
+})
+```
+```
+--[[
+local Button >> Button Shortcut (It is not necessary to always put)
+Tab = "MyTab" >> Button Tab
+Text = "ButtonText" >> Button Text
+Callback = function(Value) -button press function
+-- function here
+end --end function
+]]
+```
