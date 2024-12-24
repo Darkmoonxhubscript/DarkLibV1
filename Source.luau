@@ -378,7 +378,7 @@ function AddButton(Config)
         TextYAlignment = Enum.TextYAlignment.Center
     })
     Stroke(Button)
-    Corner(Button, UDim.new(1, 0)) 
+    Corner(Button, UDim.new(0.2, 0)) 
 
     local Image = Create("ImageLabel", Button, {
         Image = "rbxassetid://14815405190",
