@@ -74,6 +74,7 @@ end
 
 -- Criação da Interface
 local ScreenGui = Create("ScreenGui", CoreGui, {
+    Name = "DarkLibrary",
     ResetOnSpawn = false
 })
 
@@ -105,8 +106,9 @@ Create("TextLabel", TopBar, {
     Font = Enum.Font.Cartoon,
     TextSize = 20,
     TextXAlignment = Enum.TextXAlignment.Left,
-    Size = UDim2.new(0.3, 0, 1, 0),
+    Size = UDim2.new(0.8, 0, 1, 0),
     Position = UDim2.new(0, 10, 0, 0),
+    TextWrapped = false,
     BackgroundTransparency = 1
 })
 
