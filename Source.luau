@@ -409,7 +409,7 @@ function AddSection(Config)
         Text = Text,
         Font = Enum.Font.FredokaOne,
         TextColor3 = Color3.fromRGB(255, 255, 255),
-        TextSize = 2,
+        TextSize = 20,
         BackgroundTransparency = 1,
         TextWrapped = false,
         TextTruncate = "AtEnd"
