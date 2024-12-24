@@ -251,7 +251,7 @@ function AddButton(Config)
         Font = Enum.Font.Cartoon,
         TextSize = 14,
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
-        Size = UDim2.new(1, -25, 0, 40),
+        Size = UDim2.new(1, 0, 0, 40),
         Position = UDim2.new(0, 0, 0, 0),
         BorderSizePixel = 0,
         ClipsDescendants = true
@@ -261,7 +261,7 @@ function AddButton(Config)
     local Image = Create("ImageLabel", Button, {
         Image = "rbxassetid://14815405190",
         Size = UDim2.new(0, 20, 0, 20),
-        Position = UDim2.new(1, -25, 0, 10),
+        Position = UDim2.new(1, -30, 0, 10),
         BackgroundTransparency = 1
     })
 
