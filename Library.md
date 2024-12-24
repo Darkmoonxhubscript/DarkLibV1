@@ -70,7 +70,6 @@ Tab = "Tab" >> Tab That Will Create The Separator
 AddButton({
 Tab = "Tab",
 Text = "Text",
-Description = "Optional"
 Callback = function()
    
   end
@@ -80,7 +79,6 @@ Callback = function()
 --[[
 Tab = "Tab" >> Button Tab
 Text = "Text" >> Button Text
-Description = "Description" >> Optional
 Callback = function(Value) -button press function
 -- function here
 end --end function
