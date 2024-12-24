@@ -149,6 +149,7 @@ local LeftScrollFrame = Create("ScrollingFrame", LeftBar, {
     BorderSizePixel = 0,
     Size = UDim2.new(1, 0, 1, 0),
     ScrollBarThickness = 0,
+    
     ElasticBehavior = Enum.ElasticBehavior.Never
 })
 Create("UIListLayout", LeftScrollFrame, {
@@ -266,7 +267,7 @@ function AddButton(Config)
     Corner(Button, UDim.new(0.1, 0)) 
 
     local Image = Create("ImageLabel", Button, {
-        Image = "rbxassetid://17260727420",
+        Image = "rbxassetid://14815405190",
         Size = UDim2.new(0, 30, 0, 30),
         Position = UDim2.new(1, -30, 0, 10),
         BackgroundTransparency = 1
