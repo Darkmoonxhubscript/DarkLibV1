@@ -221,6 +221,7 @@ function NewNotify(Config)
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
         AutomaticSize = Enum.AutomaticSize.Y
     })
+    Stroke(Frame2, Color3.fromRGB(120, 120, 120), 1)
     Corner(Frame2)
 
     Create("TextLabel", Frame2, {
@@ -263,11 +264,13 @@ function NewNotify(Config)
     })
 
     -- Separator
-    Create("Frame", Frame2, {
+    local Separator = Create("Frame", Frame2, {
         Size = UDim2.new(1, -4, 0, 2),
         BackgroundColor3 = Color3.fromRGB(55, 55, 55),
         Position = UDim2.new(0, 2, 1, -4)
     })
+    Stroke(Separator, Color3.fromRGB(255, 255, 255), 0.1)
+    
     Corner(Frame2, UDim.new(0, 0))
 
     task.wait(Time)
