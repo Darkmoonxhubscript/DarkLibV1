@@ -84,6 +84,22 @@ local function MakeDrag(Instance)
     end)
 end
 
+local function CreateTween(Configs)
+  local Instance = Configs[1] or Configs.Instance
+  local Prop = Configs[2] or Configs.Prop
+  local NewVal = Configs[3] or Configs.NewVal
+  local Time = Configs[4] or Configs.Time or 0.5
+  local TweenWait = Configs[5] or Configs.wait or false
+  local TweenInfo = TweenInfo.new(Time, Enum.EasingStyle.Quint)
+  
+  local Tween = TweenService:Create(Instance, TweenInfo, {[Prop] = NewVal})
+  Tween:Play()
+  if TweenWait then
+    Tween.Completed:Wait()
+  end
+  return Tween
+end
+
 local ScreenGui = Create("ScreenGui", CoreGui, {
     Name = "DarkLibraryV1",
     ResetOnSpawn = false
@@ -459,7 +475,7 @@ function AddToggle(Config)
 
     local ToggleActive = Create("Frame", ToggleFrame1, {
         Size = UDim2.new(0, 28, 0, 29),
-        Position = UDim2.new(0.921000004, 0, 0.140000001, 0),
+        Position = UDim2.new(0.921, 0, 0.140, 0),
         BackgroundColor3 = Color3.fromRGB(160, 160, 160),
         Visible = false
     })
