@@ -1,6 +1,8 @@
 local UIS = game:GetService("UserInputService")
 local CoreGui = game:GetService("CoreGui")
 
+local Tabs = {}
+
 local function SetProps(Instance, Props)
     if Props then
         for prop, value in pairs(Props) do
@@ -172,8 +174,99 @@ local Padding = Create("UIPadding", RightScrollFrame, {
         PaddingTop = UDim.new(0, 5),
         PaddingBottom = UDim.new(0, 5)
     })
+  
+-- Notification
 
-local Tabs = {}
+local NotifyMenu = Create("Frame", ScreenGui, {
+    Size = UDim2.new(0, 300, 1, 0),
+    Position = UDim2.new(1, 0, 0, 0),
+    AnchorPoint = Vector2.new(1, 0),
+    BackgroundTransparency = 1
+})
+
+Create("UIPadding", NotifyMenu, {
+    PaddingLeft = UDim.new(0, 25),
+    PaddingTop = UDim.new(0, 25),
+    PaddingBottom = UDim.new(0, 50)
+})
+
+Create("UIListLayout", NotifyMenu, {
+    Padding = UDim.new(0, 15),
+    VerticalAlignment = Enum.VerticalAlignment.Bottom
+})
+
+function NewNotify(Config)
+    local Title = Config.Title or "Notification"
+    local Description = Config.Desc or "Description"
+    local Time = Config.Time or 5
+
+    local Frame1 = Create("Frame", NotifyMenu, {
+        Size = UDim2.new(1, 0, 0, 75),
+        BackgroundTransparency = 1
+    })
+
+
+    local Frame2 = Create("Frame", Frame1, {
+        Size = UDim2.new(1, -50, 0, 75),
+        BackgroundColor3 = Color3.fromRGB(45, 45, 45),
+        Position = UDim2.new(0, 0, 0, 0),
+        AutomaticSize = Enum.AutomaticSize.Y
+    })
+    Corner(Frame2)
+
+    Create("TextLabel", Frame2, {
+        Size = UDim2.new(1, -30, 0, 25),
+        Font = Enum.Font.Cartoon,
+        BackgroundTransparency = 1,
+        Text = Title,
+        TextSize = 20,
+        Position = UDim2.new(0, 10, 0, 5),
+        TextXAlignment = Enum.TextXAlignment.Left,
+        TextColor3 = Color3.fromRGB(255, 255, 255)
+    })
+
+    local CloseButton = Create("TextButton", Frame2, {
+        Text = "X",
+        Font = Enum.Font.Cartoon,
+        TextSize = 20,
+        BackgroundTransparency = 1,
+        TextColor3 = Color3.fromRGB(200, 200, 200),
+        Position = UDim2.new(1, -5, 0, 5),
+        AnchorPoint = Vector2.new(1, 0),
+        Size = UDim2.new(0, 25, 0, 25)
+    })
+    CloseButton.MouseButton1Click:Connect(function()
+        Frame1:Destroy()
+    end)
+
+    Create("TextLabel", Frame2, {
+        Size = UDim2.new(1, -30, 0, 0),
+        Position = UDim2.new(0, 10, 0, 35),
+        TextSize = 15,
+        TextColor3 = Color3.fromRGB(200, 200, 200),
+        TextXAlignment = Enum.TextXAlignment.Left,
+        Text = Description,
+        Font = Enum.Font.Cartoon,
+        BackgroundTransparency = 1,
+        AutomaticSize = Enum.AutomaticSize.Y,
+        TextWrapped = true
+    })
+
+    --Separator
+    Create("Frame", Frame2, {
+        Size = UDim2.new(1, -4, 0, 2),
+        BackgroundColor3 = Color3.fromRGB(55, 55, 55),
+        Position = UDim2.new(0, 2, 1, -4)
+    })
+    Corner(Frame2, UDim.new(0, 0))
+
+    task.wait(Time)
+    if Frame1 then
+        Frame1:Destroy()
+    end
+end
+
+
 local SelectedTab = "" 
 local FirstTab = nil 
 
@@ -269,7 +362,7 @@ function AddButton(Config)
     local Image = Create("ImageLabel", Button, {
         Image = "rbxassetid://14815405190",
         Size = UDim2.new(0, 30, 0, 30),
-        Position = UDim2.new(1, 460, 0, 5),
+        Position = UDim2.new(1, -40, 0, 5),
         BackgroundTransparency = 1
     })
 
