@@ -87,7 +87,6 @@ local MainFrame = Create("Frame", ScreenGui, {
 Corner(MainFrame, UDim.new(0.05, 0))
 MakeDrag(MainFrame)
 
--- TopBar
 local TopBar = Create("Frame", MainFrame, {
     Name = "TopBar",
     BackgroundColor3 = Color3.fromRGB(40, 40, 40),
@@ -105,7 +104,6 @@ function AddInfo(Config)
     end
 end
 
--- Title
 Create("TextLabel", TopBar, {
     Name = "Title",
     Text = "DarkLib",
@@ -119,7 +117,6 @@ Create("TextLabel", TopBar, {
     BackgroundTransparency = 1
 })
 
--- Close
 local CloseButton = Create("TextButton", TopBar, {
     Name = "Close",
     Text = "X",
@@ -134,7 +131,6 @@ CloseButton.MouseButton1Click:Connect(function()
     ScreenGui:Destroy()
 end)
 
--- LeftBar
 local LeftBar = Create("Frame", MainFrame, {
     Name = "TabBar",
     BackgroundColor3 = Color3.fromRGB(35, 35, 35),
@@ -155,7 +151,6 @@ Create("UIListLayout", LeftScrollFrame, {
   Padding = UDim.new(0, 5),
 })
 
--- RightFrame
 local RightScrollFrame = Create("Frame", MainFrame, {
     Name = "Containers",
     BackgroundColor3 = Color3.fromRGB(30, 30, 30),
@@ -181,13 +176,11 @@ function MakeTab(Config)
     local TabButton
     local TabFrame
 
-    
     if not FirstTab then
         FirstTab = TabName
         SelectedTab = TabName  
     end
 
-    
     TabButton = Create("TextButton", LeftScrollFrame, {
         Name = "TabButton",
         Text = TabName,
@@ -222,13 +215,19 @@ function MakeTab(Config)
 
     Tabs[TabName] = TabFrame
 
-    
     if SelectedTab == TabName then
         TabFrame.Visible = true
+        TabButton.BackgroundColor3 = Color3.fromRGB(55, 55, 55) 
     end
 
     TabButton.MouseButton1Click:Connect(function()
+        for _, button in pairs(LeftScrollFrame:GetChildren()) do
+            if button:IsA("TextButton") then
+                button.BackgroundColor3 = Color3.fromRGB(45, 45, 45) 
+            end
+        end
         
+        TabButton.BackgroundColor3 = Color3.fromRGB(55, 55, 55) 
         for _, frame in pairs(Tabs) do
             frame.Visible = false
         end
@@ -271,7 +270,5 @@ function AddButton(Config)
 
     return Button
 end
-
-
 
 return DarkLib
