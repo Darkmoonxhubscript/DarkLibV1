@@ -28,11 +28,13 @@ local Notify = NewNotify({
     Time = 10
 })
 ```
-```
+```luau
+--[[
 Local Notify >> Notification Variable (Opcional)
 Title = "Notification Title" >> Notification Title That Will Show
 Description = "Notification Description." >> Notification Description That Will Show
 Time = 10 >> Notification Duration
+]]
 ```
 ## Create Tab
 ```luau
