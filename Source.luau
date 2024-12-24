@@ -211,6 +211,7 @@ function MakeTab(Config)
         Size = UDim2.new(1, 0, 1, 0),
         Visible = false,  
         ScrollBarThickness = 0,
+        ElasticBehavior = Enum.ElasticBehavior.Never
         AutomaticCanvasSize = Enum.AutomaticSize.Y
     })
 
@@ -260,7 +261,7 @@ function AddButton(Config)
     local Image = Create("ImageLabel", Button, {
         Image = "rbxassetid://14815405190",
         Size = UDim2.new(0, 20, 0, 20),
-        Position = UDim2.new(1, -25, 0, 10),
+        Position = UDim2.new(1, -23, 0, 10),
         BackgroundTransparency = 1
     })
 
