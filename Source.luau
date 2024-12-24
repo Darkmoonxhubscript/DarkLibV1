@@ -446,7 +446,7 @@ function AddToggle(Config)
         Position = UDim2.new(0, 0, 0, 0),
         BackgroundTransparency = 1
     })
-    Stroke(ToggleFrame1, Color3.fromRGB(120, 120, 120), 0.9)
+    Stroke(ToggleFrame1, Color3.fromRGB(120, 120, 120), 1)
     Corner(ToggleFrame1)
 
     local ToggleFrame2 = Create("Frame", ToggleFrame1, {
@@ -454,32 +454,21 @@ function AddToggle(Config)
         Position = UDim2.new(1, -40, 0, 5),
         BackgroundTransparency = 1
     })
-    Stroke(ToggleFrame2, Color3.fromRGB(120, 120, 120), 0.9)
+    Stroke(ToggleFrame2, Color3.fromRGB(120, 120, 120), 1)
     Corner(ToggleFrame2)
 
-    local ToggleFrame3 = Create("Frame", ToggleFrame1, {
-        Size = UDim2.new(0, 30, 0, 30),
-        Position = UDim2.new(1, -40, 0, 5),
-        BackgroundColor3 = Color3.fromRGB(0, 200, 0), -- On
+    local ToggleActive = Create("Frame", ToggleFrame1, {
+        Size = UDim2.new(0, 27, 0, 26),
+        Position = UDim2.new(1, -38, 0, 6),
+        BackgroundColor3 = Color3.fromRGB(160, 160, 160),
         Visible = false
     })
-    Corner(ToggleFrame3)
-
-    local ToggleFrame4 = Create("Frame", ToggleFrame1, {
-        Size = UDim2.new(0, 30, 0, 30),
-        Position = UDim2.new(1, -40, 0, 5),
-        BackgroundColor3 = Color3.fromRGB(200, 0, 0), -- Off
-        Visible = true
-    })
-    Corner(ToggleFrame4)
+    Corner(ToggleActive)
 
     local ToggleState = false
     if Default then
-        SetProps(ToggleFrame3, {
+        SetProps(ToggleActive, {
             Visible = true
-        })
-        SetProps(ToggleFrame4, {
-            Visible = false
         })
         ToggleState = true
     end
@@ -509,26 +498,20 @@ function AddToggle(Config)
 
     ToggleButtonArea.MouseButton1Click:Connect(function()
         if ToggleState then
-            SetProps(ToggleFrame3, {
+            SetProps(ToggleActive, {
                 Visible = false
-            })
-            SetProps(ToggleFrame4, {
-                Visible = true
             })
             ToggleState = false
         elseif not ToggleState then
-            SetProps(ToggleFrame3, {
+            SetProps(ToggleActive, {
                 Visible = true
-            })
-            SetProps(ToggleFrame4, {
-                Visible = false
             })
             ToggleState = true
         end
         Callback(ToggleState)
     end)
 
-    return {ToggleFrame3, ToggleFrame4, Callback, ToggleState}
+    return {ToggleActive, Callback, ToggleState}
 end
 
 
