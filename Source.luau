@@ -34,6 +34,13 @@ local function Corner(parent, radius)
     })
 end
 
+local function Stroke(parent, Colorstk)
+  local new = Create("UIStroke", "Stroke", parent or CoreGui)
+  new.ApplyStrokeMode = "Border"
+    new.Color = Colorstk or Color3.fromRGB(120, 120, 120)
+  return new
+end
+
 local function MakeDrag(Instance)
     local Dragging, DragInput, DragStart, StartPosition
 
@@ -294,6 +301,7 @@ function MakeTab(Config)
         AutomaticSize = Enum.AutomaticSize.X,
         Position = UDim2.new(0, 0, 0, 0)  
     })
+    Stroke(TabButton, Color3.fromRGB(200, 200, 200))
     Corner(TabButton, UDim.new(0.3, 0))  
 
     TabFrame = Create("ScrollingFrame", RightScrollFrame, {
@@ -316,7 +324,7 @@ function MakeTab(Config)
     
     if SelectedTab == TabName then
         TabFrame.Visible = true
-        TabButton.BackgroundColor3 = Color3.fromRGB(55, 55, 55)
+        TabButton.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
     end
 
     TabButton.MouseButton1Click:Connect(function()
@@ -326,7 +334,7 @@ function MakeTab(Config)
             end
         end
         
-        TabButton.BackgroundColor3 = Color3.fromRGB(55, 55, 55)
+        TabButton.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
         for _, frame in pairs(Tabs) do
             frame.Visible = false
         end
@@ -354,6 +362,7 @@ function AddButton(Config)
         BorderSizePixel = 0,
         ClipsDescendants = true
     })
+    Stroke(Button)
     Corner(Button, UDim.new(0.1, 0)) 
 
     local Image = Create("ImageLabel", Button, {
