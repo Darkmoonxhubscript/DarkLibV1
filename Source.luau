@@ -418,5 +418,18 @@ function AddSection(Config)
     return SectionFrame
 end
 
+function AddSeparator(Config)
+ local Tab = Config.Tab
+ 
+ local SeparatorFrame = Create("Frame", Tabs[Tab], {
+        Size = UDim2.new(0.5, 0, 0, 40),
+        Position = UDim2.new(0, 0, 0, 0),
+        BackgroundTransparency = 1
+    })
+    Stroke(SectionFrame, Color3.fromRGB(200, 200, 200), 0.5)
+    Corner(SectionFrame)
+    
+    return SectionFrame
+end
 
 return DarkLib
