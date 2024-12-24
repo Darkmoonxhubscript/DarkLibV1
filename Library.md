@@ -3,5 +3,18 @@
 
 ## How Use
 
-**LoadString**
-__(Mandatory! Place at the Beginning of the Script.)__
+# LoadString
+```luau
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Darkmoonxhubscript/DarkLibV1/refs/heads/main/Source.lua"))()
+```
+
+# Create Tab
+```luau
+local TabName = MakeTab({Name = "TabName"})
+```
+```luau
+--[[
+local TabName >> TabName Variable
+Name = "TabName" >> UI Button TabName
+]]
+```
