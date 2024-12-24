@@ -176,9 +176,10 @@ function NewNotify(Config)
     Stroke(Separator, Color3.fromRGB(255, 255, 255), 0.1)
     
     Corner(Frame2, UDim.new(0, 0))
-
+task.spawn(function()
     task.wait(Time)
     Frame1:Destroy()
+    end)
 end
 
 
