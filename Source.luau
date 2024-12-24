@@ -266,7 +266,7 @@ function AddButton(Config)
     Corner(Button, UDim.new(0.1, 0)) 
 
     local Image = Create("ImageLabel", Button, {
-        Image = "rbxassetid://12795925899",
+        Image = "rbxassetid://17260727420",
         Size = UDim2.new(0, 30, 0, 30),
         Position = UDim2.new(1, -30, 0, 10),
         BackgroundTransparency = 1
