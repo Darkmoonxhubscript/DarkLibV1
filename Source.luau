@@ -129,7 +129,7 @@ end)
 local LeftBar = Create("Frame", MainFrame, {
     Name = "TabBar",
     BackgroundColor3 = Color3.fromRGB(35, 35, 35),
-    Size = UDim2.new(0.2, 0, 0.9, 0),
+    Size = UDim2.new(0.3, 0, 0.9, 0),
     Position = UDim2.new(0, 0, 0.1, 0)
 })
 Corner(LeftBar, UDim.new(0.05, 0))
@@ -179,7 +179,7 @@ function MakeTab(Config)
         Font = Enum.Font.Cartoon,
         TextSize = 14,
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
-        Size = UDim2.new(1, -10, 0, 30),
+        Size = UDim2.new(1, -10, 5, 30),
         TextWrapped = false,
         ClipsDescendants = true,
         TextXAlignment = Enum.TextXAlignment.Center,
@@ -223,4 +223,4 @@ function MakeTab(Config)
     return TabFrame
 end
 
-return DarkLib
+return DarkLib3
