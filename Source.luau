@@ -223,4 +223,31 @@ function MakeTab(Config)
     return TabFrame
 end
 
+function AddButton(Config)
+    local Tab = Config.Tab
+    local Text = Config.Text or "Button"
+    local Callback = Config.Callback or function() end
+    
+    local Button = Create("TextButton", Tabs[Tab], {
+        Text = Text,
+        TextColor3 = Color3.new(1, 1, 1),
+        Font = Enum.Font.Cartoon,
+        TextSize = 14,
+        BackgroundColor3 = Color3.fromRGB(45, 45, 45),
+        Size = UDim2.new(1, -10, 0, 40),
+        Position = UDim2.new(0, 0, 0, 0),
+        BorderSizePixel = 0,
+        ClipsDescendants = true
+    })
+    Corner(Button, UDim.new(0.1, 0)) 
+
+    
+    Button.MouseButton1Click:Connect(function()
+        Callback()
+    end)
+
+    return Button
+end
+
+
 return DarkLib
