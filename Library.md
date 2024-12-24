@@ -64,7 +64,9 @@ AddSeparator({
 })
 ```
 ```luau
+--[[
 Tab = "Tab" >> Tab That Will Create The Separator
+]]
 ```
 ## Add a Button
 ```luau
