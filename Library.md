@@ -32,7 +32,7 @@ local Button = AddButton({
   end
 })
 ```
-```
+```luau
 --[[
 local Button >> Button Shortcut (It is not necessary to always put)
 Tab = "MyTab" >> Button Tab
