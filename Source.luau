@@ -223,4 +223,4 @@ function MakeTab(Config)
     return TabFrame
 end
 
-return DarkLib3
+return DarkLib
