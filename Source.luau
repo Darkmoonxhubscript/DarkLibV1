@@ -225,10 +225,17 @@ function MakeTab(Config)
     
     if SelectedTab == TabName then
         TabFrame.Visible = true
+        TabButton.BackgroundColor3 = Color3.fromRGB(55, 55, 55)
     end
 
     TabButton.MouseButton1Click:Connect(function()
+        for _, button in pairs(LeftScrollFrame:GetChildren()) do
+            if button:IsA("TextButton") then
+                button.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+            end
+        end
         
+        TabButton.BackgroundColor3 = Color3.fromRGB(55, 55, 55)
         for _, frame in pairs(Tabs) do
             frame.Visible = false
         end
