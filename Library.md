@@ -1,13 +1,13 @@
 # DarkLib V1
 **__This is a Test Library, After all, it's my first Library__**
 
-## LoadString
+## LoadString (REQUIRED)
 ```luau
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Darkmoonxhubscript/DarkLibV1/refs/heads/main/Source.luau"))()
 ```
 ```luau
 --[[
-Loads The Library (NEED)
+Loads The Library
 ]]
 ```
 ## AddInfo
