@@ -386,6 +386,7 @@ function AddButton(Config)
 end
 
 local function AddSection(Config)
+    local Tab = Config.Tab
     local Text = Config.Text or "Section"
     
     local SectionFrame = Create("Frame", Tabs[Tab], {
@@ -394,7 +395,7 @@ local function AddSection(Config)
         BackgroundTransparency = 1
     })
    Stroke(SectionFrame)
-   Corner(SectionFrame, UDim.new(0.5, 0))
+   Corner(SectionFrame)
 
     local SectionLabel = Create("TextLabel", SectionFrame, {
         Size = UDim2.new(1, 0, 0, 40),
