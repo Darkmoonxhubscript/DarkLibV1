@@ -502,7 +502,13 @@ local TextToggle = Create("TextLabel", ToggleFrame1, {
         TextYAlignment = Enum.TextYAlignment.Center
 })
 
-Button.MouseButton1Click:Connect(function()
+local ToggleButtonArea = Create("TextButton", ToggleFrame1, {
+  Size = UDim2.new(0, 30, 0, 30),
+  Position = UDim2.new(1, -40, 0, 5),
+  BackgroundTransparency = 1
+})
+
+ToggleButtonArea.MouseButton1Click:Connect(function()
        if ToggleState then
          SetProps(ToggleFrame3, {
     Visible = false
