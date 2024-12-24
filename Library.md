@@ -67,7 +67,10 @@ Tab = "Tab" >> Tab That Will Create The Separator
 ```
 ## Add a Button
 ```luau
-AddButton({Tab = "MyTab", Text = "ButtonText",
+AddButton({
+Tab = "Tab",
+Text = "Text",
+Description = "Optional"
 Callback = function()
    
   end
@@ -75,8 +78,9 @@ Callback = function()
 ```
 ```luau
 --[[
-Tab = "MyTab" >> Button Tab
-Text = "ButtonText" >> Button Text
+Tab = "Tab" >> Button Tab
+Text = "Text" >> Button Text
+Description = "Description" >> Optional
 Callback = function(Value) -button press function
 -- function here
 end --end function
