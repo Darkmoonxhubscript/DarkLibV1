@@ -394,8 +394,6 @@ local function AddSection(Config)
         Position = UDim2.new(0, 0, 0, 0),
         BackgroundTransparency = 1
     })
-   Stroke(SectionFrame)
-   Corner(SectionFrame)
 
     local SectionLabel = Create("TextLabel", SectionFrame, {
         Size = UDim2.new(1, 0, 0, 40),
@@ -406,7 +404,7 @@ local function AddSection(Config)
         TextXAlignment = Enum.TextXAlignment.Left,
         BackgroundTransparency = 1,
         TextWrapped = false,
-        TextTruncate = Enum.TextTruncate.End
+        TextTruncate = "AtEnd"
     })
 
     return SectionFrame
