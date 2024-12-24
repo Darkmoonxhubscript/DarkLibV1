@@ -330,7 +330,7 @@ function MakeTab(Config)
     
     if SelectedTab == TabName then
         TabFrame.Visible = true
-        TabButton.BackgroundColor3 = Color3.fromRGB(200, 200, 200)
+        TabButton.BackgroundColor3 = Color3.fromRGB(120, 120, 120)
     end
 
     TabButton.MouseButton1Click:Connect(function()
@@ -340,7 +340,7 @@ function MakeTab(Config)
             end
         end
         
-        TabButton.BackgroundColor3 = Color3.fromRGB(200, 200, 200)
+        TabButton.BackgroundColor3 = Color3.fromRGB(120, 120, 120)
         for _, frame in pairs(Tabs) do
             frame.Visible = false
         end
