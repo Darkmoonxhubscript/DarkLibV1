@@ -5,6 +5,11 @@
 ```luau
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Darkmoonxhubscript/DarkLibV1/refs/heads/main/Source.lua"))()
 ```
+```luau
+--[[
+Loads The Library (It Must Be At The Beginning Of The Script, Mandatory)
+]]
+```
 
 ## Create Tab
 ```luau
