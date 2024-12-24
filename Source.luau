@@ -422,7 +422,7 @@ function AddSeparator(Config)
  local Tab = Config.Tab
  
  local SeparatorFrame = Create("Frame", Tabs[Tab], {
-        Size = UDim2.new(0.1, 0, 0, 0),
+        Size = UDim2.new(1, 0, 0, 0),
         Position = UDim2.new(0, 0, 0, 0),
         BackgroundTransparency = 1
     })
