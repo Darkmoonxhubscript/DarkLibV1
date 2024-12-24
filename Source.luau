@@ -361,35 +361,56 @@ end
 function AddButton(Config)
     local Tab = Config.Tab
     local Text = Config.Text or "Button"
+    local Desc = Config.Description or ""
     local Callback = Config.Callback or function() end
     
-    local Button = Create("TextButton", Tabs[Tab], {
+    local ButtonFrame = Create("Frame", Tabs[Tab], {
+        Size = UDim2.new(1, 0, 0, 40),
+        Position = UDim2.new(0, 0, 0, 0),
+        BackgroundTransparency = 1
+    })
+    
+    local Button = Create("TextButton", ButtonFrame, {
         Text = Text,
         TextColor3 = Color3.new(1, 1, 1),
         Font = Enum.Font.FredokaOne,
         TextSize = 20,
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
-        Size = UDim2.new(1, 0, 0, 40),
+        Size = UDim2.new(1, 0, 1, 0),
         TextWrapped = false,
         Position = UDim2.new(0, 0, 0, 0),
         BorderSizePixel = 0,
-        ClipsDescendants = true
+        ClipsDescendants = true,
+        TextYAlignment = Enum.TextYAlignment.Top
     })
     Stroke(Button)
     Corner(Button, UDim.new(0.1, 0)) 
 
     local Image = Create("ImageLabel", Button, {
         Image = "rbxassetid://14815405190",
-        Size = UDim2.new(0, 30, 0, 30),
-        Position = UDim2.new(1, -40, 0, 5),
+        Size = UDim2.new(0, 20, 0, 20),
+        Position = UDim2.new(1, -30, 0, 3),
         BackgroundTransparency = 1
+    })
+
+    local Description = Create("TextLabel", ButtonFrame, {
+        Text = Desc,
+        TextColor3 = Color3.fromRGB(200, 200, 200),
+        Font = Enum.Font.Cartoon,
+        TextSize = 14,
+        BackgroundTransparency = 1,
+        Size = UDim2.new(1, 0, 0, 15),
+        Position = UDim2.new(0, 0, 0, 20),
+        TextWrapped = true,
+        TextXAlignment = Enum.TextXAlignment.Center,
+        TextYAlignment = Enum.TextYAlignment.Center
     })
 
     Button.MouseButton1Click:Connect(function()
         Callback()
     end)
 
-    return Button
+    return ButtonFrame
 end
 
 function AddSection(Config)
