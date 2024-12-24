@@ -11,6 +11,17 @@ Loads The Library (It Must Be At The Beginning Of The Script,
  Mandatory)
 ]]
 ```
+## AddInfo
+```luau
+AddInfo({
+    Title = "DarkMoonHub Library"
+})
+```
+```luau
+--[[
+Title ="DarkMoonHub Library" >> UI Title
+]]
+``|
 
 ## Create Tab
 ```luau
