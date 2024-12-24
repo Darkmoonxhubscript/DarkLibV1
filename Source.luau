@@ -422,14 +422,14 @@ function AddSeparator(Config)
  local Tab = Config.Tab
  
  local SeparatorFrame = Create("Frame", Tabs[Tab], {
-        Size = UDim2.new(0.5, 0, 0, 40),
+        Size = UDim2.new(1, 0, 0, 5),
         Position = UDim2.new(0, 0, 0, 0),
         BackgroundTransparency = 1
     })
-    Stroke(SectionFrame, Color3.fromRGB(200, 200, 200), 0.5)
-    Corner(SectionFrame)
+    Stroke(SeparatorFrame, Color3.fromRGB(200, 200, 200), 0.5)
+    Corner(SeparatorFrame)
     
-    return SectionFrame
+    return SeparatorFrame
 end
 
 return DarkLib
