@@ -436,20 +436,19 @@ function AddSeparator(Config)
 end
 
 function AddToggle(Config)
-local Tab = Config.Tab
-local Text = Config.Text or "Toggle"
-local Default = Config.Default or false
-local Callback = Config.Callback or function() end
+    local Tab = Config.Tab
+    local Text = Config.Text or "Toggle"
+    local Default = Config.Default or false
+    local Callback = Config.Callback or function() end
 
-
-local ToggleFrame1 = Create("Frame", Tabs[Tab], {
+    local ToggleFrame1 = Create("Frame", Tabs[Tab], {
         Size = UDim2.new(1, 0, 0, 40),
         Position = UDim2.new(0, 0, 0, 0),
         BackgroundTransparency = 1
     })
     Stroke(ToggleFrame1, Color3.fromRGB(120, 120, 120), 0.5)
     Corner(ToggleFrame1)
-    
+
     local ToggleFrame2 = Create("Frame", ToggleFrame1, {
         Size = UDim2.new(0, 30, 0, 30),
         Position = UDim2.new(1, -40, 0, 5),
@@ -457,7 +456,7 @@ local ToggleFrame1 = Create("Frame", Tabs[Tab], {
     })
     Stroke(ToggleFrame2, Color3.fromRGB(120, 120, 120), 0.2)
     Corner(ToggleFrame2)
-    
+
     local ToggleFrame3 = Create("Frame", ToggleFrame1, {
         Size = UDim2.new(0, 30, 0, 30),
         Position = UDim2.new(1, -40, 0, 5),
@@ -465,7 +464,7 @@ local ToggleFrame1 = Create("Frame", Tabs[Tab], {
         Visible = false
     })
     Corner(ToggleFrame3)
-    
+
     local ToggleFrame4 = Create("Frame", ToggleFrame1, {
         Size = UDim2.new(0, 30, 0, 30),
         Position = UDim2.new(1, -40, 0, 5),
@@ -473,63 +472,63 @@ local ToggleFrame1 = Create("Frame", Tabs[Tab], {
         Visible = true
     })
     Corner(ToggleFrame4)
-    
-local ToggleState = false
-if Default then
-  SetProps(ToggleFrame3, {
-    Visible = true
-  })
-  SetProps(ToggleFrame4, {
-    Visible = false
-  })
-  ToggleState = true
-end
 
- Callback(ToggleState)
- 
-local TextToggle = Create("TextLabel", ToggleFrame1, {
+    local ToggleState = false
+    if Default then
+        SetProps(ToggleFrame3, {
+            Visible = true
+        })
+        SetProps(ToggleFrame4, {
+            Visible = false
+        })
+        ToggleState = true
+    end
+
+    Callback(ToggleState)
+
+    local TextToggle = Create("TextLabel", ToggleFrame1, {
         Text = Text,
         TextColor3 = Color3.new(1, 1, 1),
         Font = Enum.Font.FredokaOne,
         TextSize = 20,
-        BackgroundColor3 = Color3.fromRGB(45, 45, 45),
-        Size = UDim2.new(1, 0, 0, 40),
-        TextWrapped = false,
+        BackgroundTransparency = 1,
+        Size = UDim2.new(0, 200, 0, 40),
         Position = UDim2.new(0, 10, 0, 0),
         BorderSizePixel = 0,
         ClipsDescendants = true,
         TextXAlignment = Enum.TextXAlignment.Left,
         TextYAlignment = Enum.TextYAlignment.Center
-})
+    })
 
-local ToggleButtonArea = Create("TextButton", ToggleFrame1, {
-  Size = UDim2.new(0, 30, 0, 30),
-  Position = UDim2.new(1, -40, 0, 5),
-  BackgroundTransparency = 1
-})
+    local ToggleButtonArea = Create("TextButton", ToggleFrame1, {
+        Text = "",
+        Size = UDim2.new(0, 30, 0, 30),
+        Position = UDim2.new(1, -40, 0, 5),
+        BackgroundTransparency = 1
+    })
 
-ToggleButtonArea.MouseButton1Click:Connect(function()
-       if ToggleState then
-         SetProps(ToggleFrame3, {
-    Visible = false
-  })
-  SetProps(ToggleFrame4, {
-    Visible = true
-  })
-         ToggleState = false
-       elseif not ToggleState then
-         SetProps(ToggleFrame3, {
-    Visible = true
-  })
-  SetProps(ToggleFrame4, {
-    Visible = false
-  })
-         ToggleState = true
-         end
+    ToggleButtonArea.MouseButton1Click:Connect(function()
+        if ToggleState then
+            SetProps(ToggleFrame3, {
+                Visible = false
+            })
+            SetProps(ToggleFrame4, {
+                Visible = true
+            })
+            ToggleState = false
+        elseif not ToggleState then
+            SetProps(ToggleFrame3, {
+                Visible = true
+            })
+            SetProps(ToggleFrame4, {
+                Visible = false
+            })
+            ToggleState = true
+        end
         Callback(ToggleState)
     end)
 
-return {ToggleFrame3, ToggleFrame4, Callback, ToggleState}
+    return {ToggleFrame3, ToggleFrame4, Callback, ToggleState}
 end
 
 
