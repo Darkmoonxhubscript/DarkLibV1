@@ -1,4 +1,5 @@
 local UIS = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
 local CoreGui = game:GetService("CoreGui")
 
 local Tabs = {}
@@ -195,6 +196,23 @@ Create("UIListLayout", NotifyMenu, {
     VerticalAlignment = Enum.VerticalAlignment.Bottom
 })
 
+local function PlayEntryAnimation(Frame)
+    local goal = { Position = UDim2.new(1, 0, Frame.Position.Y.Scale, Frame.Position.Y.Offset) }
+    local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+    local tween = TweenService:Create(Frame, tweenInfo, goal)
+    tween:Play()
+end
+
+local function PlayExitAnimation(Frame)
+    local goal = { Position = UDim2.new(1, 300, Frame.Position.Y.Scale, Frame.Position.Y.Offset) }
+    local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
+    local tween = TweenService:Create(Frame, tweenInfo, goal)
+    tween:Play()
+    tween.Completed:Connect(function()
+        Frame:Destroy()
+    end)
+end
+
 function NewNotify(Config)
     local Title = Config.Title or "Notification"
     local Description = Config.Desc or "Description"
@@ -202,14 +220,13 @@ function NewNotify(Config)
 
     local Frame1 = Create("Frame", NotifyMenu, {
         Size = UDim2.new(1, 0, 0, 75),
+        Position = UDim2.new(1, 300, 0, 0), 
         BackgroundTransparency = 1
     })
-
 
     local Frame2 = Create("Frame", Frame1, {
         Size = UDim2.new(1, -50, 0, 75),
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
-        Position = UDim2.new(0, 0, 0, 0),
         AutomaticSize = Enum.AutomaticSize.Y
     })
     Corner(Frame2)
@@ -236,7 +253,7 @@ function NewNotify(Config)
         Size = UDim2.new(0, 25, 0, 25)
     })
     CloseButton.MouseButton1Click:Connect(function()
-        Frame1:Destroy()
+        PlayExitAnimation(Frame1)
     end)
 
     Create("TextLabel", Frame2, {
@@ -252,7 +269,7 @@ function NewNotify(Config)
         TextWrapped = true
     })
 
-    --Separator
+    -- Separator
     Create("Frame", Frame2, {
         Size = UDim2.new(1, -4, 0, 2),
         BackgroundColor3 = Color3.fromRGB(55, 55, 55),
@@ -260,11 +277,14 @@ function NewNotify(Config)
     })
     Corner(Frame2, UDim.new(0, 0))
 
+    PlayEntryAnimation(Frame1)
+
     task.wait(Time)
-    if Frame1 then
-        Frame1:Destroy()
+    if Frame1.Parent then
+        PlayExitAnimation(Frame1)
     end
 end
+
 
 
 local SelectedTab = "" 
