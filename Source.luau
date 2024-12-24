@@ -96,6 +96,15 @@ local TopBar = Create("Frame", MainFrame, {
 })
 Corner(TopBar, UDim.new(0.2, 0))
 
+function AddInfo(Config)
+    local Title = Config.Title or "DarkMoonHub Library"
+    
+    local TitleLabel = TopBar:FindFirstChild("Title")
+    if TitleLabel then
+        TitleLabel.Text = Title
+    end
+end
+
 -- Title
 Create("TextLabel", TopBar, {
     Name = "Title",
