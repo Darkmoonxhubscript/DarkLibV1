@@ -1,10 +1,13 @@
 # DarkLib V1
-## My First UI Lib
-**This Library is a Test!**
 
-**__Maybe i do a Best Later:)__**
+**Main Points**
 
+- Simple And Fast
+- Easy to Understand
+- Open Source
+- Constant Updates
+- Made in Mobile
 
-## 100% Open Source
+## Made By
 
-**Thanks For Use;)**
+**__darkmoonhub#0000__** **Interface Programmer and Interface Creator**
