@@ -446,7 +446,7 @@ function AddToggle(Config)
         Position = UDim2.new(0, 0, 0, 0),
         BackgroundTransparency = 1
     })
-    Stroke(ToggleFrame1, Color3.fromRGB(120, 120, 120), 0.5)
+    Stroke(ToggleFrame1, Color3.fromRGB(120, 120, 120), 0.6)
     Corner(ToggleFrame1)
 
     local ToggleFrame2 = Create("Frame", ToggleFrame1, {
@@ -454,7 +454,7 @@ function AddToggle(Config)
         Position = UDim2.new(1, -40, 0, 5),
         BackgroundTransparency = 1
     })
-    Stroke(ToggleFrame2, Color3.fromRGB(120, 120, 120), 0.2)
+    Stroke(ToggleFrame2, Color3.fromRGB(120, 120, 120), 0.6)
     Corner(ToggleFrame2)
 
     local ToggleFrame3 = Create("Frame", ToggleFrame1, {
