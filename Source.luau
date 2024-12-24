@@ -260,7 +260,7 @@ local LeftScrollFrame = Create("ScrollingFrame", LeftBar, {
     ElasticBehavior = Enum.ElasticBehavior.Never
 })
 Create("UIListLayout", LeftScrollFrame, {
-  Padding = UDim.new(0, 5),
+  Padding = UDim.new(0, 8),
 })
 
 -- RightFrame
@@ -326,7 +326,7 @@ function MakeTab(Config)
     })
 
     Create("UIListLayout", TabFrame, {
-        Padding = UDim.new(0, 7),
+        Padding = UDim.new(0, 1),
         SortOrder = Enum.SortOrder.LayoutOrder
     })
 
