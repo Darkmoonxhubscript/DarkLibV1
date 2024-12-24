@@ -424,7 +424,8 @@ function AddSeparator(Config)
  local SeparatorFrame = Create("Frame", Tabs[Tab], {
         Size = UDim2.new(1, 0, 0, 5),
         Position = UDim2.new(0, 0, 0, 0),
-        BackgroundTransparency = 1
+        BackgroundColor3 = Color3.fromRGB(120, 120, 120),
+        BackgroundTransparency = 0
     })
     Stroke(SeparatorFrame, Color3.fromRGB(200, 200, 200), 0.5)
     Corner(SeparatorFrame)
