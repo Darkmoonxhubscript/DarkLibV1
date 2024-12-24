@@ -269,7 +269,7 @@ function AddButton(Config)
     local Image = Create("ImageLabel", Button, {
         Image = "rbxassetid://14815405190",
         Size = UDim2.new(0, 30, 0, 30),
-        Position = UDim2.new(1, -40, 0, 5),
+        Position = UDim2.new(1, 460, 0, 5),
         BackgroundTransparency = 1
     })
 
