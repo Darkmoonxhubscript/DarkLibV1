@@ -22,7 +22,7 @@ Title ="DarkMoonHub Library" >> UI Title
 ```
 ## Create Notification
 ```luau
-local Notify = NewNotify({
+NewNotify({
     Title = "Notification Title",
     Description = "Notification Description.",
     Time = 10
@@ -30,7 +30,6 @@ local Notify = NewNotify({
 ```
 ```luau
 --[[
-Local Notify >> Notification Variable (Opcional)
 Title = "Notification Title" >> Notification Title That Will Show
 Description = "Notification Description." >> Notification Description That Will Show
 Time = 10 >> Notification Duration
@@ -38,31 +37,38 @@ Time = 10 >> Notification Duration
 ```
 ## Create Tab
 ```luau
-local TabName = MakeTab({Name = "TabName"})
+MakeTab({Name = "TabName"})
 ```
 ```luau
 --[[
-local TabName >> TabName Variable
 Name = "TabName" >> UI Button TabName
 ]]
 ```
 ## Add a Section
 ```luau
-local Section = AddSection({
+AddSection({
   Tab = "Tab",
   Text = "Text"
 })
 ```
 ```luau
 --[[
-local Section >> Section Variable (Opcional)
 Tab = "Tab" >> Tab That Section Will Be Created
 Text = "Text" >> Text Of Section
 ]]
 ```
+## Add a Separator
+```luau
+AddSeparator({
+  Tab = "Tab"
+})
+```
+```luau
+Tab = "Tab" >> Tab That Will Create The Separator
+```
 ## Add a Button
 ```luau
-local Button = AddButton({
+AddButton({
   Tab = "MyTab",
   Text = "ButtonText",
   Callback = function()
@@ -72,7 +78,6 @@ local Button = AddButton({
 ```
 ```luau
 --[[
-local Button >> Button Shortcut (Opcional)
 Tab = "MyTab" >> Button Tab
 Text = "ButtonText" >> Button Text
 Callback = function(Value) -button press function
