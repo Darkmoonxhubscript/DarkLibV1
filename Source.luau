@@ -165,6 +165,13 @@ local RightScrollFrame = Create("Frame", MainFrame, {
 })
 Corner(RightScrollFrame)
 
+local Padding = Create("UIPadding", RightScrollFrame, {
+        PaddingLeft = UDim.new(0, 5),
+        PaddingRight = UDim.new(0, 5),
+        PaddingTop = UDim.new(0, 5),
+        PaddingBottom = UDim.new(0, 5)
+    })
+
 local Tabs = {}
 local SelectedTab = "" 
 local FirstTab = nil 
@@ -243,20 +250,27 @@ function AddButton(Config)
         Font = Enum.Font.Cartoon,
         TextSize = 14,
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
-        Size = UDim2.new(1, -10, 0, 40),
+        Size = UDim2.new(1, -20, 0, 40),
         Position = UDim2.new(0, 0, 0, 0),
         BorderSizePixel = 0,
         ClipsDescendants = true
     })
     Corner(Button, UDim.new(0.1, 0)) 
 
-    
+    local Image = Create("ImageLabel", Button, {
+        Image = "rbxassetid://14815405190",
+        Size = UDim2.new(0, 20, 0, 20),
+        Position = UDim2.new(1, -25, 0, 10),
+        BackgroundTransparency = 1
+    })
+
     Button.MouseButton1Click:Connect(function()
         Callback()
     end)
 
     return Button
 end
+
 
 
 return DarkLib
