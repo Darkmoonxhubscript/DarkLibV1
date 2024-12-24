@@ -326,7 +326,7 @@ function MakeTab(Config)
     })
 
     Create("UIListLayout", TabFrame, {
-        Padding = UDim.new(0, 1),
+        Padding = UDim.new(0, 7),
         SortOrder = Enum.SortOrder.LayoutOrder
     })
 
