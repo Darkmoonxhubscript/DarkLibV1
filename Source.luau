@@ -89,103 +89,7 @@ local ScreenGui = Create("ScreenGui", CoreGui, {
     ResetOnSpawn = false
 })
 
-local MainFrame = Create("Frame", ScreenGui, {
-    Name = "MainFrame",
-    BackgroundColor3 = Color3.fromRGB(30, 30, 30),
-    Size = UDim2.new(0.5, 0, 0.6, 0),
-    Position = UDim2.new(0.5, 0, 0.5, 0),
-    AnchorPoint = Vector2.new(0.5, 0.5),
-    Active = true
-})
-Corner(MainFrame, UDim.new(0.05, 0))
-MakeDrag(MainFrame)
 
--- TopBar
-local TopBar = Create("Frame", MainFrame, {
-    Name = "TopBar",
-    BackgroundColor3 = Color3.fromRGB(40, 40, 40),
-    Size = UDim2.new(1, 0, 0.1, 0),
-    Position = UDim2.new(0, 0, 0, 0)
-})
-Corner(TopBar, UDim.new(0.2, 0))
-
-function AddInfo(Config)
-    local Title = Config.Title or "DarkMoonHub Library"
-    
-    local TitleLabel = TopBar:FindFirstChild("Title")
-    if TitleLabel then
-        TitleLabel.Text = Title
-    end
-end
-
--- Title
-Create("TextLabel", TopBar, {
-    Name = "Title",
-    Text = "DarkLib",
-    TextColor3 = Color3.new(1, 1, 1),
-    Font = Enum.Font.FredokaOne,
-    TextSize = 20,
-    TextXAlignment = Enum.TextXAlignment.Left,
-    Size = UDim2.new(0.8, 0, 1, 0),
-    Position = UDim2.new(0, 10, 0, 0),
-    TextWrapped = false,
-    BackgroundTransparency = 1
-})
-
--- Close
-local CloseButton = Create("TextButton", TopBar, {
-    Name = "Close",
-    Text = "X",
-    TextColor3 = Color3.new(1, 1, 1),
-    Font = Enum.Font.FredokaOne,
-    TextSize = 20,
-    BackgroundTransparency = 1,
-    Size = UDim2.new(0.1, 0, 1, 0),
-    Position = UDim2.new(1, -50, 0, 0)
-})
-CloseButton.MouseButton1Click:Connect(function()
-    ScreenGui:Destroy()
-end)
-
--- LeftBar
-local LeftBar = Create("Frame", MainFrame, {
-    Name = "TabBar",
-    BackgroundColor3 = Color3.fromRGB(35, 35, 35),
-    Size = UDim2.new(0.2, 0, 0.9, 0),
-    Position = UDim2.new(0, 0, 0.1, 0)
-})
-Corner(LeftBar, UDim.new(0.05, 0))
-
-local LeftScrollFrame = Create("ScrollingFrame", LeftBar, {
-    Name = "TabsScrollFrame",
-    BackgroundColor3 = Color3.fromRGB(35, 35, 35),
-    BorderSizePixel = 0,
-    Size = UDim2.new(1, 0, 1, 0),
-    ScrollBarThickness = 0,
-    
-    ElasticBehavior = Enum.ElasticBehavior.Never
-})
-Create("UIListLayout", LeftScrollFrame, {
-  Padding = UDim.new(0, 5),
-})
-
--- RightFrame
-local RightScrollFrame = Create("Frame", MainFrame, {
-    Name = "Containers",
-    BackgroundColor3 = Color3.fromRGB(30, 30, 30),
-    BorderSizePixel = 0,
-    Size = UDim2.new(0.8, 0, 0.9, 0),
-    Position = UDim2.new(0.2, 0, 0.1, 0)
-})
-Corner(RightScrollFrame)
-
-local Padding = Create("UIPadding", RightScrollFrame, {
-        PaddingLeft = UDim.new(0, 5),
-        PaddingRight = UDim.new(0, 5),
-        PaddingTop = UDim.new(0, 5),
-        PaddingBottom = UDim.new(0, 5)
-    })
-  
 -- Notification
 
 local NotifyMenu = Create("Frame", ScreenGui, {
@@ -277,6 +181,106 @@ function NewNotify(Config)
     Frame1:Destroy()
 end
 
+
+local MainFrame = Create("Frame", ScreenGui, {
+    Name = "MainFrame",
+    BackgroundColor3 = Color3.fromRGB(30, 30, 30),
+    Size = UDim2.new(0.5, 0, 0.6, 0),
+    Position = UDim2.new(0.5, 0, 0.5, 0),
+    AnchorPoint = Vector2.new(0.5, 0.5),
+    Active = true
+})
+Corner(MainFrame, UDim.new(0.05, 0))
+MakeDrag(MainFrame)
+
+-- TopBar
+local TopBar = Create("Frame", MainFrame, {
+    Name = "TopBar",
+    BackgroundColor3 = Color3.fromRGB(40, 40, 40),
+    Size = UDim2.new(1, 0, 0.1, 0),
+    Position = UDim2.new(0, 0, 0, 0)
+})
+Corner(TopBar, UDim.new(0.2, 0))
+
+function AddInfo(Config)
+    local Title = Config.Title or "DarkMoonHub Library"
+    
+    local TitleLabel = TopBar:FindFirstChild("Title")
+    if TitleLabel then
+        TitleLabel.Text = Title
+    end
+end
+
+-- Title
+Create("TextLabel", TopBar, {
+    Name = "Title",
+    Text = "DarkLib",
+    TextColor3 = Color3.new(1, 1, 1),
+    Font = Enum.Font.FredokaOne,
+    TextSize = 20,
+    TextXAlignment = Enum.TextXAlignment.Left,
+    Size = UDim2.new(0.8, 0, 1, 0),
+    Position = UDim2.new(0, 10, 0, 0),
+    TextWrapped = false,
+    BackgroundTransparency = 1
+})
+
+-- Close
+local CloseButton = Create("TextButton", TopBar, {
+    Name = "Close",
+    Text = "X",
+    TextColor3 = Color3.new(1, 1, 1),
+    Font = Enum.Font.FredokaOne,
+    TextSize = 20,
+    BackgroundTransparency = 1,
+    Size = UDim2.new(0.1, 0, 1, 0),
+    Position = UDim2.new(1, -50, 0, 0)
+})
+CloseButton.MouseButton1Click:Connect(function()
+    ScreenGui:Destroy()
+end)
+
+-- LeftBar
+local LeftBar = Create("Frame", MainFrame, {
+    Name = "TabBar",
+    BackgroundColor3 = Color3.fromRGB(35, 35, 35),
+    Size = UDim2.new(0.2, 0, 0.9, 0),
+    Position = UDim2.new(0, 0, 0.1, 0)
+})
+Corner(LeftBar, UDim.new(0.05, 0))
+
+local LeftScrollFrame = Create("ScrollingFrame", LeftBar, {
+    Name = "TabsScrollFrame",
+    BackgroundColor3 = Color3.fromRGB(35, 35, 35),
+    BorderSizePixel = 0,
+    Size = UDim2.new(1, 0, 1, 0),
+    ScrollBarThickness = 0,
+    AutomaticCanvasSize = Enum.AutomaticSize.Y,
+    CanvasSize = UDim2.new(),
+    ElasticBehavior = Enum.ElasticBehavior.Never
+})
+Create("UIListLayout", LeftScrollFrame, {
+  Padding = UDim.new(0, 5),
+})
+
+-- RightFrame
+local RightScrollFrame = Create("Frame", MainFrame, {
+    Name = "Containers",
+    BackgroundColor3 = Color3.fromRGB(30, 30, 30),
+    BorderSizePixel = 0,
+    Size = UDim2.new(0.8, 0, 0.9, 0),
+    Position = UDim2.new(0.2, 0, 0.1, 0)
+})
+Corner(RightScrollFrame)
+
+local Padding = Create("UIPadding", RightScrollFrame, {
+        PaddingLeft = UDim.new(0, 5),
+        PaddingRight = UDim.new(0, 5),
+        PaddingTop = UDim.new(0, 5),
+        PaddingBottom = UDim.new(0, 5)
+    })
+
+
 local SelectedTab = "" 
 local FirstTab = nil 
 
@@ -317,7 +321,8 @@ function MakeTab(Config)
         Visible = false,  
         ScrollBarThickness = 0,
         ElasticBehavior = Enum.ElasticBehavior.Never,
-        AutomaticCanvasSize = Enum.AutomaticSize.Y
+        AutomaticCanvasSize = Enum.AutomaticSize.Y,
+        CanvasSize = UDim2.new()
     })
 
     Create("UIListLayout", TabFrame, {
@@ -404,7 +409,7 @@ function AddSection(Config)
         Text = Text,
         Font = Enum.Font.FredokaOne,
         TextColor3 = Color3.fromRGB(255, 255, 255),
-        TextSize = 20,
+        TextSize = 2,
         BackgroundTransparency = 1,
         TextWrapped = false,
         TextTruncate = "AtEnd"
