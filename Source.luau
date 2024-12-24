@@ -179,7 +179,7 @@ function MakeTab(Config)
         Font = Enum.Font.Cartoon,
         TextSize = 14,
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
-        Size = UDim2.new(1, -10, 0.5, 30),
+        Size = UDim2.new(1, -10, 0.1, 30),
         TextWrapped = false,
         ClipsDescendants = true,
         TextXAlignment = Enum.TextXAlignment.Center,
