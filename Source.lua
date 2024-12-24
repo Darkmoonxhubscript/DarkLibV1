@@ -1,3 +1,9 @@
+--[[
+Hi:3
+Welcome My First Library
+•You can use it to study if you want!
+]]
+
 local UIS = game:GetService("UserInputService")
 local CoreGui = game:GetService("CoreGui")
 
