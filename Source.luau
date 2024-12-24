@@ -77,7 +77,7 @@ local ScreenGui = Create("ScreenGui", CoreGui, {
 })
 
 local MainFrame = Create("Frame", ScreenGui, {
-    Name = "MainFrame"
+    Name = "MainFrame",
     BackgroundColor3 = Color3.fromRGB(30, 30, 30),
     Size = UDim2.new(0.5, 0, 0.6, 0),
     Position = UDim2.new(0.5, 0, 0.5, 0),
@@ -112,7 +112,7 @@ Create("TextLabel", TopBar, {
 
 -- Close
 local CloseButton = Create("TextButton", TopBar, {
-    Name = "Close"
+    Name = "Close",
     Text = "X",
     TextColor3 = Color3.new(1, 1, 1),
     Font = Enum.Font.Cartoon,
@@ -173,7 +173,7 @@ function MakeTab(Config)
 
     
     TabButton = Create("TextButton", LeftScrollFrame, {
-        Name = "TabButton"
+        Name = "TabButton",
         Text = TabName,
         TextColor3 = Color3.new(1, 1, 1),
         Font = Enum.Font.Cartoon,
