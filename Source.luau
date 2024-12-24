@@ -204,7 +204,7 @@ function MakeTab(Config)
         Size = UDim2.new(1, 0, 1, 0),
         Visible = false,  
         ScrollBarThickness = 0,
-        ElasticBehavior = Enum.ElasticBehavior.Never
+        ElasticBehavior = Enum.ElasticBehavior.Never,
         AutomaticCanvasSize = Enum.AutomaticSize.Y
     })
 
