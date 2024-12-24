@@ -28,22 +28,6 @@ local function Create(...)
     return new
 end
 
-local function CreateTween(Configs)
-  local Instance = Configs[1] or Configs.Instance
-  local Prop = Configs[2] or Configs.Prop
-  local NewVal = Configs[3] or Configs.NewVal
-  local Time = Configs[4] or Configs.Time or 0.5
-  local TweenWait = Configs[5] or Configs.wait or false
-  local TweenInfo = TweenInfo.new(Time, Enum.EasingStyle.Quint)
-  
-  local Tween = TweenService:Create(Instance, TweenInfo, {[Prop] = NewVal})
-  Tween:Play()
-  if TweenWait then
-    Tween.Completed:Wait()
-  end
-  return Tween
-end
-
 local function Corner(parent, radius)
     return Create("UICorner", parent, {
         CornerRadius = radius or UDim.new(0, 5)
@@ -214,13 +198,11 @@ Create("UIListLayout", NotifyMenu, {
 
 function NewNotify(Config)
     local Title = Config.Title or "Notification"
-    local Description = Config.Desc or "Description"
+    local Description = Config.Description or "Description"
     local Time = Config.Time or 5
 
-    -- Create Frame1 outside the screen
     local Frame1 = Create("Frame", NotifyMenu, {
         Size = UDim2.new(1, 0, 0, 75),
-        Position = UDim2.new(1, 300, 0, 0), -- Start off-screen
         BackgroundTransparency = 1
     })
 
@@ -254,15 +236,7 @@ function NewNotify(Config)
     })
 
     CloseButton.MouseButton1Click:Connect(function()
-        CreateTween({
-            Instance = Frame1,
-            Prop = "Position",
-            NewVal = UDim2.new(1, 300, Frame1.Position.Y.Scale, Frame1.Position.Y.Offset),
-            Time = 0.5,
-            wait = true
-        }).Completed:Connect(function()
-            Frame1:Destroy()
-        end)
+        Frame1:Destroy()
     end)
 
     Create("TextLabel", Frame2, {
@@ -286,26 +260,8 @@ function NewNotify(Config)
     })
     Corner(Frame2, UDim.new(0, 0))
 
-    -- Play entry animation
-    CreateTween({
-        Instance = Frame1,
-        Prop = "Position",
-        NewVal = UDim2.new(1, 0, Frame1.Position.Y.Scale, Frame1.Position.Y.Offset),
-        Time = 0.5
-    })
-
     task.wait(Time)
-
-    -- Play exit animation
-    CreateTween({
-        Instance = Frame1,
-        Prop = "Position",
-        NewVal = UDim2.new(1, 300, Frame1.Position.Y.Scale, Frame1.Position.Y.Offset),
-        Time = 0.5,
-        wait = true
-    }).Completed:Connect(function()
-        Frame1:Destroy()
-    end)
+    Frame1:Destroy()
 end
 
 local SelectedTab = "" 
