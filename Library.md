@@ -7,8 +7,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Darkmoonxhubscript/Da
 ```
 ```luau
 --[[
-Loads The Library (It Must Be At The Beginning Of The Script,
- Mandatory)
+Loads The Library (NEED)
 ]]
 ```
 ## AddInfo
@@ -23,9 +22,9 @@ Title ="DarkMoonHub Library" >> UI Title
 ## Create Notification
 ```luau
 NewNotify({
-    Title = "Notification Title",
-    Description = "Notification Description.",
-    Time = 10
+Title = "Notification Title",
+Description = "Notification Description.",
+Time = 10
 })
 ```
 ```luau
@@ -47,8 +46,8 @@ Name = "TabName" >> UI Button TabName
 ## Add a Section
 ```luau
 AddSection({
-  Tab = "Tab",
-  Text = "Text"
+Tab = "Tab",
+Text = "Text"
 })
 ```
 ```luau
@@ -59,9 +58,7 @@ Text = "Text" >> Text Of Section
 ```
 ## Add a Separator
 ```luau
-AddSeparator({
-  Tab = "Tab"
-})
+AddSeparator({Tab = "Tab"})
 ```
 ```luau
 --[[
@@ -70,11 +67,9 @@ Tab = "Tab" >> Tab That Will Create The Separator
 ```
 ## Add a Button
 ```luau
-AddButton({
-  Tab = "MyTab",
-  Text = "ButtonText",
-  Callback = function()
-   --Button Action Here
+AddButton({Tab = "MyTab", Text = "ButtonText",
+Callback = function()
+   
   end
 })
 ```
