@@ -221,7 +221,7 @@ function NewNotify(Config)
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
         AutomaticSize = Enum.AutomaticSize.Y
     })
-    Stroke(Frame2, Color3.fromRGB(120, 120, 120), 1)
+    Stroke(Frame2, Color3.fromRGB(120, 120, 120), 3)
     Corner(Frame2)
 
     Create("TextLabel", Frame2, {
@@ -330,7 +330,7 @@ function MakeTab(Config)
     
     if SelectedTab == TabName then
         TabFrame.Visible = true
-        TabButton.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+        TabButton.BackgroundColor3 = Color3.fromRGB(200, 200, 200)
     end
 
     TabButton.MouseButton1Click:Connect(function()
@@ -340,7 +340,7 @@ function MakeTab(Config)
             end
         end
         
-        TabButton.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+        TabButton.BackgroundColor3 = Color3.fromRGB(200, 200, 200)
         for _, frame in pairs(Tabs) do
             frame.Visible = false
         end
