@@ -35,11 +35,13 @@ local function Corner(parent, radius)
 end
 
 local function Stroke(parent, Colorstk)
-  local new = Create("UIStroke", "Stroke", parent or CoreGui)
-  new.ApplyStrokeMode = "Border"
-    new.Color = Colorstk or Color3.fromRGB(120, 120, 120)
-  return new
+    local new = Create("UIStroke", parent, {
+        ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
+        Color = Colorstk or Color3.fromRGB(120, 120, 120)
+    })
+    return new
 end
+
 
 local function MakeDrag(Instance)
     local Dragging, DragInput, DragStart, StartPosition
