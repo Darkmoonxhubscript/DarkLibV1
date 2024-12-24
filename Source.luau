@@ -123,7 +123,7 @@ Create("TextLabel", TopBar, {
     Name = "Title",
     Text = "DarkLib",
     TextColor3 = Color3.new(1, 1, 1),
-    Font = Enum.Font.Cartoon,
+    Font = Enum.Font.FredokaOne,
     TextSize = 20,
     TextXAlignment = Enum.TextXAlignment.Left,
     Size = UDim2.new(0.8, 0, 1, 0),
@@ -137,7 +137,7 @@ local CloseButton = Create("TextButton", TopBar, {
     Name = "Close",
     Text = "X",
     TextColor3 = Color3.new(1, 1, 1),
-    Font = Enum.Font.Cartoon,
+    Font = Enum.Font.FredokaOne,
     TextSize = 20,
     BackgroundTransparency = 1,
     Size = UDim2.new(0.1, 0, 1, 0),
@@ -226,7 +226,7 @@ function NewNotify(Config)
 
     Create("TextLabel", Frame2, {
         Size = UDim2.new(1, -30, 0, 25),
-        Font = Enum.Font.Cartoon,
+        Font = Enum.Font.FredokaOne,
         BackgroundTransparency = 1,
         Text = Title,
         TextSize = 20,
@@ -237,7 +237,7 @@ function NewNotify(Config)
 
     local CloseButton = Create("TextButton", Frame2, {
         Text = "X",
-        Font = Enum.Font.Cartoon,
+        Font = Enum.Font.FredokaOne,
         TextSize = 20,
         BackgroundTransparency = 1,
         TextColor3 = Color3.fromRGB(200, 200, 200),
@@ -257,7 +257,7 @@ function NewNotify(Config)
         TextColor3 = Color3.fromRGB(200, 200, 200),
         TextXAlignment = Enum.TextXAlignment.Left,
         Text = Description,
-        Font = Enum.Font.Cartoon,
+        Font = Enum.Font.FredokaOne,
         BackgroundTransparency = 1,
         AutomaticSize = Enum.AutomaticSize.Y,
         TextWrapped = true
@@ -296,7 +296,7 @@ function MakeTab(Config)
         Name = "TabButton",
         Text = TabName,
         TextColor3 = Color3.new(1, 1, 1),
-        Font = Enum.Font.Cartoon,
+        Font = Enum.Font.FredokaOne,
         TextSize = 14,
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
         Size = UDim2.new(1, -10, 0, 30),
@@ -360,7 +360,7 @@ function AddButton(Config)
     local Button = Create("TextButton", Tabs[Tab], {
         Text = Text,
         TextColor3 = Color3.new(1, 1, 1),
-        Font = Enum.Font.Cartoon,
+        Font = Enum.Font.FredokaOne,
         TextSize = 14,
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
         Size = UDim2.new(1, 0, 0, 40),
@@ -394,16 +394,16 @@ function AddSection(Config)
         Position = UDim2.new(0, 0, 0, 0),
         BackgroundTransparency = 1
     })
-    Stroke(SectionFrame)
+    Stroke(SectionFrame, Color3.fromRGB(120, 120, 120), 0.5)
     Corner(SectionFrame)
 
     local SectionLabel = Create("TextLabel", SectionFrame, {
         Size = UDim2.new(1, 0, 0, 40),
         Position = UDim2.new(0, 0, 0, 0),
         Text = Text,
+        Font = Enum.Font.FredokaOne,
         TextColor3 = Color3.fromRGB(255, 255, 255),
         TextSize = 20,
-        TextXAlignment = Enum.TextXAlignment.Left,
         BackgroundTransparency = 1,
         TextWrapped = false,
         TextTruncate = "AtEnd"
