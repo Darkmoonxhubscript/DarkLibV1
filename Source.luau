@@ -369,7 +369,7 @@ function AddButton(Config)
         Font = Enum.Font.FredokaOne,
         TextSize = 20,
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
-        Size = UDim2.new(1, 0, 1, 0),
+        Size = UDim2.new(1, 0, 0, 40),
         TextWrapped = false,
         Position = UDim2.new(0, 10, 0, 0),
         BorderSizePixel = 0,
