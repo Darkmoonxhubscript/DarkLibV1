@@ -385,6 +385,31 @@ function AddButton(Config)
     return Button
 end
 
+local function AddSection(Config)
+    local Text = Config.Text or "Section"
+    
+    local SectionFrame = Create("Frame", Tabs[Tab], {
+        Size = UDim2.new(1, 0, 0, 40),
+        Position = UDim2.new(0, 0, 0, 0),
+        BackgroundTransparency = 1
+    })
+   Stroke(SectionFrame)
+   Corner(SectionFrame, UDim.new(0.5, 0))
+
+    local SectionLabel = Create("TextLabel", SectionFrame, {
+        Size = UDim2.new(1, 0, 0, 40),
+        Position = UDim2.new(0, 0, 0, 0),
+        Text = Text,
+        TextColor3 = Color3.fromRGB(255, 255, 255),
+        TextSize = 20,
+        TextXAlignment = Enum.TextXAlignment.Left,
+        BackgroundTransparency = 1,
+        TextWrapped = false,
+        TextTruncate = Enum.TextTruncate.End
+    })
+
+    return SectionFrame
+end
 
 
 return DarkLib
