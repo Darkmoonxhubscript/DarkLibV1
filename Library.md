@@ -12,7 +12,7 @@ Loads The Library
 ```
 ## AddInfo
 ```luau
-AddInfo({Title = "DarkMoonHub Library"})
+local Window = MakeWindow({Title = "DarkMoonHub Library"})
 ```
 ```luau
 --[[
@@ -21,7 +21,7 @@ Title ="DarkMoonHub Library" >> UI Title
 ```
 ## Create Notification
 ```luau
-NewNotify({
+local Notify = NewNotify({
 Title = "Notification Title",
 Description = "Notification Description.",
 Time = 10
@@ -36,7 +36,7 @@ Time = 10 >> Notification Duration
 ```
 ## Create Tab
 ```luau
-MakeTab({Name = "TabName"})
+local Tab1 = NewTab({Name = "Tab"})
 ```
 ```luau
 --[[
@@ -45,42 +45,47 @@ Name = "TabName" >> UI Button TabName
 ```
 ## Add a Section
 ```luau
-AddSection({
-Tab = "Tab",
-Text = "Text"
-})
+local Section1 = AddSection(Tab1, {Name = "Section"})
 ```
 ```luau
 --[[
-Tab = "Tab" >> Tab That Section Will Be Created
-Text = "Text" >> Text Of Section
-]]
-```
-## Add a Separator
-```luau
-AddSeparator({Tab = "Tab"})
-```
-```luau
---[[
-Tab = "Tab" >> Tab That Will Create The Separator
+Name = "Text" >> Text Of Section
 ]]
 ```
 ## Add a Button
 ```luau
-AddButton({
-Tab = "Tab",
-Text = "Text",
-Callback = function()
-   
+local Button1 = AddButton(Tab1, {
+  Name = "Button",
+  Callback = function()
+  
+  end
+})
+
+```
+```luau
+--[[
+Name = "Text" >> Button Text
+Callback = function(Value) -button press function
+-- function here
+end --end function
+]]
+```
+## Add a Toggle
+```luau
+local Toggle1 = AddToggle(Tab1, {
+  Name = "Toggle",
+  Default = false,
+  Callback = function(Value)
+  print(Value)
   end
 })
 ```
 ```luau
 --[[
-Tab = "Tab" >> Button Tab
-Text = "Text" >> Button Text
-Callback = function(Value) -button press function
--- function here
-end --end function
+Name = "Toggle" >> Toggle Text
+Default = false >> Defines whether the toggle starts out on or off
+Callback = function(Value) --Value = toggle state
+-- toggle function here
+end
 ]]
 ```
