@@ -259,7 +259,7 @@ end)
 
 -- LeftBar
 local LeftBar = Create("Frame", MainFrame, {
-    Name = "TabBar",
+    Name = "TabsBar",
     BackgroundColor3 = Color3.fromRGB(35, 35, 35),
     Size = UDim2.new(0.2, 0, 0.9, 0),
     Position = UDim2.new(0, 0, 0.1, 0)
@@ -291,9 +291,9 @@ local RightScrollFrame = Create("Frame", MainFrame, {
 Corner(RightScrollFrame)
 
 local Padding = Create("UIPadding", RightScrollFrame, {
-        PaddingLeft = UDim.new(0, 5),
-        PaddingRight = UDim.new(0, 5),
-        PaddingTop = UDim.new(0, 5),
+        PaddingLeft = UDim.new(0, 7),
+        PaddingRight = UDim.new(0, 7),
+        PaddingTop = UDim.new(0, 7),
         PaddingBottom = UDim.new(0, 5)
     })
 
@@ -380,7 +380,7 @@ function AddButton(Config)
     local Callback = Config.Callback or function() print("Clicked") end
     
     local Button = Create("TextButton", Tabs[Tab], {
-        Text = Text,
+        Text = "",
         TextColor3 = Color3.new(1, 1, 1),
         Font = Enum.Font.FredokaOne,
         TextSize = 20,
@@ -395,6 +395,19 @@ function AddButton(Config)
     })
     Stroke(Button)
     Corner(Button, UDim.new(0.1, 0)) 
+
+    local TextLabel = Create("TextLabel", Button, {
+      Text = Text,
+      TextColor3 = Color3.new(1, 1, 1),
+      Font = Enum.Font.FredokaOne,
+      TextSize = 20,
+      Size = UDim2.new(1, 0, 0, 40),
+      TextWrapped = false,
+      BackgroundTransparency = 1,
+      Position = UDim2.new(0, 10, 0, 0),
+      TextXAlignment = Enum.TextXAlignment.Left,
+      TextYAlignment = Enum.TextYAlignment.Center
+    })
 
     local Image = Create("ImageLabel", Button, {
         Image = "rbxassetid://14815405190",
@@ -411,13 +424,14 @@ function AddButton(Config)
 end
 
 function AddSection(Config)
-    local Tab = Config.Tab
-    local Text = Config.Text or "Section"
+    local Tab = Config[1] or Config.Tab
+    local Name = Config[2] or Config.Name or "Section"
     
     local SectionFrame = Create("Frame", Tabs[Tab], {
         Size = UDim2.new(1, 0, 0, 40),
         Position = UDim2.new(0, 0, 0, 0),
-        BackgroundTransparency = 1
+        BackgroundColor3 = Color3.fromRGB(45, 45, 45),
+        BackgroundTransparency = 0
     })
     Stroke(SectionFrame, Color3.fromRGB(120, 120, 120), 0.5)
     Corner(SectionFrame)
@@ -425,20 +439,22 @@ function AddSection(Config)
     local SectionLabel = Create("TextLabel", SectionFrame, {
         Size = UDim2.new(1, 0, 0, 40),
         Position = UDim2.new(0, 0, 0, 0),
-        Text = Text,
+        Text = Name,
         Font = Enum.Font.FredokaOne,
         TextColor3 = Color3.fromRGB(255, 255, 255),
         TextSize = 20,
         BackgroundTransparency = 1,
         TextWrapped = false,
-        TextTruncate = "AtEnd"
+        TextTruncate = "AtEnd",
+        TextXAlignment = Enum.TextXAlignment.Left,
+        TextYAlignment = Enum.TextYAlignment.Center
     })
 
     return SectionFrame
 end
 
 function AddSeparator(Config)
- local Tab = Config.Tab
+ local Tab = Config[1] or Config.Tab
  
  local SeparatorFrame = Create("Frame", Tabs[Tab], {
         Size = UDim2.new(1, 0, 0, 0),
@@ -452,15 +468,16 @@ function AddSeparator(Config)
 end
 
 function AddToggle(Config)
-    local Tab = Config.Tab
-    local Text = Config.Text or "Toggle"
-    local Default = Config.Default or false
+    local Tab = Config[1] or Config.Tab
+    local Name = Config[2] or Config.Name or "Toggle"
+    local Default = Config[3] or Config.Default or false
     local Callback = Config.Callback or function() end
 
     local ToggleFrame1 = Create("Frame", Tabs[Tab], {
         Size = UDim2.new(1, 0, 0, 40),
         Position = UDim2.new(0, 0, 0, 0),
-        BackgroundTransparency = 1
+        BackgroundColor3 = Color3.fromRGB(45, 45, 45),
+        BackgroundTransparency = 0
     })
     Stroke(ToggleFrame1, Color3.fromRGB(120, 120, 120), 1)
     Corner(ToggleFrame1)
@@ -479,7 +496,7 @@ function AddToggle(Config)
         BackgroundColor3 = Color3.fromRGB(160, 160, 160),
         Visible = false
     })
-    Stroke(ToggleActive, Color3.fromRGB(120, 120, 120), 1)
+    Stroke(ToggleActive, Color3.fromRGB(160, 160, 160), 1)
     Corner(ToggleActive)
 
     local ToggleState = false
@@ -493,7 +510,7 @@ function AddToggle(Config)
     Callback(ToggleState)
 
     local TextToggle = Create("TextLabel", ToggleFrame1, {
-        Text = Text,
+        Text = Name,
         TextColor3 = Color3.new(1, 1, 1),
         Font = Enum.Font.FredokaOne,
         TextSize = 20,
@@ -530,6 +547,5 @@ function AddToggle(Config)
 
     return {ToggleActive, Callback, ToggleState}
 end
-
 
 return DarkLib
