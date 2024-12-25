@@ -208,10 +208,21 @@ local MainFrame = Create("Frame", ScreenGui, {
     Size = UDim2.new(0.5, 0, 0.6, 0),
     Position = UDim2.new(0.5, 0, 0.5, 0),
     AnchorPoint = Vector2.new(0.5, 0.5),
-    Active = true
+    Active = true,
+    BackgroundTransparency = 1
 })
 Corner(MainFrame, UDim.new(0.05, 0))
 MakeDrag(MainFrame)
+
+local FakeMainFrame = Create("Frame", MainFrame, {
+    Name = "MainFrameFake",
+    BackgroundColor3 = Color3.fromRGB(30, 30, 30),
+    Size = UDim2.new(0.5, 0, 0.6, 0),
+    Position = UDim2.new(0.5, 0, 0.5, 0),
+    AnchorPoint = Vector2.new(0.5, 0.5),
+    Active = true
+})
+Corner(MainFrame, UDim.new(0.05, 0))
 
 -- TopBar
 local TopBar = Create("Frame", MainFrame, {
@@ -240,7 +251,7 @@ Create("TextLabel", TopBar, {
 local CloseButton = Create("TextButton", TopBar, {
     Name = "Close",
     Text = "X",
-    TextColor3 = Color3.new(1, 1, 1),
+    TextColor3 = Color3.fromRGB(255, 255, 255),
     Font = Enum.Font.FredokaOne,
     TextSize = 20,
     BackgroundTransparency = 1,
@@ -248,7 +259,10 @@ local CloseButton = Create("TextButton", TopBar, {
     Position = UDim2.new(1, -50, 0, 0)
 })
 CloseButton.MouseButton1Click:Connect(function()
-    ScreenGui:Destroy()
+  local tween = TweenService:Create(MainFrame, TweenInfo.new(0.15, Enum.EasingStyle.Linear), {Size = UDim2.new(0, 0, 0, 0)})
+  tween:Play()
+  tween.Completed:Wait()
+  ScreenGui:Destroy()
 end)
 
 -- LeftBar
@@ -510,11 +524,17 @@ function AddToggle(Parent, Config)
 
     ToggleButtonArea.MouseButton1Click:Connect(function()
         if ToggleState then
+          local tween = TweenService:Create(ToggleActive, TweenInfo.new(0.15, Enum.EasingStyle.Linear), {Size = UDim2.new(0, 0, 0, 0)})
+          tween:Play()
+          tween.Completed:Wait()
             SetProps(ToggleActive, {
                 Visible = false
             })
             ToggleState = false
         elseif not ToggleState then
+          local tween = TweenService:Create(ToggleActive, TweenInfo.new(0.15, Enum.EasingStyle.Linear), {Size = UDim2.new(0, 30, 0, 30)})
+          tween:Play()
+          tween.Completed:Wait()
             SetProps(ToggleActive, {
                 Visible = true
             })
