@@ -557,8 +557,8 @@ function AddTextBox(Parent, Config)
     })
   
   local TextBox = Create("TextBox", TextBoxFrame, {
-    Size = UDim2.new(0, 50, 1, -10),
-    Position = UDim2.new(1, -55, 0, 5),
+    Size = UDim2.new(0, 80, 1, -10),
+    Position = UDim2.new(1, -90, 0, 5),
     ClearTextOnFocus = false,
     BackgroundTransparency = 1,
     Text = Default,
