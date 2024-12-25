@@ -89,3 +89,26 @@ Callback = function(Value) --Value = toggle state
 end
 ]]
 ```
+## Add a TextBox
+```luau
+local TextBox1 = AddTextBox(Tab1, {
+  Name = "TextBox",
+  Default = "Default Text",
+  AutoClear = false,
+  PlaceHolder = "Input Text Here",
+  Callback = function(Value)
+    print(Value)
+    end
+})
+```
+```luau
+--[[
+Name = "TextBox" >> TextBox Name
+Default = "Default Text" >> TextBox Default Text
+AutoClear = false >> Auto Clear Text When Input
+PlaceHolder = "Input Text Here" >> PlaceHolder Text From TextBox
+Callback = function(Value) --Value = TextBox Text
+--Functiom Here
+end
+]]
+```
