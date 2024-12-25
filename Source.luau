@@ -338,6 +338,7 @@ function NewTab(Config)
 
     Create("UIListLayout", TabFrame, {
         Padding = UDim.new(0, 7),
+        HorizontalAlignment = Enum.HorizontalAlignment.Center,
         SortOrder = Enum.SortOrder.LayoutOrder
     })
 
@@ -378,7 +379,7 @@ function AddButton(Parent, Config)
         Font = Enum.Font.FredokaOne,
         TextSize = 20,
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
-        Size = UDim2.new(1, 0, 0, 40),
+        Size = UDim2.new(0, 490, 0, 40),
         TextWrapped = false,
         Position = UDim2.new(0, 10, 0, 0),
         BorderSizePixel = 0,
@@ -420,7 +421,7 @@ function AddSection(Parent, Config)
     local Name = Config[1] or Config.Name or "Section"
     
     local SectionFrame = Create("Frame", Parent, {
-        Size = UDim2.new(1, 0, 0, 40),
+        Size = UDim2.new(0, 490, 0, 40),
         Position = UDim2.new(0, 0, 0, 0),
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
         BackgroundTransparency = 0
@@ -451,7 +452,7 @@ function AddToggle(Parent, Config)
     local Callback = Config.Callback or function() end
 
     local ToggleFrame1 = Create("Frame", Parent, {
-        Size = UDim2.new(1, 0, 0, 40),
+        Size = UDim2.new(0, 490, 0, 40),
         Position = UDim2.new(0, 0, 0, 0),
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
         BackgroundTransparency = 0
@@ -533,7 +534,7 @@ function AddTextBox(Parent, Config)
   local Callback = Config[5] or Config.Callback or function() end
   
   local TextBoxFrame = Create("Frame", Parent, {
-        Size = UDim2.new(1, 0, 0, 40),
+        Size = UDim2.new(0, 490, 0, 40),
         Position = UDim2.new(0, 0, 0, 0),
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
         BackgroundTransparency = 0
