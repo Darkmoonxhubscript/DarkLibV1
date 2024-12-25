@@ -528,7 +528,7 @@ end
 function AddTextBox(Parent, Config)
   local Name = Config[1] or Config.Name or "TextBox"
   local Default = Config[2] or Config.Default or ""
-  local AutoClear = Config[3] or Config.AutoClear or true
+  local AutoClear = Config[3] or Config.AutoClear or false
   local PlaceHolder = Config[4] or Config.PlaceHolder or "Input Here"
   local Callback = Config[5] or Config.Callback or function() end
   
@@ -538,8 +538,8 @@ function AddTextBox(Parent, Config)
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
         BackgroundTransparency = 0
     })
-    Stroke(ToggleFrame1, Color3.fromRGB(120, 120, 120), 1)
-    Corner(ToggleFrame1)
+    Stroke(TextBoxFrame, Color3.fromRGB(120, 120, 120), 1)
+    Corner(TextBoxFrame)
      
      local TextBoxText = Create("TextLabel", TextBoxFrame, {
         Text = Name,
@@ -572,7 +572,7 @@ function AddTextBox(Parent, Config)
   Callback(Default)
   TextBox.FocusLost:Connect(function()
     Callback(TextBox.Text)
-    if AutoClear then
+    if AutoClear == true then
     TextBox.Text = ""
     end
   end)
