@@ -322,7 +322,7 @@ function NewTab(Config)
         AutomaticSize = Enum.AutomaticSize.X,
         Position = UDim2.new(0, 0, 0, 0)  
     })
-    Stroke(TabButton, Color3.fromRGB(200, 200, 200))
+    --Stroke(TabButton, Color3.fromRGB(200, 200, 200))
     --Corner(TabButton, UDim.new(0.3, 0))  
 
     TabFrame = Create("ScrollingFrame", RightScrollFrame, {
