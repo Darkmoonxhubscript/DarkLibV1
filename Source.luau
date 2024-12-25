@@ -375,8 +375,8 @@ function MakeTab(Config)
 end
 
 function AddButton(Config)
-    local Tab = Config.Tab
-    local Text = Config.Text or "Button"
+    local Tab = Config[1] or Config.Tab
+    local Name = Config[2] or Config.Name or "Button"
     local Callback = Config.Callback or function() print("Clicked") end
     
     local Button = Create("TextButton", Tabs[Tab], {
