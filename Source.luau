@@ -310,7 +310,7 @@ function NewTab(Config)
     TabButton = Create("TextButton", LeftScrollFrame, {
         Name = "TabButton",
         Text = TabName,
-        TextColor3 = Color3.new(1, 1, 1),
+        TextColor3 = Color3.fromRGB(240, 240, 240),
         Font = Enum.Font.FredokaOne,
         TextSize = 14,
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
@@ -374,7 +374,7 @@ function AddButton(Parent, Config)
     
     local Button = Create("TextButton", Parent, {
         Text = "",
-        TextColor3 = Color3.new(1, 1, 1),
+        TextColor3 = Color3.fromRGB(240, 240, 240),
         Font = Enum.Font.FredokaOne,
         TextSize = 20,
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
@@ -386,12 +386,12 @@ function AddButton(Parent, Config)
         TextXAlignment = Enum.TextXAlignment.Left,
         TextYAlignment = Enum.TextYAlignment.Center
     })
-    Stroke(Button)
+    Stroke(Button, Color3.fromRGB(120, 120, 120), 1)
     Corner(Button, UDim.new(0.1, 0)) 
 
     local TextLabel = Create("TextLabel", Button, {
       Text = Name,
-      TextColor3 = Color3.new(1, 1, 1),
+      TextColor3 = Color3.fromRGB(240, 240, 240),
       Font = Enum.Font.FredokaOne,
       TextSize = 20,
       Size = UDim2.new(0, 200, 0, 40),
@@ -425,7 +425,7 @@ function AddSection(Parent, Config)
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
         BackgroundTransparency = 0
     })
-    Stroke(SectionFrame, Color3.fromRGB(120, 120, 120), 0.5)
+    Stroke(SectionFrame, Color3.fromRGB(120, 120, 120), 1)
     Corner(SectionFrame)
 
     local SectionLabel = Create("TextLabel", SectionFrame, {
@@ -433,7 +433,7 @@ function AddSection(Parent, Config)
         Position = UDim2.new(0, 10, 0, 0),
         Text = Name,
         Font = Enum.Font.FredokaOne,
-        TextColor3 = Color3.fromRGB(255, 255, 255),
+        TextColor3 = Color3.fromRGB(240, 240, 240),
         TextSize = 20,
         BackgroundTransparency = 1,
         TextWrapped = false,
@@ -488,7 +488,7 @@ function AddToggle(Parent, Config)
 
     local TextToggle = Create("TextLabel", ToggleFrame1, {
         Text = Name,
-        TextColor3 = Color3.new(1, 1, 1),
+        TextColor3 = Color3.fromRGB(240, 240, 240),
         Font = Enum.Font.FredokaOne,
         TextSize = 20,
         BackgroundTransparency = 1,
@@ -525,6 +525,61 @@ function AddToggle(Parent, Config)
     return {ToggleActive, Callback, ToggleState}
 end
 
+function AddTextBox(Parent, Config)
+  local Name = Config[1] or Config.Name or "TextBox"
+  local Default = Config[2] or Config.Default or ""
+  local AutoClear = Config[3] or Config.AutoClear or true
+  local PlaceHolder = Config[4] or Config.PlaceHolder or "Input Here"
+  local Callback = Config[5] or Config.Callback or function() end
+  
+  local TextBoxFrame = Create("Frame", Parent, {
+        Size = UDim2.new(1, 0, 0, 40),
+        Position = UDim2.new(0, 0, 0, 0),
+        BackgroundColor3 = Color3.fromRGB(45, 45, 45),
+        BackgroundTransparency = 0
+    })
+    Stroke(ToggleFrame1, Color3.fromRGB(120, 120, 120), 1)
+    Corner(ToggleFrame1)
+     
+     local TextBoxText = Create("TextLabel", TextBoxFrame, {
+        Text = Name,
+        TextColor3 = Color3.fromRGB(240, 240, 240),
+        Font = Enum.Font.FredokaOne,
+        TextSize = 20,
+        BackgroundTransparency = 1,
+        Size = UDim2.new(0, 200, 0, 40),
+        Position = UDim2.new(0, 10, 0, 0),
+        BorderSizePixel = 0,
+        ClipsDescendants = true,
+        TextXAlignment = Enum.TextXAlignment.Left,
+        TextYAlignment = Enum.TextYAlignment.Center
+    })
+  
+  local TextBox = Create("TextBox", TextBoxFrame, {
+    Size = UDim2.new(0, 50, 1, -10),
+    Position = UDim2.new(1, -55, 0, 5),
+    ClearTextOnFocus = false,
+    BackgroundTransparency = 1,
+    Text = Default,
+    TextColor3 = Color3.fromRGB(240, 240, 240),
+    Font = Enum.Font.FredokaOne,
+    PlaceholderText = PlaceHolder,
+    TextScaled = true
+  })
+  Stroke(TextBox, Color3.fromRGB(120, 120, 120), 1)
+  Corner(TextBox)
+  
+  Callback(Default)
+  TextBox.FocusLost:Connect(function()
+    Callback(TextBox.Text)
+    if AutoClear then
+    TextBox.Text = ""
+    end
+  end)
+     return TextBoxFrame
+  end
 
 end
+
+
 return DarkLib
