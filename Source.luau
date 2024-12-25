@@ -524,7 +524,7 @@ function AddToggle(Parent, Config)
 
     ToggleButtonArea.MouseButton1Click:Connect(function()
         if ToggleState then
-          local tween = TweenService:Create(ToggleActive, TweenInfo.new(0.15, Enum.EasingStyle.Linear), {Size = UDim2.new(0, 0, 0, 0)})
+          local tween = TweenService:Create(ToggleActive, TweenInfo.new(0.15, Enum.EasingStyle.Linear), {Size = UDim2.new()})
           tween:Play()
           tween.Completed:Wait()
             SetProps(ToggleActive, {
