@@ -225,7 +225,7 @@ Corner(TopBar, UDim.new(0.2, 0))
 -- Title
 Create("TextLabel", TopBar, {
     Name = "Title",
-    Text = WindowConfig,
+    Text = Title,
     TextColor3 = Color3.new(1, 1, 1),
     Font = Enum.Font.FredokaOne,
     TextSize = 20,
