@@ -374,12 +374,12 @@ function MakeTab(Config)
     return TabFrame
 end
 
-function AddButton(Config)
-    local Tab = Config[1] or Config.Tab
+function AddButton(Parent, Config)
+    --local Tab = Config[1] or Config.Tab
     local Name = Config[2] or Config.Name or "Button"
     local Callback = Config.Callback or function() print("Clicked") end
     
-    local Button = Create("TextButton", Tabs[Tab], {
+    local Button = Create("TextButton", Parent, {
         Text = "",
         TextColor3 = Color3.new(1, 1, 1),
         Font = Enum.Font.FredokaOne,
