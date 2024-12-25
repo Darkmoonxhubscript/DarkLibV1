@@ -532,12 +532,12 @@ function AddToggle(Parent, Config)
             })
             ToggleState = false
         elseif not ToggleState then
+          SetProps(ToggleActive, {
+                Visible = true
+            })
           local tween = TweenService:Create(ToggleActive, TweenInfo.new(0.15, Enum.EasingStyle.Linear), {Size = UDim2.new(0, 30, 0, 30)})
           tween:Play()
           tween.Completed:Wait()
-            SetProps(ToggleActive, {
-                Visible = true
-            })
             ToggleState = true
         end
         Callback(ToggleState)
