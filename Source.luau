@@ -100,6 +100,9 @@ local function CreateTween(Configs)
   return Tween
 end
 
+function MakeWindow(WindowConfig)
+local Title = WindowConfig[1] or WindowConfig.Title or "DarkLib V1"
+  
 local ScreenGui = Create("ScreenGui", CoreGui, {
     Name = "DarkLibraryV1",
     ResetOnSpawn = false
@@ -219,19 +222,10 @@ local TopBar = Create("Frame", MainFrame, {
 })
 Corner(TopBar, UDim.new(0.2, 0))
 
-function AddInfo(Config)
-    local Title = Config.Title or "DarkMoonHub Library"
-    
-    local TitleLabel = TopBar:FindFirstChild("Title")
-    if TitleLabel then
-        TitleLabel.Text = Title
-    end
-end
-
 -- Title
 Create("TextLabel", TopBar, {
     Name = "Title",
-    Text = "DarkLib",
+    Text = WindowConfig,
     TextColor3 = Color3.new(1, 1, 1),
     Font = Enum.Font.FredokaOne,
     TextSize = 20,
@@ -301,7 +295,7 @@ local Padding = Create("UIPadding", RightScrollFrame, {
 local SelectedTab = "" 
 local FirstTab = nil 
 
-function MakeTab(Config)
+function NewTab(Config)
     local TabName = Config.Name or "Tab"
     local TabButton
     local TabFrame
@@ -375,8 +369,7 @@ function MakeTab(Config)
 end
 
 function AddButton(Parent, Config)
-    --local Tab = Config[1] or Config.Tab
-    local Name = Config[2] or Config.Name or "Button"
+    local Name = Config[1] or Config.Name or "Button"
     local Callback = Config.Callback or function() print("Clicked") end
     
     local Button = Create("TextButton", Parent, {
@@ -397,11 +390,11 @@ function AddButton(Parent, Config)
     Corner(Button, UDim.new(0.1, 0)) 
 
     local TextLabel = Create("TextLabel", Button, {
-      Text = Text,
+      Text = Name,
       TextColor3 = Color3.new(1, 1, 1),
       Font = Enum.Font.FredokaOne,
       TextSize = 20,
-      Size = UDim2.new(1, 0, 0, 40),
+      Size = UDim2.new(0, 200, 0, 40),
       TextWrapped = false,
       BackgroundTransparency = 1,
       Position = UDim2.new(0, 10, 0, 0),
@@ -423,11 +416,10 @@ function AddButton(Parent, Config)
     return Button
 end
 
-function AddSection(Config)
-    local Tab = Config[1] or Config.Tab
-    local Name = Config[2] or Config.Name or "Section"
+function AddSection(Parent, Config)
+    local Name = Config[1] or Config.Name or "Section"
     
-    local SectionFrame = Create("Frame", Tabs[Tab], {
+    local SectionFrame = Create("Frame", Parent, {
         Size = UDim2.new(1, 0, 0, 40),
         Position = UDim2.new(0, 0, 0, 0),
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
@@ -437,7 +429,7 @@ function AddSection(Config)
     Corner(SectionFrame)
 
     local SectionLabel = Create("TextLabel", SectionFrame, {
-        Size = UDim2.new(1, 0, 0, 40),
+        Size = UDim2.new(0, 200, 0, 40),
         Position = UDim2.new(0, 10, 0, 0),
         Text = Name,
         Font = Enum.Font.FredokaOne,
@@ -453,27 +445,12 @@ function AddSection(Config)
     return SectionFrame
 end
 
-function AddSeparator(Config)
- local Tab = Config[1] or Config.Tab
- 
- local SeparatorFrame = Create("Frame", Tabs[Tab], {
-        Size = UDim2.new(1, 0, 0, 0),
-        Position = UDim2.new(0, 0, 0, 0),
-        BackgroundTransparency = 1
-    })
-    Stroke(SeparatorFrame, Color3.fromRGB(200, 200, 200), 1)
-    Corner(SeparatorFrame)
-    
-    return SeparatorFrame
-end
-
-function AddToggle(Config)
-    local Tab = Config[1] or Config.Tab
-    local Name = Config[2] or Config.Name or "Toggle"
-    local Default = Config[3] or Config.Default or false
+function AddToggle(Parent, Config)
+    local Name = Config[1] or Config.Name or "Toggle"
+    local Default = Config[2] or Config.Default or false
     local Callback = Config.Callback or function() end
 
-    local ToggleFrame1 = Create("Frame", Tabs[Tab], {
+    local ToggleFrame1 = Create("Frame", Parent, {
         Size = UDim2.new(1, 0, 0, 40),
         Position = UDim2.new(0, 0, 0, 0),
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
@@ -548,4 +525,6 @@ function AddToggle(Config)
     return {ToggleActive, Callback, ToggleState}
 end
 
+
+end
 return DarkLib
