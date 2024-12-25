@@ -438,7 +438,7 @@ function AddSection(Config)
 
     local SectionLabel = Create("TextLabel", SectionFrame, {
         Size = UDim2.new(1, 0, 0, 40),
-        Position = UDim2.new(0, 0, 0, 0),
+        Position = UDim2.new(0, 10, 0, 0),
         Text = Name,
         Font = Enum.Font.FredokaOne,
         TextColor3 = Color3.fromRGB(255, 255, 255),
