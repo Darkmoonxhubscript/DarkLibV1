@@ -192,3 +192,20 @@ Coming Soon
 Coming Soon
 ]]
 ```
+## Add A Float Toggle
+```luau
+AddFloatToggle({
+    Name = "Toggle Name",
+    Callback = function(Value)
+      
+      end
+  })
+```
+```luau
+--[[
+Name = "Toggle Name" >> Float Toggle Text (String)
+Callback = function(Value) = Value Toggle State
+      -+Function Here
+      end
+]]
+```
