@@ -669,8 +669,9 @@ function AddSlider(Parent, Config)
   local Name = Config[1] or Config.Name or "Slider"
   local Min = Config[2] or Config.Min or 1
   local Max = Config[3] or Config.Max or 100
-  local Default = Config[4] or Config.Default or 15
-  local Callback = Config[1] or Config.Callback or function() end
+  local Increase = Config[4] or Config.Increase or
+  local Default = Config[5] or Config.Default or 15
+  local Callback = Config[6] or Config.Callback or function() end
   
   if Default >= Max then
   Default = Max
@@ -731,7 +732,7 @@ function AddSlider(Parent, Config)
     Font = Enum.Font.FredokaOne,
     Active = true,
     Draggable = true
-  })Corner()
+  })Corner(SliderButton)
   
   local function UpdateCounter(A_1)
     --SliderButton.Text = tostring(A_1)
@@ -740,11 +741,10 @@ function AddSlider(Parent, Config)
   end
   
   local function SliderPos(Pos)
-    local A_1 = string.gsub(Pos, "%D", "")
-    local SliderPos = (tonumber(A_1) - Min) / (Max - Min)
-    local X_Offset = SliderPos * 310
-    local SliderPosition = UDim2.new(0, X_Offset + 1, 0, 0)
-    local tween = TweenService:Create(SliderButton, TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Position = SliderPosition})tween:Play()
+    local Min, Max = Min * Increase, Max * Increase
+        
+    local SliderPos = (Pos - Min) / (Max - Min)
+    local tween = TweenService:Create(SliderButton, TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Position = SliderPos})tween:Play()
   end
   
   TextBox.FocusLost:Connect(function(enterPressed)
@@ -770,7 +770,7 @@ function AddSlider(Parent, Config)
     if Prop == "Position" then
       local position = UDim2.new(0, math.clamp(SliderButton.Position.X.Offset, 0, 310), 0.5, 0)
       SliderButton.Position = position
-      local SliderPos = SliderButton.Position.X.Offset / 310
+      local SliderPos = SliderButton.Position.X.Offset / 480
       local A_1 = math.floor(((SliderPos * Max) / Min) * (Max - Min) + Min)
       UpdateCounter(A_1)
     end
