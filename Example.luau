@@ -18,6 +18,13 @@ local Tab3 = NewTab({Name = "Game 2"})
 
 local Section1 = AddSection(Tab1, {Name = "Universal Tab"})
 
+local ServerInvite = AddDiscordInvite(Tab1, {
+  Name = "DarkMoonHub Community",
+  Description = "Join our discord community to receive information about the next update",
+  Logo = "rbxassetid://10734897102",
+  Invite = "https://discord.gg/YDXM43cBU6",
+})
+
 local TextLabel1 = AddTextLabel(Tab1, {
   Name = "My Text"
 })
