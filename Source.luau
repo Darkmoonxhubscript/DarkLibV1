@@ -938,7 +938,8 @@ function AddFloatToggle(Configs)
     Font = Enum.Font.FredokaOne,
     TextColor3 = Color3.fromRGB(240, 240, 240),
     Text = Name,
-    BackgroundTransparency = 1
+    BackgroundTransparency = 1,
+    TextScaled = true,
   })
   
   local Button = Create("TextButton", Toggle_Atalho, {
