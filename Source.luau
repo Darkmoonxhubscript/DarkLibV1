@@ -896,7 +896,7 @@ function AddDropDown(Parent, Configs)
   
     local DropOnOff = false
     DropdownFrame.MouseButton1Click:Connect(function()
-        local frameSize = UDim2.new(1, 0, 0, 30)
+        local frameSize = UDim2.new(0, 490, 0, 100)
         for i, v in pairs(ListDrop:GetChildren()) do
             if v.Name == "Option" and i <= 7 then
                 frameSize = frameSize + UDim2.new(0, 0, 0, 25)
@@ -906,19 +906,17 @@ function AddDropDown(Parent, Configs)
             DropOnOff = true
             Bagulho1.Visible = DropOnOff
             ListDrop.Visible = DropOnOff
-            DropdownFrame.Size = UDim2.new(0, 490, 0, 100)
             local tween1 = TweenService:Create(DropdownFrame, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Size = frameSize})
             local tween2 = TweenService:Create(Setinha, TweenInfo.new(0.2), {Rotation = 180})
             tween1:Play()
             tween2:Play()
         else
             DropOnOff = false
-            local tween1 = TweenService:Create(DropdownFrame, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Size = UDim2.new(1, 0, 0, 30)})
+            local tween1 = TweenService:Create(DropdownFrame, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Size = UDim2.new(0, 490, 0, 40)})
             local tween2 = TweenService:Create(Setinha, TweenInfo.new(0.2), {Rotation = 0})
             tween1:Play()
             tween2:Play()
             tween1.Completed:Wait()
-            DropdownFrame.Size = UDim2.new(0, 490, 0, 40)
             Bagulho1.Visible = DropOnOff
             ListDrop.Visible = DropOnOff
         end
