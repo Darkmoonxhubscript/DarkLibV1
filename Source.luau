@@ -990,7 +990,7 @@ function AddMinimizeButton(Configs)
     Image = "rbxassetid://" .. ImageId,
     AnchorPoint = Vector2.new(0, 0),
     Size = UDim2.new(0, 50, 0, 50),
-    Position = UDim2.new(0, 300, 0, 275),
+    Position = UDim2.new(0, 117, 0, 68),
     BackgroundColor3 = Color3.fromRGB(50, 50, 50),
     Visible = true
   })Stroke(MinimizeButton)
