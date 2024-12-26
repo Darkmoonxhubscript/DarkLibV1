@@ -702,15 +702,23 @@ function AddSlider(Parent, Config)
   Corner(TextBox)
   
   local TextLabel = Create("TextLabel", SliderFrame, {
-    Size = UDim2.new(1, -10, 0, 25),
+    Size = UDim2.new(1, -90, 0, 25),
     Position = UDim2.new(0, 10, 0, 5),
-    TextSize = 14,
+    TextSize = 20,
     TextColor3 = Color3.fromRGB(240, 240, 240),
     TextXAlignment = "Left",
-    Text = name,
+    Text = Name,
     Font = Enum.Font.FredokaOne,
     BackgroundTransparency = 1
   })
+  
+  local SliderFrame2 = Create("Frame", SliderFrame, {
+        Size = UDim2.new(0, 480, 0, 5),
+        Position = UDim2.new(0, 0, 0, 0),
+        BackgroundColor3 = Color3.fromRGB(0, 0, 200),
+        BackgroundTransparency = 0
+    })
+    Corner(SliderFrame2)
   
   TextBox.FocusLost:Connect(function()
     
