@@ -783,7 +783,7 @@ function AddDropDown(Parent, Configs)
     local Callback = Configs[4] or Configs.Callback or function() end
     
     local DropdownFrame = Create("TextButton", Parent, {
-        Size = UDim2.new(0, 490, 0, 40),
+        Size = UDim2.new(0, 490, 0, 30),
         Position = UDim2.new(0, 0, 0, 0),
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
         BackgroundTransparency = 0,
@@ -897,7 +897,7 @@ function AddDropDown(Parent, Configs)
         local frameSize = UDim2.new(0, 490, 0, 100)
         for i, v in pairs(ListDrop:GetChildren()) do
             if v.Name == "Option" and i <= 7 then
-                frameSize = frameSize 
+                frameSize = frameSize + UDim2.new(0, 0, 0, 25)
             end
         end
         if DropOnOff == false then
@@ -910,7 +910,7 @@ function AddDropDown(Parent, Configs)
             tween2:Play()
         else
             DropOnOff = false
-            local tween1 = TweenService:Create(DropdownFrame, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Size = UDim2.new(0, 490, 0, 40)})
+            local tween1 = TweenService:Create(DropdownFrame, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Size = UDim2.new(0, 490, 0, 30)})
             local tween2 = TweenService:Create(Setinha, TweenInfo.new(0.2), {Rotation = 0})
             tween1:Play()
             tween2:Play()
