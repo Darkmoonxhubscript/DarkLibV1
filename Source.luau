@@ -906,7 +906,7 @@ function AddDropDown(Parent, Configs)
             DropOnOff = true
             Bagulho1.Visible = DropOnOff
             ListDrop.Visible = DropOnOff
-            --DropdownFrame.Size = UDim2.new(0, 490, 0, 100)
+            DropdownFrame.Size = UDim2.new(0, 490, 0, 100)
             local tween1 = TweenService:Create(DropdownFrame, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Size = frameSize})
             local tween2 = TweenService:Create(Setinha, TweenInfo.new(0.2), {Rotation = 180})
             tween1:Play()
@@ -918,7 +918,7 @@ function AddDropDown(Parent, Configs)
             tween1:Play()
             tween2:Play()
             tween1.Completed:Wait()
-            --DropdownFrame.Size = UDim2.new(0, 490, 0, 40)
+            DropdownFrame.Size = UDim2.new(0, 490, 0, 40)
             Bagulho1.Visible = DropOnOff
             ListDrop.Visible = DropOnOff
         end
