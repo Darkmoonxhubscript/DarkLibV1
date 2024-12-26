@@ -100,6 +100,25 @@ local function CreateTween(Configs)
   return Tween
 end
 
+function GetIcon(IconName)
+  if IconName:find("rbxassetid://") or IconName:len() < 1 then return IconName end
+  IconName = IconName:lower():gsub("lucide", ""):gsub("-", "")
+  
+  for Name, Icon in pairs(darklib.Icons) do
+    Name = Name:gsub("lucide", ""):gsub("-", "")
+    if Name == IconName then
+      return Icon
+    end
+  end
+  for Name, Icon in pairs(darklib.Icons) do
+    Name = Name:gsub("lucide", ""):gsub("-", "")
+    if Name:find(IconName) then
+      return Icon
+    end
+  end
+  return IconName
+end
+
 function MakeWindow(WindowConfig)
 local Title = WindowConfig[1] or WindowConfig.Title or "DarkLib V1"
   
@@ -1017,6 +1036,104 @@ MakeDrag(MinimizeButton)
   tweenOpen.Completed:Wait()
 end
 end)
+  
+  end
+
+function AddDiscordInvite(Parent, Configs)
+  local Name = Configs[1] or Configs.Name or "DarkMoonHub Community"
+  local Description = Configs[2] or Configs.Description or "Join our discord community to receive information about the next update"
+  local Logo = Configs[3] or Configs.Icon or "rbxassetid://10734897102"
+  local Invite = Configs[3] or Configs.Invite or "https://discord.gg/YDXM43cBU6"
+  
+  local DiscordInviteFrame = Create("TextButton", Parent, {
+        Size = UDim2.new(0, 490, 0, 120),
+        Position = UDim2.new(0, 0, 0, 0),
+        BackgroundColor3 = Color3.fromRGB(45, 45, 45),
+        BackgroundTransparency = 0,
+        Text = ""
+    })
+    Stroke(DiscordInviteFrame, Color3.fromRGB(120, 120, 120), 1)
+    Corner(DiscordInviteFrame)
+
+    local ServerName = Create("TextLabel", DiscordInviteFrame, {
+        Name = "ServerName",
+        Size = UDim2.new(0, 200, 0, 40),
+        Position = UDim2.new(0, 10, 0, 0),
+        Text = Name,
+        Font = Enum.Font.FredokaOne,
+        TextColor3 = Color3.fromRGB(243, 243, 243),
+        TextSize = 20,
+        BackgroundTransparency = 1,
+        TextWrapped = false,
+        TextXAlignment = Enum.TextXAlignment.Left,
+        TextYAlignment = Enum.TextYAlignment.Center
+    })
+  
+  local Description = Create("TextLabel", DiscordInviteFrame, {
+        Name = "Description",
+        Size = UDim2.new(0, 200, 0, 40),
+        Position = UDim2.new(0, 10, 0, -40),
+        Text = Description,
+        Font = Enum.Font.FredokaOne,
+        TextColor3 = Color3.fromRGB(180, 180, 180),
+        TextSize = 20,
+        BackgroundTransparency = 1,
+        TextWrapped = false,
+        TextXAlignment = Enum.TextXAlignment.Left,
+        TextYAlignment = Enum.TextYAlignment.Center
+    })
+  
+  local ServerInviteLink = Create("TextLabel", DiscordInviteFrame, {
+        Name = "ServerInviteLink",
+        Size = UDim2.new(0, 200, 0, 40),
+        Position = UDim2.new(0, 10, 0, 0),
+        Text = Invite,
+        Font = Enum.Font.FredokaOne,
+        TextColor3 = Color3.fromRGB(40, 150, 255),
+        TextSize = 20,
+        BackgroundTransparency = 1,
+        TextWrapped = false,
+        TextXAlignment = Enum.TextXAlignment.Left,
+        TextYAlignment = Enum.TextYAlignment.Center
+    })
+  
+  local ServerIcon = Create("ImageLabel", DiscordInviteFrame, {
+     Name = "ServerIcon",
+     Image = Logo,
+     Size = UDim2.new(0, 30, 0, 30),
+     Position = UDim2.new(1, -30, 0, 5),
+     BackgroundTransparency = 1
+   })Corner(ServerIcon, UDim.new(0, 4))Stroke(ServerIcon)
+  
+  local JoinButton = Create("TextButton", DiscordInviteFrame, {
+    Name = "JoinButton",
+    Size = UDim2.new(1, -14, 0, 16),
+    AnchorPoint = Vector2.new(0.5, 1),
+    Position = UDim2.new(0.5, 0, 1, -7),
+    Text = "Join",
+    Font = Enum.Font.GothamBold,
+    TextSize = 12,
+    TextColor3 = Color3.fromRGB(220, 220, 220),
+    BackgroundColor3 = Color3.fromRGB(50, 150, 50)
+  })
+  
+  local ClickDelay
+      JoinButton.Activated:Connect(function()
+        setclipboard(Invite)
+        if ClickDelay then return end
+        
+        ClickDelay = true
+        SetProps(JoinButton, {
+          Text = "Copied to Clipboard!",
+          BackgroundColor3 = Color3.fromRGB(100, 100, 100),
+          TextColor3 = Color3.fromRGB(150, 150, 150)
+        })task.wait(5)
+        SetProps(JoinButton, {
+          Text = "Join Server",
+          BackgroundColor3 = Color3.fromRGB(50, 150, 50),
+          TextColor3 = Color3.fromRGB(220, 220, 220)
+        })ClickDelay = false
+      end)
   
   end
 
