@@ -214,16 +214,6 @@ local MainFrame = Create("Frame", ScreenGui, {
 Corner(MainFrame, UDim.new(0.05, 0))
 MakeDrag(MainFrame)
 
-local FakeMainFrame = Create("Frame", MainFrame, {
-    Name = "MainFrameFake",
-    BackgroundColor3 = Color3.fromRGB(30, 30, 30),
-    Size = UDim2.new(1, 0, 1, 0),
-    Position = UDim2.new(0.5, 0, 0.5, 0),
-    AnchorPoint = Vector2.new(0.5, 0.5),
-    Active = true
-})
-Corner(MainFrame, UDim.new(0.05, 0))
-
 -- TopBar
 local TopBar = Create("Frame", MainFrame, {
     Name = "TopBar",
