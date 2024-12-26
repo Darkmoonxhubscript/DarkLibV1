@@ -190,7 +190,7 @@ AddMinimizeButton({
 })
 ```
 ```luau
----[[
+--[[
 ImageId = "IdOnly" >> Button Image Id
 You Can Get Ids in:
 https://github.com/Darkmoonxhubscript/DarkLibV1/blob/main/Icons.luau
