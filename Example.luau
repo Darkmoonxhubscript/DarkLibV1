@@ -2,6 +2,10 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Darkmoonxhubscript/Da
 
 local Window = MakeWindow({Title = "DarkMoonHub Library"})
 
+AddMinimizeButton({
+  ImageId = "10734897102"
+})
+
 local Notify = NewNotify({
   Title = "Notification",
   Description = "Script Loaded!.",
@@ -24,9 +28,15 @@ local Paragraph1 = AddParagraph(Tab1, {
 })
 
 local Button1 = AddButton(Tab1, {
-  Name = "Reset Humanoid",
+  Name = "Button",
   Callback = function()
-  game.Players.LocalPlayer.Character.Humanoid.Health = 0
+    AddFloatToggle({
+    Name = "Toggle Name",
+    Callback = function(Value)
+      
+      end
+  })
+print("Oii")
   end
 })
 
@@ -51,10 +61,19 @@ local TextBox1 = AddTextBox(Tab1, {
 local Slider1 = AddSlider(Tab1, {
   Name = "Slider Test",
   Min = 0,
-  Max = 100,
+  Max = 1000,
   Increase = 1,
   Default = 50,
   Callback = function(Value)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+    end
+})
+
+local Dropdown1 = AddDropDown(Tab1, {
+  Name = "Dropdown Test",
+  Options = {"1", "2", "3", "4", "5", "6", "7"},
+  Default = "Ola",
+  Callback = function(Value)
+    print(Value)
     end
 })
