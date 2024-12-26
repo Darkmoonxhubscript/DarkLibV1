@@ -921,7 +921,7 @@ end
 
 function AddFloatToggle(Configs)
   local Name = Configs[1] or Configs.Name or "Toggle"
-  local Callback = Configs[3] or Configs.Callback or function() end
+  local Callback = Configs[2] or Configs.Callback or function() end
   
   local Toggle_Atalho = Create("Frame", ScreenGui, {
     Size = UDim2.new(0, 100, 0, 60),
@@ -971,10 +971,10 @@ function AddFloatToggle(Configs)
   Button.MouseButton1Click:Connect(function()
     if OnOff == false then
       TweenService:Create(Frame2, TweenInfo.new(0.2, Enum.EasingStyle.Linear),
-      {Position = UDim2.new(1, -22, 0.5, 0)}):play()
+      {Position = UDim2.new(1, -22, 0.5, 0)}):Play()
     else
       TweenService:Create(Frame2, TweenInfo.new(0.2, Enum.EasingStyle.Linear),
-      {Position = UDim2.new(0, 5, 0.5, 0)}):play()
+      {Position = UDim2.new(0, 5, 0.5, 0)}):Play()
     end
     OnOff = not OnOff
     Callback(OnOff)
