@@ -925,7 +925,7 @@ function AddFloatToggle(Configs)
     Size = UDim2.new(0, 100, 0, 60),
     Position = UDim2.new(0.8, 0, 0.8, 0),
     AnchorPoint = Vector2.new(0.5, 0.5),
-    BackgroundColor3 = Color3.fromRGB(10, 10, 10),
+    BackgroundColor3 = Color3.fromRGB(45, 45, 45),
     Draggable = true,
     Active = true,
     Visible = true,
@@ -963,8 +963,8 @@ function AddFloatToggle(Configs)
     BackgroundTransparency = 1
   })Corner(Frame2, UDim.new(5, 0))
   
-  Stroke(Frame, Color3.fromRGB(100, 100, 100), 1)
-  Stroke(Frame2, Color3.fromRGB(100, 100, 100), 1)
+  Stroke(Frame, Color3.fromRGB(200, 200, 200), 1)
+  Stroke(Frame2, Color3.fromRGB(255, 255, 255), 1)
   
   local OnOff = false
   Callback(OnOff)
