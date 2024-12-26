@@ -754,9 +754,7 @@ function AddSlider(Parent, Config)
             UpdateSliderPosition(text)
         end
     end)
-
-    local UserInputService = game:GetService("UserInputService")
-
+    
     local dragging = false
     local dragInput
     local barSize = SliderBar.AbsoluteSize.X
