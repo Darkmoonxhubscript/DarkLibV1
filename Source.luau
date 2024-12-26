@@ -689,6 +689,7 @@ function AddSlider(Parent, Configs)
         Font = Enum.Font.FredokaOne,
         TextColor3 = Color3.fromRGB(240, 240, 240),
         BackgroundTransparency = 1,
+        TextSize = 20,
         TextXAlignment = Enum.TextXAlignment.Left,
     })
 
@@ -713,7 +714,7 @@ function AddSlider(Parent, Configs)
     })
     Corner(SliderButton)
 
-    local LabelValue = Create("TextLabel", SliderFrame, {
+    local TextBox = Create("TextBox", SliderFrame, {
         Size = UDim2.new(0, 60, 1, -40),
         Position = UDim2.new(1, -70, 0, 5),
         Text = tostring(Default * Increase),
@@ -721,30 +722,49 @@ function AddSlider(Parent, Configs)
         TextColor3 = Color3.fromRGB(240, 240, 240),
         BackgroundTransparency = 1,
         TextScaled = true,
+        ClearTextOnFocus = false,
+        PlaceholderText = tostring(Default * Increase),
     })
+
+    local function SnapToIncrease(value)
+        return math.floor(value / Increase + 0.5) * Increase
+    end
 
     local function UpdateSliderValue(position)
         local scaledValue = math.clamp(position, 0, 1)
         local newValue = math.floor((scaledValue * (Max - Min)) + Min)
-        newValue = math.floor(newValue * Increase) / Increase
+        newValue = SnapToIncrease(newValue)
 
         SliderButton.Position = UDim2.new(scaledValue, 0, 0.5, 0)
         SliderBar.Size = UDim2.new(scaledValue, 0, 1, 0)
-        LabelValue.Text = tostring(newValue * Increase)
+        TextBox.Text = tostring(newValue * Increase)
         Callback(newValue * Increase)
     end
 
+    TextBox.FocusLost:Connect(function(enterPressed)
+        if enterPressed then
+            local text = tonumber(TextBox.Text:match("%d+") or Default)
+            text = math.clamp(text, Min, Max)
+            text = SnapToIncrease(text)
+            UpdateSliderValue((text - Min) / (Max - Min))
+        end
+    end)
+    
+    local dragging = false
+
     SliderButton.InputBegan:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            dragging = true
             local connection
-            connection = game:GetService("UserInputService").InputChanged:Connect(function(input)
-                if input.UserInputType == Enum.UserInputType.MouseMovement then
+            connection = UIS.InputChanged:Connect(function(input)
+                if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
                     local relativePosition = (input.Position.X - SliderBarBackground.AbsolutePosition.X) / SliderBarBackground.AbsoluteSize.X
                     UpdateSliderValue(relativePosition)
                 end
             end)
             input.Changed:Connect(function()
                 if input.UserInputState == Enum.UserInputState.End then
+                    dragging = false
                     connection:Disconnect()
                 end
             end)
@@ -753,5 +773,6 @@ function AddSlider(Parent, Configs)
 
     UpdateSliderValue((Default - Min) / (Max - Min))
 end
+
 
 return DarkLib
