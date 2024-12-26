@@ -826,7 +826,7 @@ function AddDropDown(Parent, Configs)
     })
     Stroke(Bagulho1)
   
-    local ListDrop = Create("ScrollingFrame", DropdownFrame, {
+    local ListDrop = Create("ScrollingFrame", Bagulho1, {
         Size = UDim2.new(1, -4, 1, -100),
         Position = UDim2.new(0, 2, 1, 0),
         AnchorPoint = Vector2.new(0, 1),
@@ -852,8 +852,6 @@ function AddDropDown(Parent, Configs)
         VerticalAlignment = "Bottom"
     })
   
-    
-  
     local function AddOption(name)
         local NewOption = Create("TextButton", ListDrop, {
             Size = UDim2.new(1, 0, 0, 20),
@@ -878,7 +876,7 @@ function AddDropDown(Parent, Configs)
             for _, v in pairs(ListDrop:GetChildren()) do
                 if v.Name == "Option" then
                     v.TextColor3 = Color3.fromRGB(240, 240, 240)
-                    v.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+                    v.BackgroundColor3 = Color3.fromRGB(120, 120, 120)
                 end
             end
             Callback(NewOption.Text)
@@ -899,7 +897,7 @@ function AddDropDown(Parent, Configs)
         local frameSize = UDim2.new(0, 490, 0, 100)
         for i, v in pairs(ListDrop:GetChildren()) do
             if v.Name == "Option" and i <= 7 then
-                frameSize = frameSize + UDim2.new(0, 0, 0, 25)
+                frameSize = frameSize 
             end
         end
         if DropOnOff == false then
