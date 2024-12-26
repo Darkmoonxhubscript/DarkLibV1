@@ -778,8 +778,8 @@ end
 
 function AddDropDown(Parent, Configs)
   local Name = Configs[1] or Configs.Name or "DropDown"
-  local Options = Configs[2] or Configs.Options or {1, 2, 3, 4, 5}
-  local Default = Config[3] or Config.Default or 1
+  local Options = Configs[2] or Configs.Options or {"1", "2", "3", "4", "5"}
+  local Default = Config[3] or Config.Default or "1"
   local Callback = Config[4] or Config.Callback or function() end
   
   local DropdownFrame = Create("TextButton", Parent, {
