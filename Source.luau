@@ -825,15 +825,22 @@ function AddDropDown(Parent, Configs)
         TextYAlignment = Enum.TextYAlignment.Center
     })
   
+  local DropDownText2Frame = Create("Frame", DropButton, {
+        Size = UDim2.new(0, 80, 0, 40),
+        Position = UDim2.new(0, 260, 0, 0),
+        BackgroundColor3 = Color3.fromRGB(80, 80, 80),
+        BackgroundTransparency = 0
+    })Corner(DropDownText2Frame)
+  
     local DropDownText2 = Create("TextLabel", DropButton, {
         Size = UDim2.new(0, 200, 0, 40),
         Position = UDim2.new(0, 260, 0, 0),
         Text = Default,
         Font = Enum.Font.FredokaOne,
-        TextColor3 = Color3.fromRGB(240, 240, 240),
+        TextColor3 = Color3.fromRGB(200, 200, 200),
         TextSize = 15,
         BackgroundTransparency = 1,
-        TextWrapped = false,
+        TextScaled = true,
         TextXAlignment = Enum.TextXAlignment.Right,
         TextYAlignment = Enum.TextYAlignment.Center
     })
