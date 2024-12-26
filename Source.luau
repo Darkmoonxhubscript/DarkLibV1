@@ -292,7 +292,7 @@ local Padding = Create("UIPadding", RightScrollFrame, {
         PaddingLeft = UDim.new(0, 7),
         PaddingRight = UDim.new(0, 7),
         PaddingTop = UDim.new(0, 7),
-        PaddingBottom = UDim.new(0, 5)
+        PaddingBottom = UDim.new(0, 7)
     })
 
 
@@ -723,7 +723,7 @@ function AddSlider(Parent, Config)
   local SliderButton = Create("TextButton", SliderFrame2, {
     AnchorPoint = Vector2.new(0.5, 0.5),
     Position = UDim2.new(0, 0, 0.5, 0),
-    Size = UDim2.new(0, 20, 0, 20),
+    Size = UDim2.new(0, 30, 0, 30),
     TextSize = 10,
     Text = Default,
     BackgroundColor3 = Color3.fromRGB(0, 185, 255),
@@ -771,7 +771,7 @@ function AddSlider(Parent, Config)
       local position = UDim2.new(0, math.clamp(SliderButton.Position.X.Offset, 0, 310), 0.5, 0)
       SliderButton.Position = position
       local SliderPos = SliderButton.Position.X.Offset / 310
-      local A_1 = math.floor(((SliderPos * Max) / Min) * (Max - Min) + M8n)
+      local A_1 = math.floor(((SliderPos * Max) / Min) * (Max - Min) + Min)
       UpdateCounter(A_1)
     end
   end)
