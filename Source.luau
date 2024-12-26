@@ -727,7 +727,6 @@ function AddSlider(Parent, Config)
         TextColor3 = Color3.fromRGB(240, 240, 240),
         Font = Enum.Font.FredokaOne,
         Active = true,
-        Draggable = true
     })
     Corner(SliderButton)
 
@@ -750,17 +749,47 @@ function AddSlider(Parent, Config)
         end
     end)
 
-    SliderButton:GetPropertyChangedSignal("Position"):Connect(function()
-        local relativePosition = math.clamp(SliderButton.Position.X.Scale, 0, 1)
-        local rawValue = math.floor((relativePosition * (Max - Min)) + Min)
-        local adjustedValue = math.floor(rawValue / Increase) * Increase
-        adjustedValue = math.clamp(adjustedValue, Min, Max)
-        UpdateCounter(adjustedValue)
+    local UserInputService = game:GetService("UserInputService")
+
+    local dragging = false
+    local dragInput
+    local startPos
+    local barSize = SliderBar.AbsoluteSize.X
+
+    SliderButton.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            dragging = true
+            startPos = input.Position
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                    dragging = false
+                end
+            end)
+        end
+    end)
+
+    SliderButton.InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+            dragInput = input
+        end
+    end)
+
+    UserInputService.InputChanged:Connect(function(input)
+        if dragging and input == dragInput then
+            local delta = input.Position - startPos
+            local relativePosition = math.clamp((SliderButton.Position.X.Offset + delta.X) / barSize, 0, 1)
+            local rawValue = math.floor((relativePosition * (Max - Min)) + Min)
+            local adjustedValue = math.floor(rawValue / Increase) * Increase
+            adjustedValue = math.clamp(adjustedValue, Min, Max)
+            UpdateCounter(adjustedValue)
+            UpdateSliderPosition(adjustedValue)
+        end
     end)
 
     UpdateCounter(Default)
     UpdateSliderPosition(Default)
 end
+
 
 
 return DarkLib
