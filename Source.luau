@@ -1043,7 +1043,7 @@ function AddDiscordInvite(Parent, Configs)
   local Name = Configs[1] or Configs.Name or "DarkMoonHub Community"
   local Description = Configs[2] or Configs.Description or "Join our discord community to receive information about the next update"
   local Logo = Configs[3] or Configs.Icon or "rbxassetid://10734897102"
-  local Invite = Configs[3] or Configs.Invite or "https://discord.gg/YDXM43cBU6"
+  local Invite = Configs[4] or Configs.Invite or "https://discord.gg/YDXM43cBU6"
   
   local DiscordInviteFrame = Create("Frame", Parent, {
         Size = UDim2.new(0, 490, 0, 120),
@@ -1057,7 +1057,7 @@ function AddDiscordInvite(Parent, Configs)
     local ServerName = Create("TextLabel", DiscordInviteFrame, {
         Name = "ServerName",
         Size = UDim2.new(0, 200, 0, 40),
-        Position = UDim2.new(0, 10, 0, 0),
+        Position = UDim2.new(0, 10, 0, -7),
         Text = Name,
         Font = Enum.Font.FredokaOne,
         TextColor3 = Color3.fromRGB(243, 243, 243),
@@ -1070,14 +1070,14 @@ function AddDiscordInvite(Parent, Configs)
   
   local Description = Create("TextLabel", DiscordInviteFrame, {
         Name = "Description",
-        Size = UDim2.new(0, 200, 0, 40),
-        Position = UDim2.new(0, 10, 0, -40),
+        Size = UDim2.new(0, 400, 0, 40),
+        Position = UDim2.new(0, 80, 0, 20),
         Text = Description,
         Font = Enum.Font.FredokaOne,
         TextColor3 = Color3.fromRGB(180, 180, 180),
         TextSize = 20,
         BackgroundTransparency = 1,
-        TextWrapped = false,
+        TextWrapped = true,
         TextXAlignment = Enum.TextXAlignment.Left,
         TextYAlignment = Enum.TextYAlignment.Center
     })
@@ -1085,7 +1085,7 @@ function AddDiscordInvite(Parent, Configs)
   local ServerInviteLink = Create("TextLabel", DiscordInviteFrame, {
         Name = "ServerInviteLink",
         Size = UDim2.new(0, 200, 0, 40),
-        Position = UDim2.new(0, 10, 0, 0),
+        Position = UDim2.new(0, 80, 0, 50),
         Text = Invite,
         Font = Enum.Font.FredokaOne,
         TextColor3 = Color3.fromRGB(40, 150, 255),
@@ -1099,8 +1099,8 @@ function AddDiscordInvite(Parent, Configs)
   local ServerIcon = Create("ImageLabel", DiscordInviteFrame, {
      Name = "ServerIcon",
      Image = Logo,
-     Size = UDim2.new(0, 30, 0, 30),
-     Position = UDim2.new(1, -30, 0, 5),
+     Size = UDim2.new(0, 60, 0, 60),
+     Position = UDim2.new(1, -475, 0, 20),
      BackgroundTransparency = 1
    })Corner(ServerIcon, UDim.new(0, 4))Stroke(ServerIcon)
   
@@ -1109,12 +1109,12 @@ function AddDiscordInvite(Parent, Configs)
     Size = UDim2.new(1, -14, 0, 16),
     AnchorPoint = Vector2.new(0.5, 1),
     Position = UDim2.new(0.5, 0, 1, -7),
-    Text = "Join",
-    Font = Enum.Font.GothamBold,
+    Text = "Join Server",
+    Font = Enum.Font.FredokaOne,
     TextSize = 12,
-    TextColor3 = Color3.fromRGB(220, 220, 220),
+    TextColor3 = Color3.fromRGB(255, 255, 255),
     BackgroundColor3 = Color3.fromRGB(50, 150, 50)
-  })
+  })Corner(JoinButton, UDim.new(0, 9))
   
   local ClickDelay
       JoinButton.Activated:Connect(function()
@@ -1130,7 +1130,7 @@ function AddDiscordInvite(Parent, Configs)
         SetProps(JoinButton, {
           Text = "Join Server",
           BackgroundColor3 = Color3.fromRGB(50, 150, 50),
-          TextColor3 = Color3.fromRGB(220, 220, 220)
+          TextColor3 = Color3.fromRGB(255, 255, 225)
         })ClickDelay = false
       end)
   
