@@ -994,7 +994,7 @@ function AddMinimizeButton(Configs)
     Position = UDim2.new(0, 10, 0, 10),
     Visible = true
   })Stroke(MinimizeButton)
-Corner(MinimizeButton, Corner)
+Corner(MinimizeButton, CornerRadius)
   
   local MinimizeButtonState = true
   MinimizeButton.MouseButton1Click:Connect(function()
