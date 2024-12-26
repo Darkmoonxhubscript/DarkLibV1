@@ -714,16 +714,67 @@ function AddSlider(Parent, Config)
   
   local SliderFrame2 = Create("Frame", SliderFrame, {
         Size = UDim2.new(0, 480, 0, 5),
-        Position = UDim2.new(0, 0, 0, 0),
-        BackgroundColor3 = Color3.fromRGB(0, 0, 200),
+        Position = UDim2.new(0, 6, 0, 50),
+        BackgroundColor3 = Color3.fromRGB(0, 185, 255),
         BackgroundTransparency = 0
     })
     Corner(SliderFrame2)
   
-  TextBox.FocusLost:Connect(function()
-    
+  local SliderButton = Create("TextButton", SliderFrame2, {
+    AnchorPoint = Vector2.new(0.5, 0.5),
+    Position = UDim2.new(0, 0, 0.5, 0),
+    Size = UDim2.new(0, 20, 0, 20),
+    TextSize = 10,
+    Text = Default,
+    BackgroundColor3 = Color3.fromRGB(0, 185, 255),
+    TextColor3 = Color3.fromRGB(240, 240, 240),
+    Font = Enum.Font.FredokaOne,
+    Active = true,
+    Draggable = true
+  })Corner()
+  
+  local function UpdateCounter(A_1)
+    SliderButton.Text = tostring(A_1)
+    TextBox.Text = tostring(A_1)
+    Callback(A_1)
+  end
+  
+  local function SliderPos(Pos)
+    local A_1 = string.gsub(Pos, "%D", "")
+    local SliderPos = (tonumber(A_1) - Min) / (Max - Min)
+    local X_Offset = SliderPos * 310
+    local SliderPosition = UDim2.new(0, X_Offset + 1, 0, 0)
+    local tween = TweenService:Create(Slider, TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Position = SliderPosition})tween:Play()
+  end
+  
+  TextBox.FocusLost:Connect(function(enterPressed)
+    if enterPressed then
+    local text = string.gsub(TextBox.Text, "%D", "")
+      if tonumber(text) <= minvalue then
+        UpdateCounter(Min)
+        SliderPos(Min)
+      elseif tonumber(text) >= maxvalue then
+        UpdateCounter(Max)
+        SliderPos(Max)
+      else
+        UpdateCounter(tonumber(text))
+        SliderPos(text)
+      end
+    end
   end)
   
+  SliderPos(Default)
+  Callback(Default)
+  
+  SliderButton.Changed:Connect(function(Prop)
+    if Prop == "Position" then
+      local position = UDim2.new(0, math.clamp(SliderButton.Position.X.Offset, 0, 310), 0.5, 0)
+      SliderButton.Position = position
+      local SliderPos = SliderButton.Position.X.Offset / 310
+      local A_1 = math.floor(((SliderPos * Max) / Min) * (Max - Min) + M8n)
+      UpdateCounter(A_1)
+    end
+  end)
   end
 
 return DarkLib
