@@ -666,115 +666,100 @@ function AddParagraph(Parent, Config)
 end
 
 function AddSlider(Parent, Config)
-  local Name = Config[1] or Config.Name or "Slider"
-  local Min = Config[2] or Config.Min or 1
-  local Max = Config[3] or Config.Max or 100
-  local Increase = Config[4] or Config.Increase or 1
-  local Default = Config[5] or Config.Default or 15
-  local Callback = Config[6] or Config.Callback or function() end
-  
-  if Default >= Max then
-  Default = Max
-  elseif Default <= Min then
-    Default = Min
-  end
- 
- local SliderFrame = Create("Frame", Parent, {
+    local Name = Config[1] or Config.Name or "Slider"
+    local Min = Config[2] or Config.Min or 1
+    local Max = Config[3] or Config.Max or 100
+    local Increase = Config[4] or Config.Increase or 1
+    local Default = Config[5] or Config.Default or Min
+    local Callback = Config[6] or Config.Callback or function() end
+
+    Default = math.clamp(Default, Min, Max)
+
+    local SliderFrame = Create("Frame", Parent, {
         Size = UDim2.new(0, 490, 0, 70),
         Position = UDim2.new(0, 0, 0, 0),
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
-        BackgroundTransparency = 0
+        BackgroundTransparency = 0,
     })
     Stroke(SliderFrame, Color3.fromRGB(120, 120, 120), 1)
     Corner(SliderFrame)
-  
-  local TextBox = Create("TextBox", SliderFrame, {
-    Size = UDim2.new(0, 60, 1, -40),
-    Position = UDim2.new(1, -70, 0, 5),
-    ClearTextOnFocus = false,
-    BackgroundTransparency = 1,
-    Text = Default,
-    TextColor3 = Color3.fromRGB(240, 240, 240),
-    Font = Enum.Font.FredokaOne,
-    PlaceholderText = Default,
-    TextScaled = true
-  })
-  Stroke(TextBox, Color3.fromRGB(120, 120, 120), 1)
-  Corner(TextBox)
-  
-  local TextLabel = Create("TextLabel", SliderFrame, {
-    Size = UDim2.new(1, -90, 0, 25),
-    Position = UDim2.new(0, 10, 0, 5),
-    TextSize = 20,
-    TextColor3 = Color3.fromRGB(240, 240, 240),
-    TextXAlignment = "Left",
-    Text = Name,
-    Font = Enum.Font.FredokaOne,
-    BackgroundTransparency = 1
-  })
-  
-  local SliderFrame2 = Create("Frame", SliderFrame, {
+
+    local TextBox = Create("TextBox", SliderFrame, {
+        Size = UDim2.new(0, 60, 1, -40),
+        Position = UDim2.new(1, -70, 0, 5),
+        ClearTextOnFocus = false,
+        BackgroundTransparency = 1,
+        Text = tostring(Default),
+        TextColor3 = Color3.fromRGB(240, 240, 240),
+        Font = Enum.Font.FredokaOne,
+        PlaceholderText = tostring(Default),
+        TextScaled = true,
+    })
+    Stroke(TextBox, Color3.fromRGB(120, 120, 120), 1)
+    Corner(TextBox)
+
+    local TextLabel = Create("TextLabel", SliderFrame, {
+        Size = UDim2.new(1, -90, 0, 25),
+        Position = UDim2.new(0, 10, 0, 5),
+        TextSize = 20,
+        TextColor3 = Color3.fromRGB(240, 240, 240),
+        TextXAlignment = Enum.TextXAlignment.Left,
+        Text = Name,
+        Font = Enum.Font.FredokaOne,
+        BackgroundTransparency = 1,
+    })
+
+    local SliderBar = Create("Frame", SliderFrame, {
         Size = UDim2.new(0, 480, 0, 5),
         Position = UDim2.new(0, 6, 0, 50),
         BackgroundColor3 = Color3.fromRGB(0, 185, 255),
-        BackgroundTransparency = 0
+        BackgroundTransparency = 0,
     })
-    Corner(SliderFrame2)
-  
-  local SliderButton = Create("TextButton", SliderFrame2, {
-    AnchorPoint = Vector2.new(0.5, 0.5),
-    Position = UDim2.new(0, 0, 0.5, 0),
-    Size = UDim2.new(0, 10, 0, 30),
-    TextSize = 10,
-    Text = "",
-    BackgroundColor3 = Color3.fromRGB(255, 255, 255),
-    TextColor3 = Color3.fromRGB(240, 240, 240),
-    Font = Enum.Font.FredokaOne,
-    Active = true,
-    Draggable = true
-  })Corner(SliderButton)
-  
-  local function UpdateCounter(A_1)
-    --SliderButton.Text = tostring(A_1)
-    TextBox.Text = tostring(A_1)
-    Callback(A_1)
-  end
-  
-  local function SliderPos(Pos)
-    local Min, Max = Min * Increase, Max * Increase
-        
-    local SliderPos = (Pos - Min) / (Max - Min)
-    local tween = TweenService:Create(SliderButton, TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Position = SliderPos})tween:Play()
-  end
-  
-  TextBox.FocusLost:Connect(function(enterPressed)
-    if enterPressed then
-    local text = string.gsub(TextBox.Text, "%D", "")
-      if tonumber(text) <= minvalue then
-        UpdateCounter(Min)
-        SliderPos(Min)
-      elseif tonumber(text) >= maxvalue then
-        UpdateCounter(Max)
-        SliderPos(Max)
-      else
-        UpdateCounter(tonumber(text))
-        SliderPos(text)
-      end
+    Corner(SliderBar)
+
+    local SliderButton = Create("TextButton", SliderBar, {
+        AnchorPoint = Vector2.new(0.5, 0.5),
+        Position = UDim2.new(0, 0, 0.5, 0),
+        Size = UDim2.new(0, 10, 0, 30),
+        TextSize = 10,
+        Text = "",
+        BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+        TextColor3 = Color3.fromRGB(240, 240, 240),
+        Font = Enum.Font.FredokaOne,
+        Active = true,
+    })
+    Corner(SliderButton)
+
+    local function UpdateCounter(value)
+        TextBox.Text = tostring(value)
+        Callback(value)
     end
-  end)
-  
-  SliderPos(Default)
-  Callback(Default)
-  
-  SliderButton.Changed:Connect(function(Prop)
-    if Prop == "Position" then
-      local position = UDim2.new(0, math.clamp(SliderButton.Position.X.Offset, 0, 310), 0.5, 0)
-      SliderButton.Position = position
-      local SliderPos = SliderButton.Position.X.Offset / 480
-      local A_1 = math.floor(((SliderPos * Max) / Min) * (Max - Min) + Min)
-      UpdateCounter(A_1)
+
+    local function UpdateSliderPosition(value)
+        local relativePosition = (value - Min) / (Max - Min)
+        SliderButton.Position = UDim2.new(relativePosition, 0, 0.5, 0)
     end
-  end)
-  end
+
+    TextBox.FocusLost:Connect(function(enterPressed)
+        if enterPressed then
+            local text = tonumber(TextBox.Text:match("%d+") or Default)
+            text = math.clamp(text, Min, Max)
+            UpdateCounter(text)
+            UpdateSliderPosition(text)
+        end
+    end)
+
+    SliderButton:GetPropertyChangedSignal("Position"):Connect(function()
+        local relativePosition = math.clamp(SliderButton.Position.X.Scale, 0, 1)
+        local rawValue = math.floor((relativePosition * (Max - Min)) + Min)
+        local adjustedValue = math.floor(rawValue / Increase) * Increase
+        adjustedValue = math.clamp(adjustedValue, Min, Max)
+        UpdateCounter(adjustedValue)
+    end)
+
+    UpdateCounter(Default)
+    UpdateSliderPosition(Default)
+end
+
 
 return DarkLib
