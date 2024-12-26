@@ -714,6 +714,7 @@ function AddSlider(Parent, Config)
         Position = UDim2.new(0, 20, 0, 50),
         BackgroundColor3 = Color3.fromRGB(120, 120, 120),
         BackgroundTransparency = 0,
+        ZIndex = 1,
     })
     Corner(SliderBarBackGround)
     
@@ -722,10 +723,11 @@ function AddSlider(Parent, Config)
         Position = UDim2.new(0, 20, 0, 50),
         BackgroundColor3 = Color3.fromRGB(0, 185, 255),
         BackgroundTransparency = 0,
+        ZIndex = 2,
     })
     Corner(SliderBar)
 
-    local SliderButton = Create("TextButton", SliderBarBackGround, {
+    local SliderButton = Create("TextButton", SliderFrame, {
         AnchorPoint = Vector2.new(0.5, 0.5),
         Position = UDim2.new((Default - Min) / (Max - Min), 0, 0.5, 0),
         Size = UDim2.new(0, 10, 0, 30),
@@ -735,6 +737,7 @@ function AddSlider(Parent, Config)
         TextColor3 = Color3.fromRGB(240, 240, 240),
         Font = Enum.Font.FredokaOne,
         Active = true,
+        ZIndex = 3,
     })
     Corner(SliderButton)
 
@@ -794,6 +797,5 @@ function AddSlider(Parent, Config)
     UpdateCounter(Default)
     UpdateSliderPosition(Default)
 end
-
 
 return DarkLib
