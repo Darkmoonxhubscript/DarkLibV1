@@ -183,3 +183,12 @@ end
 ]]
 ```
 # EXTRA
+## Add a Minimize Button
+```luau
+
+```
+```luau
+---[[
+
+]]
+```
