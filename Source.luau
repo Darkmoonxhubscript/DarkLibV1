@@ -794,7 +794,7 @@ function AddDropDown(Parent, Configs)
 
     local DropDownText1 = Create("TextLabel", DropdownFrame, {
         Size = UDim2.new(0, 200, 0, 40),
-        Position = UDim2.new(0, 10, 0, 0),
+        Position = UDim2.new(0, 10, 0, -5),
         Text = Name,
         Font = Enum.Font.FredokaOne,
         TextColor3 = Color3.fromRGB(240, 240, 240),
