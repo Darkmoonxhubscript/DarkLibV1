@@ -719,7 +719,7 @@ function AddSlider(Parent, Config)
 
     local SliderButton = Create("TextButton", SliderBar, {
         AnchorPoint = Vector2.new(0.5, 0.5),
-        Position = UDim2.new(0, 0, 0.5, 0),
+        Position = UDim2.new((Default - Min) / (Max - Min), 0, 0.5, 0),
         Size = UDim2.new(0, 10, 0, 30),
         TextSize = 10,
         Text = "",
@@ -730,7 +730,12 @@ function AddSlider(Parent, Config)
     })
     Corner(SliderButton)
 
+    local function SnapToIncrease(value)
+        return math.floor(value / Increase + 0.5) * Increase
+    end
+
     local function UpdateCounter(value)
+        value = SnapToIncrease(value)
         TextBox.Text = tostring(value)
         Callback(value)
     end
@@ -744,6 +749,7 @@ function AddSlider(Parent, Config)
         if enterPressed then
             local text = tonumber(TextBox.Text:match("%d+") or Default)
             text = math.clamp(text, Min, Max)
+            text = SnapToIncrease(text)
             UpdateCounter(text)
             UpdateSliderPosition(text)
         end
@@ -753,13 +759,12 @@ function AddSlider(Parent, Config)
 
     local dragging = false
     local dragInput
-    local startPos
     local barSize = SliderBar.AbsoluteSize.X
 
     SliderButton.InputBegan:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
             dragging = true
-            startPos = input.Position
+            dragInput = input
             input.Changed:Connect(function()
                 if input.UserInputState == Enum.UserInputState.End then
                     dragging = false
@@ -768,19 +773,12 @@ function AddSlider(Parent, Config)
         end
     end)
 
-    SliderButton.InputChanged:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-            dragInput = input
-        end
-    end)
-
     UserInputService.InputChanged:Connect(function(input)
-        if dragging and input == dragInput then
-            local delta = input.Position - startPos
-            local relativePosition = math.clamp((SliderButton.Position.X.Offset + delta.X) / barSize, 0, 1)
+        if dragging and (input == dragInput or input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+            local delta = input.Position.X - SliderBar.AbsolutePosition.X
+            local relativePosition = math.clamp(delta / barSize, 0, 1)
             local rawValue = math.floor((relativePosition * (Max - Min)) + Min)
-            local adjustedValue = math.floor(rawValue / Increase) * Increase
-            adjustedValue = math.clamp(adjustedValue, Min, Max)
+            local adjustedValue = SnapToIncrease(rawValue)
             UpdateCounter(adjustedValue)
             UpdateSliderPosition(adjustedValue)
         end
@@ -789,7 +787,5 @@ function AddSlider(Parent, Config)
     UpdateCounter(Default)
     UpdateSliderPosition(Default)
 end
-
-
 
 return DarkLib
