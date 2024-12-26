@@ -808,7 +808,7 @@ function AddDropDown(Parent, Configs)
   
     local DropDownText2 = Create("TextLabel", DropdownFrame, {
         Size = UDim2.new(0, 200, 0, 40),
-        Position = UDim2.new(0, -10, 0, 0),
+        Position = UDim2.new(0, 270, 0, -5),
         Text = Default,
         Font = Enum.Font.FredokaOne,
         TextColor3 = Color3.fromRGB(240, 240, 240),
@@ -827,7 +827,7 @@ function AddDropDown(Parent, Configs)
     Stroke(Bagulho1)
   
     local ListDrop = Create("ScrollingFrame", DropdownFrame, {
-        Size = UDim2.new(1, -4, 1, -35),
+        Size = UDim2.new(1, -4, 1, -100),
         Position = UDim2.new(0, 2, 1, 0),
         AnchorPoint = Vector2.new(0, 1),
         Visible = false,
@@ -847,18 +847,12 @@ function AddDropDown(Parent, Configs)
         BackgroundTransparency = 1
     })
   
-    local Padding = Create("UIPadding", ListDrop, {
-        PaddingLeft = UDim.new(0, 10),
-        PaddingRight = UDim.new(0, 10),
-        PaddingTop = UDim.new(0, 5),
-        PaddingBottom = UDim.new(0, 5)
-    })
-  
     local ListLayout = Create("UIListLayout", ListDrop, {
-        Padding = UDim.new(0, 5)
+        Padding = UDim.new(0, 5),
+        VerticalAlignment = "Bottom"
     })
   
-    local default = DropDownText2  -- Correção: variável para o valor padrão do dropdown
+    
   
     local function AddOption(name)
         local NewOption = Create("TextButton", ListDrop, {
@@ -869,7 +863,7 @@ function AddDropDown(Parent, Configs)
             TextColor3 = Color3.fromRGB(240, 240, 240),
             BackgroundTransparency = 0.5,
             TextXAlignment = "Left",
-            BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+            BackgroundColor3 = Color3.fromRGB(120, 120, 120)
         })
         Corner(NewOption)
         
@@ -877,7 +871,7 @@ function AddDropDown(Parent, Configs)
             NewOption.TextColor3 = Color3.fromRGB(240, 240, 240)
             NewOption.BackgroundColor3 = Color3.fromRGB(120, 120, 120)
             Callback(Default)
-            default.Text = Default  -- Corrigido para atualizar corretamente o texto
+            DropDownText2.Text = Default
         end
         
         NewOption.MouseButton1Click:Connect(function()
@@ -890,7 +884,7 @@ function AddDropDown(Parent, Configs)
             Callback(NewOption.Text)
             NewOption.TextColor3 = Color3.fromRGB(240, 240, 240)
             NewOption.BackgroundColor3 = Color3.fromRGB(120, 120, 120)
-            default.Text = NewOption.Text
+            DropDownText2.Text = NewOption.Text
         end)
         
         ListDrop.CanvasSize = ListDrop.CanvasSize + UDim2.new(0, 0, 0, 25)
@@ -912,6 +906,7 @@ function AddDropDown(Parent, Configs)
             DropOnOff = true
             Bagulho1.Visible = DropOnOff
             ListDrop.Visible = DropOnOff
+            --DropdownFrame.Size = UDim2.new(0, 490, 0, 100)
             local tween1 = TweenService:Create(DropdownFrame, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Size = frameSize})
             local tween2 = TweenService:Create(Setinha, TweenInfo.new(0.2), {Rotation = 180})
             tween1:Play()
@@ -923,6 +918,7 @@ function AddDropDown(Parent, Configs)
             tween1:Play()
             tween2:Play()
             tween1.Completed:Wait()
+            --DropdownFrame.Size = UDim2.new(0, 490, 0, 40)
             Bagulho1.Visible = DropOnOff
             ListDrop.Visible = DropOnOff
         end
