@@ -720,10 +720,10 @@ function AddSlider(Parent, Config)
     local SliderButton = Create("TextButton", SliderBar, {
         AnchorPoint = Vector2.new(0.5, 0.5),
         Position = UDim2.new((Default - Min) / (Max - Min), 0, 0.5, 0),
-        Size = UDim2.new(0, 30, 0, 35),
+        Size = UDim2.new(0, 10, 0, 30),
         TextSize = 10,
         Text = "",
-        BackgroundColor3 = Color3.fromRGB(0, 150, 200),
+        BackgroundColor3 = Color3.fromRGB(255, 255, 255),
         TextColor3 = Color3.fromRGB(240, 240, 240),
         Font = Enum.Font.FredokaOne,
         Active = true,
@@ -736,7 +736,6 @@ function AddSlider(Parent, Config)
 
     local function UpdateCounter(value)
         value = SnapToIncrease(value)
-        SliderButton.Text = tostring(value)
         TextBox.Text = tostring(value)
         Callback(value)
     end
