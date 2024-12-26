@@ -925,7 +925,7 @@ function AddFloatToggle(Configs)
     Size = UDim2.new(0, 100, 0, 60),
     Position = UDim2.new(0.8, 0, 0.8, 0),
     AnchorPoint = Vector2.new(0.5, 0.5),
-    BackgroundColor3 = Color3.fromRGB(45, 45, 45),
+    BackgroundColor3 = Color3.fromRGB(35, 35, 35),
     Draggable = true,
     Active = true,
     Visible = true,
@@ -994,7 +994,7 @@ function AddMinimizeButton(Configs)
     BackgroundColor3 = Color3.fromRGB(50, 50, 50),
     Visible = true
   })Stroke(MinimizeButton)
-Corner(MinimizeButton, UDim.new(0, 6))
+Corner(MinimizeButton, UDim.new(0, 9))
 MakeDrag(MinimizeButton)
   
   local MinimizeButtonState = true
