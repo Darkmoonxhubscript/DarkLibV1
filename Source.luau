@@ -709,15 +709,23 @@ function AddSlider(Parent, Config)
         BackgroundTransparency = 1,
     })
 
-    local SliderBar = Create("Frame", SliderFrame, {
+    local SliderBarBackGround = Create("Frame", SliderFrame, {
         Size = UDim2.new(0, 450, 0, 8),
+        Position = UDim2.new(0, 20, 0, 50),
+        BackgroundColor3 = Color3.fromRGB(120, 120, 120),
+        BackgroundTransparency = 0,
+    })
+    Corner(SliderBarBackGround)
+    
+    local SliderBar = Create("Frame", SliderFrame, {
+        Size = UDim2.new((Default - Min) / (Max - Min), 0, 0, 8),
         Position = UDim2.new(0, 20, 0, 50),
         BackgroundColor3 = Color3.fromRGB(0, 185, 255),
         BackgroundTransparency = 0,
     })
     Corner(SliderBar)
 
-    local SliderButton = Create("TextButton", SliderBar, {
+    local SliderButton = Create("TextButton", SliderBarBackGround, {
         AnchorPoint = Vector2.new(0.5, 0.5),
         Position = UDim2.new((Default - Min) / (Max - Min), 0, 0.5, 0),
         Size = UDim2.new(0, 10, 0, 30),
@@ -743,6 +751,7 @@ function AddSlider(Parent, Config)
     local function UpdateSliderPosition(value)
         local relativePosition = (value - Min) / (Max - Min)
         SliderButton.Position = UDim2.new(relativePosition, 0, 0.5, 0)
+        SliderBar.Size = UDim2.new(relativePosition, 0, 0, 8)
     end
 
     TextBox.FocusLost:Connect(function(enterPressed)
@@ -754,9 +763,10 @@ function AddSlider(Parent, Config)
             UpdateSliderPosition(text)
         end
     end)
+
     local dragging = false
     local dragInput
-    local barSize = SliderBar.AbsoluteSize.X
+    local barSize = SliderBarBackGround.AbsoluteSize.X
 
     SliderButton.InputBegan:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
@@ -772,7 +782,7 @@ function AddSlider(Parent, Config)
 
     UIS.InputChanged:Connect(function(input)
         if dragging and (input == dragInput or input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
-            local delta = input.Position.X - SliderBar.AbsolutePosition.X
+            local delta = input.Position.X - SliderBarBackGround.AbsolutePosition.X
             local relativePosition = math.clamp(delta / barSize, 0, 1)
             local rawValue = math.floor((relativePosition * (Max - Min)) + Min)
             local adjustedValue = SnapToIncrease(rawValue)
@@ -784,5 +794,6 @@ function AddSlider(Parent, Config)
     UpdateCounter(Default)
     UpdateSliderPosition(Default)
 end
+
 
 return DarkLib
