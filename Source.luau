@@ -988,12 +988,14 @@ function AddMinimizeButton(Configs)
   
   local MinimizeButton = Create("ImageButton", ScreenGui, {
     Image = "rbxassetid://" .. ImageId,
-    AnchorPoint = Vector2.new(1, 1),
-    Size = UDim2.new(0, 40, 0, 40),
-    Position = UDim2.new(0, 10, 0, 10),
+    AnchorPoint = Vector2.new(0, 0),
+    Size = UDim2.new(0, 50, 0, 50),
+    Position = UDim2.new(0, 300, 0, 275),
+    BackgroundColor3 = Color3.fromRGB(50, 50, 50),
     Visible = true
   })Stroke(MinimizeButton)
 Corner(MinimizeButton, UDim.new(0, 6))
+MakeDrag(MinimizeButton)
   
   local MinimizeButtonState = true
   MinimizeButton.MouseButton1Click:Connect(function()
