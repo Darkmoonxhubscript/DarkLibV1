@@ -467,10 +467,10 @@ function AddToggle(Parent, Config)
     local ToggleFrame2 = Create("Frame", ToggleFrame1, {
         Size = UDim2.new(0, 30, 0, 30),
         Position = UDim2.new(1, -40, 0, 5),
-        BackgroundColor3 = Color3.fromRGB(80, 80, 80),
+        BackgroundColor3 = Color3.fromRGB(70, 70, 70),
         BackgroundTransparency = 0
     })
-    Stroke(ToggleFrame2, Color3.fromRGB(120, 120, 120), 1)
+    Stroke(ToggleFrame2, Color3.fromRGB(100, 100, 100), 1)
     Corner(ToggleFrame2)
 
     local ToggleActive = Create("Frame", ToggleFrame1, {
@@ -984,8 +984,7 @@ function AddFloatToggle(Configs)
 end
 
 function AddMinimizeButton(Configs)
-  local ImageId = Configs[1] or Configs.ImageId or ""
-  local CornerRadius = Configs[2] or Configs.CornerRadius or UDim.new(0, 6)
+  local ImageId = Configs[1] or Configs.ImageId or "10734897102"
   
   local MinimizeButton = Create("ImageButton", ScreenGui, {
     Image = "rbxassetid://" .. ImageId,
@@ -994,7 +993,7 @@ function AddMinimizeButton(Configs)
     Position = UDim2.new(0, 10, 0, 10),
     Visible = true
   })Stroke(MinimizeButton)
-Corner(MinimizeButton, CornerRadius)
+Corner(MinimizeButton, UDim.new(0, 6))
   
   local MinimizeButtonState = true
   MinimizeButton.MouseButton1Click:Connect(function()
