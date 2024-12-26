@@ -1119,6 +1119,7 @@ function AddDiscordInvite(Parent, Configs)
     Text = "Join Server",
     Font = Enum.Font.FredokaOne,
     TextSize = 12,
+    TextScaled = true,
     TextColor3 = Color3.fromRGB(255, 255, 255),
     BackgroundColor3 = Color3.fromRGB(50, 150, 50)
   })Corner(JoinButton, UDim.new(0, 6))
