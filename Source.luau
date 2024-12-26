@@ -865,6 +865,13 @@ function AddDropDown(Parent, Configs)
      BackgroundTransparency = 1
    })
  
+ local Padding = Create("UIPadding", ListDrop, {
+    PaddingLeft = UDim.new(0, 10),
+    PaddingRight = UDim.new(0, 10),
+    PaddingTop = UDim.new(0, 5),
+    PaddingBottom = UDim.new(0, 5)
+  })
+ 
  local ListLayout = Create("UIListLayout", ListDrop, {
     Padding = UDim.new(0, 5)
   })
@@ -1114,7 +1121,7 @@ function AddDiscordInvite(Parent, Configs)
     TextSize = 12,
     TextColor3 = Color3.fromRGB(255, 255, 255),
     BackgroundColor3 = Color3.fromRGB(50, 150, 50)
-  })Corner(JoinButton, UDim.new(0, 9))
+  })Corner(JoinButton, UDim.new(0, 6))
   
   local ClickDelay
       JoinButton.Activated:Connect(function()
