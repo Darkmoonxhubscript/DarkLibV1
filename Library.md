@@ -138,11 +138,27 @@ SubText = "My Paragraph" >> Paragraph Text
 ```
 ## Add a Slider
 ```luau
-
+local Slider1 = AddSlider(Tab1, {
+  Name = "Slider",
+  Min = 1,
+  Max = 100,
+  Increase = 10,
+  Default = 20,
+  Callback = function(Value)
+    print(Value)
+    end
+})
 ```
 ```luau
 --[[
-
+Name = "Slider" >> Slider Text
+Min = 1 >> Min Slider Value
+Max = 100 >> Max Slider Value
+Increase = 10 >> Value To Increase
+Default = 20 >> Default Slider Value
+Callback = function(Value) -- Value = Slider Value
+--function here
+end
 ]]
 ```
 
