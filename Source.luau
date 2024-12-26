@@ -592,8 +592,6 @@ function AddTextBox(Parent, Config)
      return TextBoxFrame
   end
 
-end
-
 function AddTextLabel(Parent, Config)
     local Name = Config[1] or Config.Name or "TextLabel"
     
@@ -932,6 +930,7 @@ function AddFloatToggle(Configs)
     Active = true,
     Visible = true,
   })Corner(Toggle_Atalho)
+   MakeDrag(Toggle_Atalho)
   
   local TextLabel = Create("TextLabel", Toggle_Atalho, {
     Size = UDim2.new(1, 0, 0, 20),
@@ -981,6 +980,8 @@ function AddFloatToggle(Configs)
   end)
   
   return Toggle_Atalho
+end
+
 end
 
 return DarkLib
