@@ -919,4 +919,69 @@ function AddDropDown(Parent, Configs)
     return ListDrop
 end
 
+function AddFloatToggle(Configs)
+  local Name = Configs[1] or Configs.Name or "Atalho"
+  local visible = Configs[2] or Configs.Visible or false
+  local Callback = Configs[3] or Configs.Callback or function() end
+  
+  local Toggle_Atalho = Create("Frame", ScreenGui, {
+    Size = UDim2.new(0, 100, 0, 60),
+    Position = UDim2.new(0.8, 0, 0.8, 0),
+    AnchorPoint = Vector2.new(0.5, 0.5),
+    BackgroundColor3 = Color3.fromRGB(10, 10, 10),
+    Draggable = true,
+    Active = true,
+    Visible = Visible
+  })Corner(Toggle_Atalho)
+  
+  local TextLabel = Create("TextLabel", Toggle_Atalho, {
+    Size = UDim2.new(1, 0, 0, 20),
+    TextSize = 20,
+    Font = Enum.Font.FredokaOne,
+    TextColor3 = Color3.fromRGB(240, 240, 240),
+    Text = Name,
+    BackgroundTransparency = 1
+  })
+  
+  local Button = Create("TextButton", Toggle_Atalho, {
+    Size = UDim2.new(1, 0, 0, 40),
+    Position = UDim2.new(0, 0, 0, 20),
+    BackgroundTransparency = 1,
+    Text = ""
+  })
+  
+  local Frame = Create("Frame", Button, {
+    Position = UDim2.new(0.5, 0, 0.5, 0),
+    AnchorPoint = Vector2.new(0.5, 0.5),
+    Size = UDim2.new(1, -40, 1, -15),
+    BackgroundTransparency = 1
+  })Corner(Frame, UDim.new(2, 0))
+  
+  local Frame2 = Create("Frame", Frame, {
+    Position = UDim2.new(0, 5, 0.5, 0),
+    AnchorPoint = Vector2.new(0, 0.5),
+    Size = UDim2.new(0, 17, 0, 17),
+    BackgroundTransparency = 1
+  })Corner(Frame2, UDim.new(5, 0))
+  
+  Stroke(Frame1, Color3.fromRGB(100, 100, 100), 1)
+  Stroke(Frame2, Color3.fromRGB(100, 100, 100), 1)
+  
+  local OnOff = false
+  Callback(OnOff)
+  Button.MouseButton1Click:Connect(function()
+    if OnOff == false then
+      TweenService:Create(Frame2, TweenInfo.new(0.2, Enum.EasingStyle.Linear),
+      {Position = UDim2.new(1, -22, 0.5, 0)}):play()
+    else
+      TweenService:Create(Frame2, TweenInfo.new(0.2, Enum.EasingStyle.Linear),
+      {Position = UDim2.new(0, 5, 0.5, 0)}):play()
+    end
+    OnOff = not OnOff
+    Callback(OnOff)
+  end)
+  
+  return Toggle_Atalho
+end
+
 return DarkLib
