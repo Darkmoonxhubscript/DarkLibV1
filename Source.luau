@@ -834,7 +834,7 @@ function AddDropDown(Parent, Configs)
   
     local DropDownText2 = Create("TextLabel", DropButton, {
         Size = UDim2.new(0, 200, 0, 30),
-        Position = UDim2.new(0, 260, 0, 5),
+        Position = UDim2.new(0, 247, 0, 5),
         Text = Default,
         Font = Enum.Font.FredokaOne,
         TextColor3 = Color3.fromRGB(200, 200, 200),
