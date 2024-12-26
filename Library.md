@@ -174,9 +174,9 @@ local Dropdown1 = AddDropDown(Tab1, {
 ```
 ```luau
 --[[
-Name = "Dropdown" >> Dropdown Text
-Options = {"1", "2", "3", "4", "5", "6", "7"} >> Options That Can Be Selected, you can add more.
-Default = "1" >> Initial Selected Option
+Name = "Dropdown" >> Dropdown Text (String)
+Options = {"1", "2", "3", "4", "5", "6", "7"} >> Options That Can Be Selected, you can add more. (String Table)
+Default = "1" >> Initial Selected Option (String)
 Callback = function(Value) -- Value = Selected Option Name
 -- Function Here
 end
@@ -185,10 +185,10 @@ end
 # EXTRA
 ## Add a Minimize Button
 ```luau
-
+Coming Soon
 ```
 ```luau
 ---[[
-
+Coming Soon
 ]]
 ```
