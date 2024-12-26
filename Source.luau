@@ -665,5 +665,46 @@ function AddParagraph(Parent, Config)
     return ParagraphFrame
 end
 
+function AddSlider(Parent, Config)
+  local Name = Config[1] or Config.Name or "Slider"
+  local Min = Config[2] or Config.Min or 1
+  local Max = Config[3] or Config.Max or 100
+  local Default = Config[4] or Config.Default or 15
+  local Callback = Config[1] or Config.Callback or function() end
+  
+  if Default >= Max then
+  Default = Max
+  elseif Default <= Min then
+    Default = Min
+  end
+ 
+ local SliderFrame = Create("Frame", Parent, {
+        Size = UDim2.new(0, 490, 0, 60),
+        Position = UDim2.new(0, 0, 0, 0),
+        BackgroundColor3 = Color3.fromRGB(45, 45, 45),
+        BackgroundTransparency = 0
+    })
+    Stroke(SliderFrame, Color3.fromRGB(120, 120, 120), 1)
+    Corner(SliderFrame)
+  
+  local TextBox = Create("TextBox", SliderFrame, {
+    Size = UDim2.new(0, 80, 1, -10),
+    Position = UDim2.new(1, -90, 0, 5),
+    ClearTextOnFocus = false,
+    BackgroundTransparency = 1,
+    Text = Default,
+    TextColor3 = Color3.fromRGB(240, 240, 240),
+    Font = Enum.Font.FredokaOne,
+    PlaceholderText = Default,
+    TextScaled = true
+  })
+  Stroke(TextBox, Color3.fromRGB(120, 120, 120), 1)
+  Corner(TextBox)
+  
+  TextBox.FocusLost:Connect(function()
+    
+  end)
+  
+  end
 
 return DarkLib
