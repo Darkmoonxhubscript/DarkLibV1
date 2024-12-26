@@ -983,6 +983,36 @@ function AddFloatToggle(Configs)
   return Toggle_Atalho
 end
 
+function AddMinimizeButton(Configs)
+  local ImageId = Configs[1] or Configs.ImageId or ""
+  local CornerRadius = Configs[2] or Configs.CornerRadius or UDim.new(0, 6)
+  
+  local MinimizeButton = Create("ImageButton", ScreenGui, {
+    Image = "rbxassetid://" .. ImageId,
+    AnchorPoint = Vector2.new(1, 1),
+    Size = UDim2.new(0, 40, 0, 40),
+    Position = UDim2.new(0, 10, 0, 10),
+    Visible = true
+  })Stroke(MinimizeButton)
+Corner(MinimizeButton, Corner)
+  
+  local MinimizeButtonState = true
+  MinimizeButton.MouseButton1Click:Connect(function()
+    if MinimizeButtonState then
+      SetProps(MainFrame, {
+        Visible = false
+      })
+      MinimizeButtonState = false
+      else
+        SetProps(MainFrame, {
+        Visible = true
+      })
+        MinimizeButtonState = true
+end
+end)
+  
+  end
+
 end
 
 return DarkLib
