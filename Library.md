@@ -16,7 +16,7 @@ local Window = MakeWindow({Title = "DarkMoonHub Library"})
 ```
 ```luau
 --[[
-Title ="DarkMoonHub Library" >> UI Title
+Title ="DarkMoonHub Library" >> UI Title (String)
 ]]
 ```
 ## Create Notification
@@ -29,9 +29,9 @@ Time = 10
 ```
 ```luau
 --[[
-Title = "Notification Title" >> Notification Title That Will Show
-Description = "Notification Description." >> Notification Description That Will Show
-Time = 10 >> Notification Duration
+Title = "Notification Title" >> Notification Title That Will Show (String)
+Description = "Notification Description." >> Notification Description That Will Show (String)
+Time = 10 >> Notification Duration (Number)
 ]]
 ```
 ## Create Tab
@@ -40,7 +40,7 @@ local Tab1 = NewTab({Name = "Tab"})
 ```
 ```luau
 --[[
-Name = "TabName" >> UI Button TabName
+Name = "TabName" >> UI Button TabName (String)
 ]]
 ```
 ## Add a Section
@@ -49,7 +49,7 @@ local Section1 = AddSection(Tab1, {Name = "Section"})
 ```
 ```luau
 --[[
-Name = "Text" >> Text Of Section
+Name = "Text" >> Text Of Section (String)
 ]]
 ```
 ## Add a Button
@@ -64,7 +64,7 @@ local Button1 = AddButton(Tab1, {
 ```
 ```luau
 --[[
-Name = "Text" >> Button Text
+Name = "Text" >> Button Text (String)
 Callback = function(Value) -button press function
 -- function here
 end --end function
@@ -82,8 +82,8 @@ local Toggle1 = AddToggle(Tab1, {
 ```
 ```luau
 --[[
-Name = "Toggle" >> Toggle Text
-Default = false >> Defines whether the toggle starts out on or off
+Name = "Toggle" >> Toggle Text (String)
+Default = false >> Defines whether the toggle starts out on or off (Bool)
 Callback = function(Value) --Value = toggle state
 -- toggle function here
 end
@@ -103,10 +103,10 @@ local TextBox1 = AddTextBox(Tab1, {
 ```
 ```luau
 --[[
-Name = "TextBox" >> TextBox Name
-Default = "Default Text" >> TextBox Default Text
-AutoClear = false >> Auto Clear Text When Input
-PlaceHolder = "Input Text Here" >> PlaceHolder Text From TextBox
+Name = "TextBox" >> TextBox Name (String)
+Default = "Default Text" >> TextBox Default Text (String)
+AutoClear = false >> Auto Clear Text When Input (Bool)
+PlaceHolder = "Input Text Here" >> PlaceHolder Text From TextBox(String)
 Callback = function(Value) --Value = TextBox Text
 --Function Here
 end
@@ -115,32 +115,32 @@ end
 ## Add a TextLabel
 ```luau
 local TextLabel1 = AddTextLabel(Tab1, {
-  Name = "My Text"
+  Name = "My Text" (String)
 })
 ```
 ```luau
 --[[
-Name = "My Text" >> TextLabel Text
+Name = "My Text" >> TextLabel Text (String)
 ]]
 ```
 ## Add a Paragraph
 ```luau
 local Paragraph1 = AddParagraph(Tab1, {
-  Name = "My Title",
-  SubText = "My Paragraph"
+  Name = "My Title", (String)
+  SubText = "My Paragraph" (String)
 })
 ```
 ```luau
 --[[
-Name = "My Title" >> Paragraph Title
-SubText = "My Paragraph" >> Paragraph Text
+Name = "My Title" >> Paragraph Title (String)
+SubText = "My Paragraph" >> Paragraph Text (String)
 ]]
 ```
 ## Add a Slider
 ```luau
 local Slider1 = AddSlider(Tab1, {
   Name = "Slider",
-  Min = 1,
+  Min = 0,
   Max = 100,
   Increase = 10,
   Default = 20,
@@ -151,11 +151,11 @@ local Slider1 = AddSlider(Tab1, {
 ```
 ```luau
 --[[
-Name = "Slider" >> Slider Text
-Min = 1 >> Min Slider Value
-Max = 100 >> Max Slider Value
-Increase = 10 >> Value To Increase
-Default = 20 >> Default Slider Value
+Name = "Slider" >> Slider Text (String(
+Min = 0 >> Min Slider Value (Number)
+Max = 100 >> Max Slider Value (Number)
+Increase = 10 >> Value To Increase (Number)
+Default = 20 >> Default Slider Value (Number)
 Callback = function(Value) -- Value = Slider Value
 --function here
 end
