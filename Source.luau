@@ -467,7 +467,8 @@ function AddToggle(Parent, Config)
     local ToggleFrame2 = Create("Frame", ToggleFrame1, {
         Size = UDim2.new(0, 30, 0, 30),
         Position = UDim2.new(1, -40, 0, 5),
-        BackgroundTransparency = 1
+        BackgroundColor3 = Color3.fromRGB(80, 80, 80),
+        BackgroundTransparency = 0
     })
     Stroke(ToggleFrame2, Color3.fromRGB(120, 120, 120), 1)
     Corner(ToggleFrame2)
@@ -570,7 +571,8 @@ function AddTextBox(Parent, Config)
     Size = UDim2.new(0, 80, 1, -10),
     Position = UDim2.new(1, -90, 0, 5),
     ClearTextOnFocus = false,
-    BackgroundTransparency = 1,
+    BackgroundColor3 = Color3.fromRGB(80, 80, 80),
+    BackgroundTransparency = 0,
     Text = Default,
     TextColor3 = Color3.fromRGB(240, 240, 240),
     Font = Enum.Font.FredokaOne,
