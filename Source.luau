@@ -710,7 +710,7 @@ function AddSlider(Parent, Config)
     })
 
     local SliderBar = Create("Frame", SliderFrame, {
-        Size = UDim2.new(0, 480, 0, 5),
+        Size = UDim2.new(0, 480, 0, 8),
         Position = UDim2.new(0, 6, 0, 50),
         BackgroundColor3 = Color3.fromRGB(0, 185, 255),
         BackgroundTransparency = 0,
