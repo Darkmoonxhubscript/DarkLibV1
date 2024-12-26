@@ -752,10 +752,11 @@ function AddSlider(Parent, Config)
     end
 
     local function UpdateSliderPosition(value)
-        local relativePosition = (value - Min) / (Max - Min)
-        SliderButton.Position = UDim2.new(relativePosition, 0, 0.5, 0)
-        SliderBar.Size = UDim2.new(relativePosition, 0, 0, 8)
-    end
+    local relativePosition = (value - Min) / (Max - Min)
+    SliderButton.Position = UDim2.new(relativePosition, 0, 0.5, 0)
+    SliderBar.Size = UDim2.new(relativePosition, 0, 0, SliderBarBackGround.Size.Y.Offset)
+end
+
 
     TextBox.FocusLost:Connect(function(enterPressed)
         if enterPressed then
