@@ -1,93 +1,60 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Darkmoonxhubscript/DarkLibV1/refs/heads/main/Source.luau"))()
 
-AddInfo({Title = "Example Script"})
+local Window = MakeWindow({Title = "DarkMoonHub Library"})
 
-NewNotify({
-Title = "Notification",
-Description = "Script Loaded!.",
-Time = 5
-})
-
-MakeTab({Name = "Tab1"})
-MakeTab({Name = "Tab2"})
-MakeTab({Name = "Tab3"})
-MakeTab({Name = "Tab4"})
-MakeTab({Name = "Tab5"})
-
-AddSection({
-Tab = "Tab1",
-Text = "Section 1"
-})
-AddSection({
-Tab = "Tab2",
-Text = "Section 2"
-})
-AddSection({
-Tab = "Tab3",
-Text = "Section 3"
-})
-AddSection({
-Tab = "Tab4",
-Text = "Section 4"
-})
-AddSection({
-Tab = "Tab5",
-Text = "Section 5"
+local Notify = NewNotify({
+  Title = "Notification",
+  Description = "Script Loaded!.",
+  Time = 3
 })
 
-AddSeparator({Tab = "Tab1"})
-AddSeparator({Tab = "Tab2"})
-AddSeparator({Tab = "Tab3"})
-AddSeparator({Tab = "Tab4"})
-AddSeparator({Tab = "Tab5"})
+local Tab1 = NewTab({Name = "Universal"})
+local Tab2 = NewTab({Name = "Game 1"})
+local Tab3 = NewTab({Name = "Game 2"})
 
-AddButton({Tab = "Tab1", Text = "Button 1",
-Callback = function()
-   print("Tab 1 Button")
-NewNotify({
-Title = "Notification",
-Description = "Working!.",
-Time = 1
+local Section1 = AddSection(Tab1, {Name = "Universal Tab"})
+
+local TextLabel1 = AddTextLabel(Tab1, {
+  Name = "My Text"
 })
+
+local Paragraph1 = AddParagraph(Tab1, {
+  Name = "My Title",
+  SubText = "My Paragraph"
+})
+
+local Button1 = AddButton(Tab1, {
+  Name = "Reset Humanoid",
+  Callback = function()
+  game.Players.LocalPlayer.Character.Humanoid.Health = 0
   end
 })
-AddButton({Tab = "Tab2", Text = "Button 2",
-Callback = function()
-   print("Tab 2 Button")
-NewNotify({
-Title = "Notification",
-Description = "Working!.",
-Time = 1
-})
+
+local Toggle1 = AddToggle(Tab1, {
+  Name = "AutoFarm",
+  Default = false,
+  Callback = function(Value)
+  print(Value)
   end
 })
-AddButton({Tab = "Tab3", Text = "Button 3",
-Callback = function()
-   print("Tab 3 Button")
-NewNotify({
-Title = "Notification",
-Description = "Working!.",
-Time = 1
+
+local TextBox1 = AddTextBox(Tab1, {
+  Name = "Dark TextBox",
+  Default = "Muito Bom Dia",
+  AutoClear = false,
+  PlaceHolder = "Input Here",
+  Callback = function(Value)
+    print(Value)
+    end
 })
-  end
-})
-AddButton({Tab = "Tab4", Text = "Button 4",
-Callback = function()
-   print("Tab 4 Button")
-NewNotify({
-Title = "Notification",
-Description = "Working!.",
-Time = 1
-})
-  end
-})
-AddButton({Tab = "Tab5", Text = "Button 5",
-Callback = function()
-   print("Tab 5 Button")
-NewNotify({
-Title = "Notification",
-Description = "Working!.",
-Time = 1
-})
-  end
+
+local Slider1 = AddSlider(Tab1, {
+  Name = "Slider Test",
+  Min = 0,
+  Max = 100,
+  Increase = 1,
+  Default = 50,
+  Callback = function(Value)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+    end
 })
