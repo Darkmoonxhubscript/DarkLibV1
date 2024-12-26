@@ -723,10 +723,10 @@ function AddSlider(Parent, Config)
   local SliderButton = Create("TextButton", SliderFrame2, {
     AnchorPoint = Vector2.new(0.5, 0.5),
     Position = UDim2.new(0, 0, 0.5, 0),
-    Size = UDim2.new(0, 30, 0, 30),
+    Size = UDim2.new(0, 10, 0, 30),
     TextSize = 10,
-    Text = Default,
-    BackgroundColor3 = Color3.fromRGB(0, 185, 255),
+    Text = "",
+    BackgroundColor3 = Color3.fromRGB(255, 255, 255),
     TextColor3 = Color3.fromRGB(240, 240, 240),
     Font = Enum.Font.FredokaOne,
     Active = true,
@@ -734,7 +734,7 @@ function AddSlider(Parent, Config)
   })Corner()
   
   local function UpdateCounter(A_1)
-    SliderButton.Text = tostring(A_1)
+    --SliderButton.Text = tostring(A_1)
     TextBox.Text = tostring(A_1)
     Callback(A_1)
   end
@@ -744,7 +744,7 @@ function AddSlider(Parent, Config)
     local SliderPos = (tonumber(A_1) - Min) / (Max - Min)
     local X_Offset = SliderPos * 310
     local SliderPosition = UDim2.new(0, X_Offset + 1, 0, 0)
-    local tween = TweenService:Create(Slider, TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Position = SliderPosition})tween:Play()
+    local tween = TweenService:Create(SliderButton, TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Position = SliderPosition})tween:Play()
   end
   
   TextBox.FocusLost:Connect(function(enterPressed)
