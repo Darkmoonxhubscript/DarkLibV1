@@ -434,8 +434,8 @@ function AddSection(Parent, Config)
     Corner(SectionFrame)
 
     local SectionLabel = Create("TextLabel", SectionFrame, {
-        Size = UDim2.new(0, 200, 0, 40),
-        Position = UDim2.new(0, 10, 0, 0),
+        Size = UDim2.new(0, 240, 0, 40),
+        Position = UDim2.new(0, 0, 0, 0),
         Text = Name,
         Font = Enum.Font.FredokaOne,
         TextColor3 = Color3.fromRGB(240, 240, 240),
@@ -645,7 +645,7 @@ function AddParagraph(Parent, Config)
         TextWrapped = false,
         TextTruncate = "AtEnd",
         TextXAlignment = Enum.TextXAlignment.Left,
-        TextYAlignment = Enum.TextYAlignment.Up
+        TextYAlignment = Enum.TextYAlignment.Top
     })
   
   local ParagraphLabel2 = Create("TextLabel", ParagraphFrame, {
