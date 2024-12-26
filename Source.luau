@@ -794,7 +794,7 @@ function AddDropDown(Parent, Configs)
 
     local DropDownText1 = Create("TextLabel", DropButton, {
         Size = UDim2.new(0, 200, 0, 40),
-        Position = UDim2.new(0, 10, 0, -5),
+        Position = UDim2.new(0, 10, 0, 0),
         Text = Name,
         Font = Enum.Font.FredokaOne,
         TextColor3 = Color3.fromRGB(240, 240, 240),
@@ -808,7 +808,7 @@ function AddDropDown(Parent, Configs)
   
     local DropDownText2 = Create("TextLabel", DropButton, {
         Size = UDim2.new(0, 200, 0, 40),
-        Position = UDim2.new(0, 270, 0, -5),
+        Position = UDim2.new(0, 260, 0, 0),
         Text = Default,
         Font = Enum.Font.FredokaOne,
         TextColor3 = Color3.fromRGB(240, 240, 240),
@@ -842,7 +842,7 @@ function AddDropDown(Parent, Configs)
    local Setinha = Create("ImageLabel", DropButton, {
      Image = "rbxassetid://6031090990",
      Size = UDim2.new(0, 30, 0, 30),
-     Position = UDim2.new(1, -30, 0, 0),
+     Position = UDim2.new(1, -30, 0, 5),
      BackgroundTransparency = 1
    })
  
@@ -891,7 +891,7 @@ function AddDropDown(Parent, Configs)
     
     local DropdownOn = false
    DropButton.MouseButton1Click:Connect(function()
-     local frameSize = UDim2.new(0, 490, 0, 40)
+     local frameSize = UDim2.new(0, 490, 0, 100)
     for i,v in pairs(ListDrop:GetChildren()) do
       if v.Name == "Option" and i <= 7 then
         FrameSizeNew = frameSize + UDim2.new(0, 0, 0, 25)
@@ -899,8 +899,8 @@ function AddDropDown(Parent, Configs)
     end
     if DropdownOn == false then
       DropdownOn = true
-      Bagulho1.Visible = DropOnOff
-      ListDrop.Visible = DropOnOff
+      Bagulho1.Visible = DropdownOn
+      ListDrop.Visible = DropdownOn
       local tween1 = TweenService:Create(DropButton, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Size = FrameSizeNew})
       local tween2 = TweenService:Create(Setinha, TweenInfo.new(0.2), {Rotation = 180})
       tween1:Play()tween2:Play()
