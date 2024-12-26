@@ -209,7 +209,7 @@ local MainFrame = Create("Frame", ScreenGui, {
     Position = UDim2.new(0.5, 0, 0.5, 0),
     AnchorPoint = Vector2.new(0.5, 0.5),
     Active = true,
-    BackgroundTransparency = 1
+    BackgroundTransparency = 0
 })
 Corner(MainFrame, UDim.new(0.05, 0))
 MakeDrag(MainFrame)
