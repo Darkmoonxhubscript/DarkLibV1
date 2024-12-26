@@ -1045,12 +1045,11 @@ function AddDiscordInvite(Parent, Configs)
   local Logo = Configs[3] or Configs.Icon or "rbxassetid://10734897102"
   local Invite = Configs[3] or Configs.Invite or "https://discord.gg/YDXM43cBU6"
   
-  local DiscordInviteFrame = Create("TextButton", Parent, {
+  local DiscordInviteFrame = Create("Frame", Parent, {
         Size = UDim2.new(0, 490, 0, 120),
         Position = UDim2.new(0, 0, 0, 0),
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
         BackgroundTransparency = 0,
-        Text = ""
     })
     Stroke(DiscordInviteFrame, Color3.fromRGB(120, 120, 120), 1)
     Corner(DiscordInviteFrame)
