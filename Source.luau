@@ -669,7 +669,7 @@ function AddSlider(Parent, Config)
   local Name = Config[1] or Config.Name or "Slider"
   local Min = Config[2] or Config.Min or 1
   local Max = Config[3] or Config.Max or 100
-  local Increase = Config[4] or Config.Increase or
+  local Increase = Config[4] or Config.Increase or 1
   local Default = Config[5] or Config.Default or 15
   local Callback = Config[6] or Config.Callback or function() end
   
