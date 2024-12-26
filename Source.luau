@@ -434,7 +434,7 @@ function AddSection(Parent, Config)
     Corner(SectionFrame)
 
     local SectionLabel = Create("TextLabel", SectionFrame, {
-        Size = UDim2.new(0, 280, 0, 40),
+        Size = UDim2.new(0, 490, 0, 40),
         Position = UDim2.new(0, 0, 0, 0),
         Text = Name,
         Font = Enum.Font.FredokaOne,
