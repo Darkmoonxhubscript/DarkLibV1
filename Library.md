@@ -161,4 +161,25 @@ Callback = function(Value) -- Value = Slider Value
 end
 ]]
 ```
-
+## Add a Dropdown
+```luau
+local Dropdown1 = AddDropDown(Tab1, {
+  Name = "Dropdown",
+  Options = {"1", "2", "3", "4", "5", "6", "7"},
+  Default = "1",
+  Callback = function(Value)
+    print(Value)
+    end
+})
+```
+```luau
+--[[
+Name = "Dropdown" >> Dropdown Text
+Options = {"1", "2", "3", "4", "5", "6", "7"} >> Options That Can Be Selected, you can add more.
+Default = "1" >> Initial Selected Option
+Callback = function(Value) -- Value = Selected Option Name
+-- Function Here
+end
+]]
+```
+# EXTRA
