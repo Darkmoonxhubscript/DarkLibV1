@@ -727,6 +727,7 @@ function AddSlider(Parent, Config)
         TextColor3 = Color3.fromRGB(240, 240, 240),
         Font = Enum.Font.FredokaOne,
         Active = true,
+        Draggable = true
     })
     Corner(SliderButton)
 
