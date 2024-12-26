@@ -836,7 +836,7 @@ function AddDropDown(Parent, Configs)
         ScrollingDirection = "Y",
         ElasticBehavior = "Never",
         ScrollBarThickness = 0,
-        AutomaticCanvasSize = "Y",
+        AutomaticCanvasSize = Enum.AutomaticSize.Y,
         CanvasSize = UDim2.new(0, 0, 0, 0)
     })
   
@@ -849,18 +849,18 @@ function AddDropDown(Parent, Configs)
   
     local ListLayout = Create("UIListLayout", ListDrop, {
         Padding = UDim.new(0, 5),
-        VerticalAlignment = "Bottom"
+        VerticalAlignment = Enum.VerticalAlignment.Top
     })
   
     local function AddOption(name)
         local NewOption = Create("TextButton", ListDrop, {
-            Size = UDim2.new(1, 0, 0, 20),
+            Size = UDim2.new(1, 0, 0, 25),
             Text = name,
             TextSize = 15,
             Font = Enum.Font.FredokaOne,
             TextColor3 = Color3.fromRGB(240, 240, 240),
             BackgroundTransparency = 0.5,
-            TextXAlignment = "Left",
+            TextXAlignment = Enum.TextXAlignment.Left,
             BackgroundColor3 = Color3.fromRGB(120, 120, 120)
         })
         Corner(NewOption)
@@ -884,8 +884,6 @@ function AddDropDown(Parent, Configs)
             NewOption.BackgroundColor3 = Color3.fromRGB(120, 120, 120)
             DropDownText2.Text = NewOption.Text
         end)
-        
-        ListDrop.CanvasSize = ListDrop.CanvasSize + UDim2.new(0, 0, 0, 25)
     end
   
     for i = 1, #Options do
@@ -895,15 +893,10 @@ function AddDropDown(Parent, Configs)
     local DropOnOff = false
     DropdownFrame.MouseButton1Click:Connect(function()
         local frameSize = UDim2.new(0, 490, 0, 100)
-        for i, v in pairs(ListDrop:GetChildren()) do
-            if v.Name == "Option" and i <= 7 then
-                frameSize = frameSize + UDim2.new(0, 0, 0, 25)
-            end
-        end
         if DropOnOff == false then
             DropOnOff = true
-            Bagulho1.Visible = DropOnOff
-            ListDrop.Visible = DropOnOff
+            Bagulho1.Visible = true
+            ListDrop.Visible = true
             local tween1 = TweenService:Create(DropdownFrame, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Size = frameSize})
             local tween2 = TweenService:Create(Setinha, TweenInfo.new(0.2), {Rotation = 180})
             tween1:Play()
@@ -915,12 +908,10 @@ function AddDropDown(Parent, Configs)
             tween1:Play()
             tween2:Play()
             tween1.Completed:Wait()
-            Bagulho1.Visible = DropOnOff
-            ListDrop.Visible = DropOnOff
+            Bagulho1.Visible = false
+            ListDrop.Visible = false
         end
     end)
-    
-    ListDrop.CanvasSize = ListDrop.CanvasSize + UDim2.new(0, 0, 0, 10)
   
     return ListDrop
 end
