@@ -185,11 +185,15 @@ end
 # EXTRA
 ## Add a Minimize Button
 ```luau
-Coming Soon
+AddMinimizeButton({
+  ImageId = "10734897102"
+})
 ```
 ```luau
 ---[[
-Coming Soon
+ImageId = "IdOnly" >> Button Image Id
+You Can Get Ids in:
+https://github.com/Darkmoonxhubscript/DarkLibV1/blob/main/Icons.luau
 ]]
 ```
 ## Add A Float Toggle
