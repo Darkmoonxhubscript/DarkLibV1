@@ -1000,6 +1000,9 @@ MakeDrag(MinimizeButton)
   local MinimizeButtonState = true
   MinimizeButton.MouseButton1Click:Connect(function()
     if MinimizeButtonState then
+      local tweenClose = TweenService:Create(MainFrame, TweenInfo.new(0.15, Enum.EasingStyle.Linear), {Size = UDim2.new(0, 0, 0, 0)})
+  tweenClose:Play()
+  tweenClose.Completed:Wait()
       SetProps(MainFrame, {
         Visible = false
       })
@@ -1009,6 +1012,9 @@ MakeDrag(MinimizeButton)
         Visible = true
       })
         MinimizeButtonState = true
+        local tweenOpen = TweenService:Create(MainFrame, TweenInfo.new(0.15, Enum.EasingStyle.Linear), {Size = UDim2.new(0.5, 0, 0.6, 0)})
+  tweenOpen:Play()
+  tweenOpen.Completed:Wait()
 end
 end)
   
