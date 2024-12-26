@@ -1106,7 +1106,7 @@ function AddDiscordInvite(Parent, Configs)
   
   local JoinButton = Create("TextButton", DiscordInviteFrame, {
     Name = "JoinButton",
-    Size = UDim2.new(1, -14, 0, 16),
+    Size = UDim2.new(1, -14, 0, 30),
     AnchorPoint = Vector2.new(0.5, 1),
     Position = UDim2.new(0.5, 0, 1, -7),
     Text = "Join Server",
