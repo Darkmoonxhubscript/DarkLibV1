@@ -679,7 +679,7 @@ function AddSlider(Parent, Config)
   end
  
  local SliderFrame = Create("Frame", Parent, {
-        Size = UDim2.new(0, 490, 0, 60),
+        Size = UDim2.new(0, 490, 0, 70),
         Position = UDim2.new(0, 0, 0, 0),
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
         BackgroundTransparency = 0
@@ -688,8 +688,8 @@ function AddSlider(Parent, Config)
     Corner(SliderFrame)
   
   local TextBox = Create("TextBox", SliderFrame, {
-    Size = UDim2.new(0, 80, 1, -10),
-    Position = UDim2.new(1, -90, 0, 5),
+    Size = UDim2.new(0, 60, 1, -40),
+    Position = UDim2.new(1, -70, 0, 5),
     ClearTextOnFocus = false,
     BackgroundTransparency = 1,
     Text = Default,
@@ -700,6 +700,17 @@ function AddSlider(Parent, Config)
   })
   Stroke(TextBox, Color3.fromRGB(120, 120, 120), 1)
   Corner(TextBox)
+  
+  local TextLabel = Create("TextLabel", SliderFrame, {
+    Size = UDim2.new(1, -10, 0, 25),
+    Position = UDim2.new(0, 10, 0, 5),
+    TextSize = 14,
+    TextColor3 = Color3.fromRGB(240, 240, 240),
+    TextXAlignment = "Left",
+    Text = name,
+    Font = Enum.Font.FredokaOne,
+    BackgroundTransparency = 1
+  })
   
   TextBox.FocusLost:Connect(function()
     
