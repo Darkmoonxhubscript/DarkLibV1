@@ -920,8 +920,7 @@ function AddDropDown(Parent, Configs)
 end
 
 function AddFloatToggle(Configs)
-  local Name = Configs[1] or Configs.Name or "Atalho"
-  local visible = Configs[2] or Configs.Visible or false
+  local Name = Configs[1] or Configs.Name or "Toggle"
   local Callback = Configs[3] or Configs.Callback or function() end
   
   local Toggle_Atalho = Create("Frame", ScreenGui, {
@@ -931,7 +930,7 @@ function AddFloatToggle(Configs)
     BackgroundColor3 = Color3.fromRGB(10, 10, 10),
     Draggable = true,
     Active = true,
-    Visible = Visible
+    Visible = true,
   })Corner(Toggle_Atalho)
   
   local TextLabel = Create("TextLabel", Toggle_Atalho, {
@@ -964,7 +963,7 @@ function AddFloatToggle(Configs)
     BackgroundTransparency = 1
   })Corner(Frame2, UDim.new(5, 0))
   
-  Stroke(Frame1, Color3.fromRGB(100, 100, 100), 1)
+  Stroke(Frame, Color3.fromRGB(100, 100, 100), 1)
   Stroke(Frame2, Color3.fromRGB(100, 100, 100), 1)
   
   local OnOff = false
