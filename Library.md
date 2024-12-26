@@ -108,7 +108,41 @@ Default = "Default Text" >> TextBox Default Text
 AutoClear = false >> Auto Clear Text When Input
 PlaceHolder = "Input Text Here" >> PlaceHolder Text From TextBox
 Callback = function(Value) --Value = TextBox Text
---Functiom Here
+--Function Here
 end
 ]]
 ```
+## Add a TextLabel
+```luau
+local TextLabel1 = AddTextLabel(Tab1, {
+  Name = "My Text"
+})
+```
+```luau
+--[[
+Name = "My Text" >> TextLabel Text
+]]
+```
+## Add a Paragraph
+```luau
+local Paragraph1 = AddParagraph(Tab1, {
+  Name = "My Title",
+  SubText = "My Paragraph"
+})
+```
+```luau
+--[[
+Name = "My Title" >> Paragraph Title
+SubText = "My Paragraph" >> Paragraph Text
+]]
+```
+## Add a Slider
+```luau
+
+```
+```luau
+--[[
+
+]]
+```
+
