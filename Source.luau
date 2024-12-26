@@ -725,6 +725,8 @@ function AddSlider(Parent, Configs)
         ClearTextOnFocus = false,
         PlaceholderText = tostring(Default * Increase),
     })
+  Stroke(TextBox, Color3.fromRGB(120, 120, 120), 1)
+  Corner(TextBox)
 
     local function SnapToIncrease(value)
         return math.floor(value / Increase + 0.5) * Increase
