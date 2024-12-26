@@ -196,6 +196,24 @@ You Can Get Ids in:
 https://github.com/Darkmoonxhubscript/DarkLibV1/blob/main/Icons.luau
 ]]
 ```
+## Add a Server Invite
+```luau
+local ServerInvite = AddDiscordInvite(Tab1, {
+  Name = "You Server Community",
+  Description = "Join our discord community to receive information about the next update",
+  Logo = "rbxassetid://ID_ONLY",
+  Invite = "https://discord.gg/ServerCode",
+})
+```
+```luau
+--[[
+Name = "Name" >> Server Name (String)
+Description = "Description" >> Inform the person why they should join (String)
+Logo = "rbxassetid://ID_ONLY" >> Replace "ID_ONLY" with your server icon ID (String)
+Invite = "https://discord.gg/ServerCode" >> Replace "ServerCode" with your server code. (String)
+]]
+```
+
 ## Add A Float Toggle
 ```luau
 AddFloatToggle({
