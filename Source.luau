@@ -354,12 +354,12 @@ function NewTab(Config)
     local TabNameLabel = Create("TextLabel", TabButton,{
       Text = TabName,
       BackgroundTransparency = 1,
-      TextColor3 = Color3.fromRGB(200, 200, 200),
+      TextColor3 = Color3.fromRGB(240, 240, 240),
       Font = Enum.Font.FredokaOne,
       TextSize = 15,
       TextDirection = "LeftToRight",
       TextXAlignment = Enum.TextXAlignment.Left,
-      TextYAlignment = Enum.TextYAlignment.Bottom,
+      TextYAlignment = Enum.TextYAlignment.Center,
       Size = UDim2.new(0, 100, 0, 20),
       Position = UDim2.new(0, 25, 0, 5)
     })
