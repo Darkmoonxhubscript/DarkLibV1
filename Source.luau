@@ -256,6 +256,112 @@ Create("TextLabel", TopBar, {
     BackgroundTransparency = 1
 })
 
+function MakeDialog(Configs)
+  local Title = Configs[1] or Configs.Title or Configs.Name or Configs.Text or " Title"
+  local Description = Configs[2] or Configs.Description or "Description"
+  local YesCallback = Configs[3] or Configs.YesCallback or function() end
+  local NoCallback = Configs[4] or Configs.NoCallback or function() DialogEnd() end
+  
+  local DialogBackground = Create("Frame", ScreenGui, {
+    Name = "Dialog",
+    AnchorPoint = Vector2.new(0.5, 0.5),
+    Size = UDim2.new(0, 0, 0, 0),
+    Position = UDim2.new(0.5, 0, 0.5, 0),
+    BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+  })Corner(DialogBackground, UDim.new(0, 20))
+
+local TweenOpen = TweenService:Create(DialogBackground, TweenInfo.new(0.15, Enum.EasingStyle.Linear), {Size = UDim2.new(0.3, 0, 0.5, 0)})
+  TweenOpen:Play()
+  TweenOpen.Completed:Wait()
+
+Create("Frame", DialogBackground, {
+    Name = "Separator",
+    AnchorPoint = Vector2.new(0.5, 0.5),
+    Size = UDim2.new(1, 0, 0, 3),
+    Position = UDim2.new(0.5, 0, 0.5, -120),
+    BackgroundColor3 = Color3.fromRGB(65, 65, 65)
+  })Corner(Separator)
+
+Create("Frame", DialogBackground, {
+    Name = "Separator",
+    AnchorPoint = Vector2.new(0.5, 0.5),
+    Size = UDim2.new(1, 0, 0, 3),
+    Position = UDim2.new(0.5, 0, 0.5, 90),
+    BackgroundColor3 = Color3.fromRGB(65, 65, 65)
+  })Corner(Separator)
+
+  local Title = Create("TextLabel", DialogBackground, {
+    Text = Title,
+    Size = UDim2.new(0, 384, 0, 30),
+    Position = UDim2.new(0, 0, 0, 0),
+    TextSize = 35,
+    Font = Enum.Font.FredokaOne,
+    BackgroundTransparency = 1,
+    TextWrapped = false,
+    TextColor3 = Color3.fromRGB(255, 255, 255),
+    TextXAlignment = Enum.TextXAlignment.Center,
+    TextYAlignment = Enum.TextYAlignment.Center
+  })
+   
+   local Description = Create("TextLabel", DialogBackground, {
+    Text = Description,
+    Size = UDim2.new(0, 380, 0, 200),
+    Position = UDim2.new(0, 5, 0, 30),
+    TextSize = 40,
+    Font = Enum.Font.FredokaOne,
+    BackgroundTransparency = 1,
+    TextWrapped = true,
+    TextColor3 = Color3.fromRGB(120, 120, 120),
+    TextXAlignment = Enum.TextXAlignment.Center,
+    TextYAlignment = Enum.TextYAlignment.Top
+  })
+   
+   local YesButton = Create("TextButton", DialogBackground, {
+    Text = "Yes",
+    Size = UDim2.new(0, 150, 0, 50),
+    Position = UDim2.new(0, 227, 0, 240),
+    TextSize = 25,
+    Font = Enum.Font.FredokaOne,
+    BackgroundColor3 = Color3.fromRGB(0, 200, 0),
+    BackgroundTransparency = 0,
+    TextScaled = true,
+    TextColor3 = Color3.fromRGB(255, 255, 255),
+    TextXAlignment = Enum.TextXAlignment.Center,
+    TextYAlignment = Enum.TextYAlignment.Center
+  })
+   Corner(YesButton)
+   
+   local NoButton = Create("TextButton", DialogBackground, {
+    Text = "No",
+    Size = UDim2.new(0, 150, 0, 50),
+    Position = UDim2.new(0, 5, 0, 240),
+    TextSize = 25,
+    Font = Enum.Font.FredokaOne,
+    BackgroundColor3 = Color3.fromRGB(210, 0, 0),
+    BackgroundTransparency = 0,
+    TextScaled = true,
+    TextColor3 = Color3.fromRGB(255, 255, 255),
+    TextXAlignment = Enum.TextXAlignment.Center,
+    TextYAlignment = Enum.TextYAlignment.Center
+  })
+Corner(NoButton)
+   
+   YesButton.MouseButton1Click:Connect(function()
+     YesCallback()
+end)
+
+NoButton.MouseButton1Click:Connect(function()
+     NoCallback()
+end)
+   
+   function DialogEnd()
+     local TweenClose = TweenService:Create(DialogBackground, TweenInfo.new(0.15, Enum.EasingStyle.Linear), {Size = UDim2.new(0, 0, 0, 0)})
+  TweenClose:Play()
+  TweenClose.Completed:Wait()
+     DialogBackground:Destroy()
+   end
+end
+
 -- Close
 local CloseButton = Create("TextButton", TopBar, {
     Name = "Close",
@@ -268,10 +374,19 @@ local CloseButton = Create("TextButton", TopBar, {
     Position = UDim2.new(1, -50, 0, 0)
 })
 CloseButton.MouseButton1Click:Connect(function()
-  local tween = TweenService:Create(MainFrame, TweenInfo.new(0.15, Enum.EasingStyle.Linear), {Size = UDim2.new(0, 0, 0, 0)})
+  MakeDialog({
+        Title = "🚨 Alert 🚨",
+        Description = "You Really Want Close The Script???",
+        YesCallback = function()
+          local tween = TweenService:Create(MainFrame, TweenInfo.new(0.15, Enum.EasingStyle.Linear), {Size = UDim2.new(0, 0, 0, 0)})
   tween:Play()
   tween.Completed:Wait()
   ScreenGui:Destroy()
+        end,
+        NoCallback = function()
+          DialogEnd()
+          end
+      })
 end)
 
 -- LeftBar
@@ -1188,86 +1303,6 @@ function AddDiscordInvite(Parent, Configs)
         })ClickDelay = false
       end)
   
-end
-
-function MakeDialog(Configs)
-  local Title = Configs[1] or Configs.Title or Configs.Name or Configs.Text or " Title"
-  local Description = Configs[2] or Configs.Description or "Description"
-  local YesCallback = Configs[3] or Configs.YesCallback or function() end
-  local NoCallback = Configs[4] or Configs.NoCallback or function() DialogEnd() end
-  
-  local DialogBackground = Create("Frame", ScreenGui, {
-    Name = "Dialog",
-    AnchorPoint = Vector2.new(0.5, 0.5),
-    Size = UDim2.new(0.3, 0, 0.5, 0),
-    Position = UDim2.new(0.5, 0, 0.5, 0),
-    BackgroundColor3 = Color3.fromRGB(45, 45, 45)
-  })Corner(DialogBackground, UDim.new(0, 20))
-
-local Separator = Create("Frame", DialogBackground, {
-    Name = "Separator",
-    AnchorPoint = Vector2.new(0.5, 0.5),
-    Size = UDim2.new(1, 0, 0, 3),
-    Position = UDim2.new(0.5, 0, 0.5, -120),
-    BackgroundColor3 = Color3.fromRGB(65, 65, 65)
-  })Corner(Separator)
-
-  local Title = Create("TextLabel", DialogBackground, {
-    Text = Title,
-    Size = UDim2.new(0, 384, 0, 30),
-    Position = UDim2.new(0, 0, 0, 0),
-    TextSize = 20,
-    Font = Enum.Font.FredokaOne,
-    BackgroundTransparency = 1,
-    TextWrapped = false,
-    TextColor3 = Color3.fromRGB(255, 255, 255),
-    TextXAlignment = Enum.TextXAlignment.Center,
-    TextYAlignment = Enum.TextYAlignment.Center
-  })
-   
-   local Description = Create("TextLabel", DialogBackground, {
-    Text = Description,
-    Size = UDim2.new(0, 380, 0, 50),
-    Position = UDim2.new(0, 5, 0, 30),
-    TextSize = 25,
-    Font = Enum.Font.FredokaOne,
-    BackgroundTransparency = 1,
-    TextWrapped = false,
-    TextColor3 = Color3.fromRGB(120, 120, 120),
-    TextXAlignment = Enum.TextXAlignment.Left,
-    TextYAlignment = Enum.TextYAlignment.Top
-  })
-   
-   local YesButton = Create("TextButton", DialogBackground, {
-    Text = "Yes",
-    Size = UDim2.new(0, 100, 0, 50),
-    Position = UDim2.new(0, 5, 0, 30),
-    TextSize = 25,
-    Font = Enum.Font.FredokaOne,
-    BackgroundColor3 = Color3.fromRGB(63, 224, 0),
-    BackgroundTransparency = 0,
-    TextColor3 = Color3.fromRGB(255, 255, 255),
-    TextXAlignment = Enum.TextXAlignment.Center,
-    TextYAlignment = Enum.TextYAlignment.Center
-  })
-   Corner(YesButton)
-   local NoButton = Create("TextButton", DialogBackground, {
-    Text = "No",
-    Size = UDim2.new(0, 100, 0, 50),
-    Position = UDim2.new(0, 5, 0, 30),
-    TextSize = 25,
-    Font = Enum.Font.FredokaOne,
-    BackgroundColor3 = Color3.fromRGB(255, 0, 0),
-    BackgroundTransparency = 0,
-    TextColor3 = Color3.fromRGB(255, 255, 255),
-    TextXAlignment = Enum.TextXAlignment.Center,
-    TextYAlignment = Enum.TextYAlignment.Center
-  })
-Corner(NoButton)
-   
-   function DialogEnd()
-     DialogBackground:Destroy()
-   end
 end
 
 end
