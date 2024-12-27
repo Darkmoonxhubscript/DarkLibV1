@@ -1041,7 +1041,7 @@ function AddFloatToggle(Configs)
 end
 
 function AddMinimizeButton(Configs)
-  local ImageId = Configs[1] or Configs.ImageId or "10734897102"
+  local ImageId = Configs[1] or Configs.Icon or Configs.Logo or "10734897102"
   
   if not ImageId:find("rbxassetid://") then
        ImageId = "rbxassetid://" .. ImageId
@@ -1084,7 +1084,7 @@ end)
 function AddDiscordInvite(Parent, Configs)
   local Name = Configs[1] or Configs.Name or Configs.Text or "DarkMoonHub Community"
   local Description = Configs[2] or Configs.Description or "Join our discord community to receive information about the next update"
-  local Logo = Configs[3] or Configs.Logo or "10734897102"
+  local Logo = Configs[3] or Configs.Logo or Configs.Icon or "10734897102"
   local Invite = Configs[4] or Configs.Invite or "https://discord.gg/YDXM43cBU6"
   
   if not Logo:find("rbxassetid://") then
