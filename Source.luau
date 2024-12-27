@@ -938,7 +938,7 @@ function AddDropDown(Parent, Configs)
       for _,v in pairs(ListDrop:GetChildren()) do
         if v.Name == "Option" then
           v.TextColor3 = Color3.fromRGB(240, 240, 240)
-          v.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+          v.BackgroundColor3 = Color3.fromRGB(70, 70, 470)
         end
       end
       Callback(NewOption.Text)
