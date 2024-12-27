@@ -1207,14 +1207,14 @@ function MakeDialog(Configs)
 local Separator = Create("Frame", DialogBackground, {
     Name = "Separator",
     AnchorPoint = Vector2.new(0.5, 0.5),
-    Size = UDim2.new(0.2, 0, 0.2, 3),
+    Size = UDim2.new(1, 0, 0, 3),
     Position = UDim2.new(0.5, 0, 0.5, -120),
     BackgroundColor3 = Color3.fromRGB(65, 65, 65)
   })Corner(Separator)
 
   local Title = Create("TextLabel", DialogBackground, {
     Text = Title,
-    Size = UDim2.new(0.4, 384, 0.4, 30),
+    Size = UDim2.new(0, 384, 0, 30),
     Position = UDim2.new(0, 0, 0, 0),
     TextSize = 20,
     Font = Enum.Font.FredokaOne,
@@ -1227,7 +1227,7 @@ local Separator = Create("Frame", DialogBackground, {
    
    local Description = Create("TextLabel", DialogBackground, {
     Text = Description,
-    Size = UDim2.new(0, 380, 0, 200),
+    Size = UDim2.new(0, 380, 0, 50),
     Position = UDim2.new(0, 5, 0, 30),
     TextSize = 25,
     Font = Enum.Font.FredokaOne,
@@ -1250,7 +1250,7 @@ local Separator = Create("Frame", DialogBackground, {
     TextXAlignment = Enum.TextXAlignment.Center,
     TextYAlignment = Enum.TextYAlignment.Center
   })
-   
+   Corner(YesButton)
    local NoButton = Create("TextButton", DialogBackground, {
     Text = "No",
     Size = UDim2.new(0, 100, 0, 50),
@@ -1263,6 +1263,7 @@ local Separator = Create("Frame", DialogBackground, {
     TextXAlignment = Enum.TextXAlignment.Center,
     TextYAlignment = Enum.TextYAlignment.Center
   })
+Corner(NoButton)
    
    function DialogEnd()
      DialogBackground:Destroy()
