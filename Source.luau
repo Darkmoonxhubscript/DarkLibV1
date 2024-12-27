@@ -978,7 +978,7 @@ function AddFloatToggle(Configs)
   local Name = Configs[1] or Configs.Name or Configs.Text or "Toggle"
   local Callback = Configs[2] or Configs.Callback or function() end
   
-  local Toggle_Atalho = Create("Frame", ScreenGui, {
+  local FloatToggle = Create("Frame", ScreenGui, {
     Size = UDim2.new(0, 100, 0, 60),
     Position = UDim2.new(0.8, 0, 0.8, 0),
     AnchorPoint = Vector2.new(0.5, 0.5),
@@ -1020,8 +1020,8 @@ function AddFloatToggle(Configs)
     BackgroundTransparency = 1
   })Corner(Frame2, UDim.new(5, 0))
   
-  Stroke(Frame, Color3.fromRGB(200, 200, 200), 1)
-  Stroke(Frame2, Color3.fromRGB(255, 255, 255), 1)
+  Stroke(Frame, Color3.fromRGB(120, 120, 120), 1)
+  Stroke(Frame2, Color3.fromRGB(0, 200, 210), 1)
   
   local OnOff = false
   Callback(OnOff)
