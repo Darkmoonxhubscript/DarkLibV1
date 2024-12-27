@@ -823,17 +823,24 @@ function AddDropDown(Parent, Configs)
     local Options = Configs[2] or Configs.Options or {"1", "2"}
     local Default = Configs[3] or Configs.Default or "1"
     local Callback = Configs[4] or Configs.Callback or function() end
-    
-    local DropButton = Create("TextButton", Parent, {
+   
+    local DropdownFrame = Create("Frame", Parent, {
         Size = UDim2.new(0, 490, 0, 40),
         Position = UDim2.new(0, 0, 0, 0),
         BackgroundColor3 = Color3.fromRGB(45, 45, 45),
-        BackgroundTransparency = 0,
+        BackgroundTransparency = 0
+    })
+  Stroke(DropdownFrame, Color3.fromRGB(120, 120, 120), 1)
+    Corner(DropdownFrame)
+    
+    local DropButton = Create("TextButton", DropdownFrame, {
+        Size = UDim2.new(0, 30, 0, 30),
+        Position = UDim2.new(1, -30, 0, 5),
+        BackgroundColor3 = Color3.fromRGB(45, 45, 45),
+        BackgroundTransparency = 1,
         Text = ""
     })
-    Stroke(DropButton, Color3.fromRGB(120, 120, 120), 1)
-    Corner(DropButton)
-
+    
     local DropDownText1 = Create("TextLabel", DropButton, {
         Size = UDim2.new(0, 200, 0, 40),
         Position = UDim2.new(0, 10, 0, 0),
@@ -917,7 +924,7 @@ function AddDropDown(Parent, Configs)
       TextColor3 = Color3.fromRGB(240, 240, 240),
       BackgroundTransparency = 0.5,
       TextXAlignment = "Left",
-      BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+      BackgroundColor3 = Color3.fromRGB(70, 70, 70)
     })Corner(NewOption)
     
     if NewOption.Text == Default then
@@ -958,12 +965,12 @@ function AddDropDown(Parent, Configs)
       DropdownOn = true
       Bagulho1.Visible = DropdownOn
       ListDrop.Visible = DropdownOn
-      local tween1 = TweenService:Create(DropButton, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Size = FrameSizeNew})
+      local tween1 = TweenService:Create(DropdownFrame, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Size = FrameSizeNew})
       local tween2 = TweenService:Create(Setinha, TweenInfo.new(0.2), {Rotation = 180})
       tween1:Play()tween2:Play()
     else
       DropdownOn = false
-      local tween1 = TweenService:Create(DropButton, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Size = UDim2.new(0, 490, 0, 40)})
+      local tween1 = TweenService:Create(DropdownFrame, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Size = UDim2.new(0, 490, 0, 40)})
       local tween2 = TweenService:Create(Setinha, TweenInfo.new(0.2), {Rotation = 0})
       tween1:Play()tween2:Play()tween1.Completed:Wait()
       Bagulho1.Visible = DropdownOn
