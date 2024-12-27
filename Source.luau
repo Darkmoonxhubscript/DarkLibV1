@@ -104,13 +104,13 @@ function GetIcon(IconName)
   if IconName:find("rbxassetid://") or IconName:len() < 1 then return IconName end
   IconName = IconName:lower():gsub("lucide", ""):gsub("-", "")
   
-  for Name, Icon in pairs(darklib.Icons) do
+  for Name, Icon in pairs(loadstring(game:HttpGet("https://raw.githubusercontent.com/Darkmoonxhubscript/DarkLibV1/refs/heads/main/Icons.luau"))()) do
     Name = Name:gsub("lucide", ""):gsub("-", "")
     if Name == IconName then
       return Icon
     end
   end
-  for Name, Icon in pairs(darklib.Icons) do
+  for Name, Icon in pairs(loadstring(game:HttpGet("https://raw.githubusercontent.com/Darkmoonxhubscript/DarkLibV1/refs/heads/main/Icons.luau"))()) do
     Name = Name:gsub("lucide", ""):gsub("-", "")
     if Name:find(IconName) then
       return Icon
@@ -320,19 +320,24 @@ local FirstTab = nil
 
 function NewTab(Config)
     local TabName = Config.Name or "Tab"
+    local TabIcon = Config.Icon or "House"
     local TabButton
     local TabFrame
-
+     
+     TabIcon = GetIcon(TabIcon)
+    if not TabIcon:find("rbxassetid://") or TabIcon:gsub("rbxassetid://", ""):len() < 6 then
+      TabIcon = false
+    end
     
     if not FirstTab then
         FirstTab = TabName
         SelectedTab = TabName  
     end
-
+ 
     
     TabButton = Create("TextButton", LeftScrollFrame, {
         Name = "TabButton",
-        Text = TabName,
+        Text = "",
         TextColor3 = Color3.fromRGB(240, 240, 240),
         Font = Enum.Font.FredokaOne,
         TextSize = 14,
@@ -347,6 +352,22 @@ function NewTab(Config)
     })
     --Stroke(TabButton, Color3.fromRGB(200, 200, 200))
     --Corner(TabButton, UDim.new(0.3, 0))  
+    
+    local TabNameLabel = Create("TextLabel", LeftScrollFrame,{
+      Text = TabName,
+      TextColor3 = Color3.fromRGB(240, 240, 240),
+      Font = Enum.Font.FredokaOne,
+      TextSize = 14,
+      TextXAlignment = Enum.TextXAlignment.Center,
+      TextTruncate = "AtEnd",
+      AutomaticSize = Enum.AutomaticSize.X,
+      Position = UDim2.new(0, 0, 0, 0)  
+    })
+  
+    local TabIcon = Create("ImageLabel", LeftScrollFrame, {
+      Text = "",
+      Image = GetIcon(TabIcon)
+    })
 
     TabFrame = Create("ScrollingFrame", RightScrollFrame, {
         Name = TabName,
