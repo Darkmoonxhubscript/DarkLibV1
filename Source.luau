@@ -841,7 +841,7 @@ function AddDropDown(Parent, Configs)
         Text = ""
     })
     
-    local DropDownText1 = Create("TextLabel", DropButton, {
+    local DropDownText1 = Create("TextLabel", DropdownFrame, {
         Size = UDim2.new(0, 200, 0, 40),
         Position = UDim2.new(0, 10, 0, 0),
         Text = Name,
@@ -855,14 +855,14 @@ function AddDropDown(Parent, Configs)
         TextYAlignment = Enum.TextYAlignment.Center
     })
   
-  local DropDownText2Frame = Create("Frame", DropButton, {
+  local DropDownText2Frame = Create("Frame", DropdownFrame, {
         Size = UDim2.new(0, 200, 0, 30),
         Position = UDim2.new(0, 246, 0, 5),
         BackgroundColor3 = Color3.fromRGB(80, 80, 80),
         BackgroundTransparency = 0
     })Corner(DropDownText2Frame)
   
-    local DropDownText2 = Create("TextLabel", DropButton, {
+    local DropDownText2 = Create("TextLabel", DropdownFrame, {
         Size = UDim2.new(0, 200, 0, 30),
         Position = UDim2.new(0, 247, 0, 5),
         Text = Default,
@@ -876,13 +876,13 @@ function AddDropDown(Parent, Configs)
         TextYAlignment = Enum.TextYAlignment.Center
     })
     
-    local Bagulho1 = Create("Frame", DropButton, {
+    local Bagulho1 = Create("Frame", DropdownFrame, {
     Size = UDim2.new(1, 0, 0, 0),
     Position = UDim2.new(0, 0, 0, 35),
     Visible = false
   })Stroke(Bagulho1, Color3.fromRGB(120, 120, 120), 1)
   
-  local ListDrop = Create("ScrollingFrame", DropButton, {
+  local ListDrop = Create("ScrollingFrame", DropdownFrame, {
     Size = UDim2.new(1, -4, 1, -35),
     Position = UDim2.new(0, 2, 1, 0),
     AnchorPoint = Vector2.new(0, 1),
@@ -896,7 +896,7 @@ function AddDropDown(Parent, Configs)
     CanvasSize = UDim2.new(0, 0, 0, 0)
   })
     
-   local Setinha = Create("ImageLabel", DropButton, {
+   local Setinha = Create("ImageLabel", DropdownFrame, {
      Image = "rbxassetid://6031090990",
      Size = UDim2.new(0, 30, 0, 30),
      Position = UDim2.new(1, -30, 0, 5),
