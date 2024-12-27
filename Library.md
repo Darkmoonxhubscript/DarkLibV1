@@ -1,7 +1,7 @@
 # DarkLib V1
 ## **TIPS**
 - Where it says  'Icon = "Id"' you can put either just the ID or "rbxassetid://id" both ways work.
-- 
+
 - Where it also says ' Name = "Text" ' you can put ' Text = "Text" ' both ways work.
 
 ## LoadString (REQUIRED)
