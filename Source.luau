@@ -2,6 +2,8 @@ local UIS = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local CoreGui = game:GetService("CoreGui")
 
+
+
 local Tabs = {}
 
 local function SetProps(Instance, Props)
@@ -16,7 +18,7 @@ end
 local function Create(...)
     local args = {...}
     local new = Instance.new(args[1])
-    local parent = args[2]
+    local parent = args[2]o
     local props = args[3]
     
     if parent then
@@ -626,28 +628,28 @@ function AddToggle(Parent, Configs)
     Corner(ToggleFrame1)
 
     local ToggleFrame2 = Create("Frame", ToggleFrame1, {
-        Size = UDim2.new(0, 30, 0, 30),
-        Position = UDim2.new(1, -40, 0, 5),
+        Size = UDim2.new(0, 70, 0, 30),
+        Position = UDim2.new(1, -80, 0, 5),
         BackgroundColor3 = Color3.fromRGB(70, 70, 70),
-        BackgroundTransparency = 0
+        BackgroundTransparency = 1
     })
     Stroke(ToggleFrame2, Color3.fromRGB(100, 100, 100), 1)
     Corner(ToggleFrame2)
 
     local ToggleActive = Create("Frame", ToggleFrame1, {
-        Size = UDim2.new(0, 30, 0, 30),
-        Position = UDim2.new(1, -40, 0, 5),
+        Size = UDim2.new(0, 25, 0, 25),
+        Position = UDim2.new(0, 413, 0, 8),
         BackgroundColor3 = Color3.fromRGB(160, 160, 160),
-        Visible = false
+        BackgroundTransparency = 0
     })
     Stroke(ToggleActive, Color3.fromRGB(160, 160, 160), 1)
     Corner(ToggleActive)
 
     local ToggleState = false
     if Default then
-        SetProps(ToggleActive, {
-            Visible = true
-        })
+      local tween = TweenService:Create(ToggleActive, TweenInfo.new(0.15, Enum.EasingStyle.Linear), {Position = UDim2.new(1, -37, 0, 8)})
+          tween:Play()
+          tween.Completed:Wait()
         ToggleState = true
     end
 
@@ -669,25 +671,19 @@ function AddToggle(Parent, Configs)
 
     local ToggleButtonArea = Create("TextButton", ToggleFrame1, {
         Text = "",
-        Size = UDim2.new(0, 30, 0, 30),
-        Position = UDim2.new(1, -40, 0, 5),
+        Size = UDim2.new(0, 70, 0, 30),
+        Position = UDim2.new(1, -80, 0, 5),
         BackgroundTransparency = 1
     })
 
     ToggleButtonArea.MouseButton1Click:Connect(function()
         if ToggleState then
-          local tween = TweenService:Create(ToggleActive, TweenInfo.new(0.15, Enum.EasingStyle.Linear), {Size = UDim2.new()})
+          local tween = TweenService:Create(ToggleActive, TweenInfo.new(0.15, Enum.EasingStyle.Linear), {Position = UDim2.new(0, 413, 0, 8)})
           tween:Play()
           tween.Completed:Wait()
-            SetProps(ToggleActive, {
-                Visible = false
-            })
             ToggleState = false
         elseif not ToggleState then
-          SetProps(ToggleActive, {
-                Visible = true
-            })
-          local tween = TweenService:Create(ToggleActive, TweenInfo.new(0.15, Enum.EasingStyle.Linear), {Size = UDim2.new(0, 30, 0, 30)})
+          local tween = TweenService:Create(ToggleActive, TweenInfo.new(0.15, Enum.EasingStyle.Linear), {Position = UDim2.new(1, -37, 0, 8)})
           tween:Play()
           tween.Completed:Wait()
             ToggleState = true
@@ -1147,7 +1143,7 @@ function AddFloatToggle(Configs)
   })Corner(Frame2, UDim.new(5, 0))
   
   Stroke(Frame, Color3.fromRGB(120, 120, 120), 1)
-  Stroke(Frame2, Color3.fromRGB(0, 200, 210), 1)
+  Stroke(Frame2, Color3.fromRGB(120, 120, 120), 1)
   
   local OnOff = false
   Callback(OnOff)
