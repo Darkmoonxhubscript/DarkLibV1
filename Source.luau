@@ -986,10 +986,10 @@ function AddFloatToggle(Configs)
     Draggable = true,
     Active = true,
     Visible = true,
-  })Corner(Toggle_Atalho)
-   MakeDrag(Toggle_Atalho)
+  })Corner(FloatToggle)
+   MakeDrag(FloatToggle)
   
-  local TextLabel = Create("TextLabel", Toggle_Atalho, {
+  local TextLabel = Create("TextLabel", FloatToggle, {
     Size = UDim2.new(1, 0, 0, 20),
     TextSize = 20,
     Font = Enum.Font.FredokaOne,
@@ -999,7 +999,7 @@ function AddFloatToggle(Configs)
     TextScaled = true,
   })
   
-  local Button = Create("TextButton", Toggle_Atalho, {
+  local Button = Create("TextButton", FloatToggle, {
     Size = UDim2.new(1, 0, 0, 40),
     Position = UDim2.new(0, 0, 0, 20),
     BackgroundTransparency = 1,
@@ -1037,7 +1037,7 @@ function AddFloatToggle(Configs)
     Callback(OnOff)
   end)
   
-  return Toggle_Atalho
+  return FloatToggle
 end
 
 function AddMinimizeButton(Configs)
