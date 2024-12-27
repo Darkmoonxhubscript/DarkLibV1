@@ -190,13 +190,11 @@ end
 # EXTRA
 ## Add a Minimize Button
 ```luau
-AddMinimizeButton({
-  ImageId = "10734897102"
-})
+AddMinimizeButton({Icon = "10734897102"})
 ```
 ```luau
 --[[
-ImageId = "Id" >> Button Image Id (String)
+Icon = "Id" >> Button Image Id (String)
 You Can Get Ids in:
 https://github.com/Darkmoonxhubscript/DarkLibV1/blob/main/Icons.luau
 ]]
