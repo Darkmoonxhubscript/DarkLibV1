@@ -221,7 +221,7 @@ Invite = "https://discord.gg/ServerCode" >> Replace "ServerCode" with your serve
 AddFloatToggle({
     Name = "Toggle Name",
     Callback = function(Value)
-      
+      print(Value)
       end
   })
 ```
@@ -229,7 +229,7 @@ AddFloatToggle({
 --[[
 Name = "Toggle Name" >> Float Toggle Text (String)
 Callback = function(Value) = Value Toggle State
-      -+Function Here
+      --Function Here
       end
 ]]
 ```
