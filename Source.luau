@@ -360,7 +360,6 @@ function NewTab(Config)
     })
   
     local TabIcon = Create("ImageLabel", LeftScrollFrame, {
-      Text = "",
       Image = ""
     })
 
