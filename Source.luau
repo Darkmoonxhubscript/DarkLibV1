@@ -18,7 +18,7 @@ end
 local function Create(...)
     local args = {...}
     local new = Instance.new(args[1])
-    local parent = args[2]o
+    local parent = args[2]
     local props = args[3]
     
     if parent then
