@@ -1198,9 +1198,9 @@ function MakeDialog(Configs)
   
   local DialogBackground = Create("Frame", ScreenGui, {
     Name = "Dialog",
-    AnchorPoint = Vector2.new(0.5, 0.5),
-    Size = UDim2.new(0.4, 0, 0.3, 0),
-    BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+    AnchorPoint = Vector2.new(0, 0),
+    Size = UDim2.new(0.1, 0, 0.1, 0),
+    BackgroundColor3 = Color3.fromRGB(45, 45, 45)
   })Corner(DialogBackground)
 
   local Title = Create("TextLabel", DialogBackground, {
@@ -1208,6 +1208,7 @@ function MakeDialog(Configs)
     Size = UDim2.new(0.4, 0, 0.4, 0),
     Position = UDim2.new(0, 0, 0, 0),
     TextSize = 20,
+    Font = Enum.Font.FredokaOne,
     BackgroundTransparency = 1,
     TextWrapped = false,
     TextColor3 = Color3.fromRGB(255, 255, 255),
@@ -1218,8 +1219,9 @@ function MakeDialog(Configs)
    local Description = Create("TextLabel", DialogBackground, {
     Text = Description,
     Size = UDim2.new(0.4, 0, 0.4, 0),
-    Position = UDim2.new(0, 0, 0, 5),
+    Position = UDim2.new(0, 0, 0, 10),
     TextSize = 25,
+    Font = Enum.Font.FredokaOne,
     BackgroundTransparency = 1,
     TextWrapped = false,
     TextColor3 = Color3.fromRGB(120, 120, 120),
