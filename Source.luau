@@ -1199,10 +1199,10 @@ function MakeDialog(Configs)
   local DialogBackground = Create("Frame", ScreenGui, {
     Name = "Dialog",
     AnchorPoint = Vector2.new(0.5, 0.5),
-    Size = UDim2.new(0.2, 0, 0.2, 0),
+    Size = UDim2.new(0.3, 0, 0.5, 0),
     Position = UDim2.new(0.5, 0, 0.5, 0),
     BackgroundColor3 = Color3.fromRGB(45, 45, 45)
-  })Corner(DialogBackground)
+  })Corner(DialogBackground, UDim.new(0, 20))
 
 local Separator = Create("Frame", DialogBackground, {
     Name = "Separator",
