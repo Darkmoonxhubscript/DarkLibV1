@@ -353,19 +353,21 @@ function NewTab(Config)
     
     local TabNameLabel = Create("TextLabel", TabButton,{
       Text = TabName,
-      TextColor3 = Color3.fromRGB(240, 240, 240),
+      BackgroundTransparency = 1,
+      TextColor3 = Color3.fromRGB(200, 200, 200),
       Font = Enum.Font.FredokaOne,
-      TextSize = 14,
-      TextXAlignment = Enum.TextXAlignment.Center,
-      TextTruncate = "AtEnd",
-      AutomaticSize = Enum.AutomaticSize.X,
-      Position = UDim2.new(0, 0, 0, 0)  
+      TextSize = 15,
+      TextDirection = "LeftToRight",
+      TextXAlignment = Enum.TextXAlignment.Left,
+      TextYAlignment = Enum.TextYAlignment.Bottom,
+      Size = UDim2.new(0, 100, 0, 20),
+      Position = UDim2.new(0, 25, 0, 5)
     })
   
     local TabIcon = Create("ImageLabel", TabButton, {
       Image = TabIcon,
       Size = UDim2.new(0, 20, 0, 20),
-      Position = UDim2.new(0, 0, 0, 0),
+      Position = UDim2.new(0, 3, 0, 5),
       BackgroundTransparency = 1
     })
 
