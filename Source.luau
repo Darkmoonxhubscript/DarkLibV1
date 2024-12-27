@@ -2,7 +2,12 @@ local UIS = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local CoreGui = game:GetService("CoreGui")
 
-
+local DarkMoonLib = {
+  ColorsConfig = {
+    
+  }
+  
+}
 
 local Tabs = {}
 
@@ -634,7 +639,7 @@ function AddToggle(Parent, Configs)
         BackgroundTransparency = 1
     })
     Stroke(ToggleFrame2, Color3.fromRGB(100, 100, 100), 1)
-    Corner(ToggleFrame2)
+    Corner(ToggleFrame2, UDim.new(1, 0))
 
     local ToggleActive = Create("Frame", ToggleFrame1, {
         Size = UDim2.new(0, 25, 0, 25),
@@ -643,7 +648,7 @@ function AddToggle(Parent, Configs)
         BackgroundTransparency = 0
     })
     Stroke(ToggleActive, Color3.fromRGB(160, 160, 160), 1)
-    Corner(ToggleActive)
+    Corner(ToggleActive, UDim.new(1, 0))
 
     local ToggleState = false
     if Default then
