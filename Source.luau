@@ -1140,7 +1140,7 @@ function AddDiscordInvite(Parent, Configs)
   
   local ServerIcon = Create("ImageLabel", DiscordInviteFrame, {
      Name = "ServerIcon",
-     Image = "rbxassetid://" .. Logo,
+     Image = Logo,
      Size = UDim2.new(0, 60, 0, 60),
      Position = UDim2.new(1, -475, 0, 20),
      BackgroundTransparency = 1
