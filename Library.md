@@ -10,7 +10,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Darkmoonxhubscript/Da
 Loads The Library
 ]]
 ```
-## AddInfo
+## Make a Window
 ```luau
 local Window = MakeWindow({Title = "DarkMoonHub Library"})
 ```
@@ -36,11 +36,13 @@ Time = 10 >> Notification Duration (Number)
 ```
 ## Create Tab
 ```luau
-local Tab1 = NewTab({Name = "Tab"})
+local Tab1 = NewTab({Name = "Tab", Icon = "Id"})
 ```
 ```luau
 --[[
 Name = "TabName" >> UI Button TabName (String)
+Icon = "Id" >> Tab Icon, You can Get Icons In:
+https://github.com/Darkmoonxhubscript/DarkLibV1/blob/main/Icons.luau
 ]]
 ```
 ## Add a Section
@@ -57,7 +59,7 @@ Name = "Text" >> Text Of Section (String)
 local Button1 = AddButton(Tab1, {
   Name = "Button",
   Callback = function()
-  
+  print("Clicked")
   end
 })
 
@@ -115,7 +117,7 @@ end
 ## Add a TextLabel
 ```luau
 local TextLabel1 = AddTextLabel(Tab1, {
-  Name = "My Text" (String)
+  Name = "My Text"
 })
 ```
 ```luau
@@ -126,8 +128,8 @@ Name = "My Text" >> TextLabel Text (String)
 ## Add a Paragraph
 ```luau
 local Paragraph1 = AddParagraph(Tab1, {
-  Name = "My Title", (String)
-  SubText = "My Paragraph" (String)
+  Name = "My Title",
+  SubText = "My Paragraph"
 })
 ```
 ```luau
@@ -191,7 +193,7 @@ AddMinimizeButton({
 ```
 ```luau
 --[[
-ImageId = "IdOnly" >> Button Image Id
+ImageId = "Id" >> Button Image Id (String)
 You Can Get Ids in:
 https://github.com/Darkmoonxhubscript/DarkLibV1/blob/main/Icons.luau
 ]]
@@ -201,7 +203,7 @@ https://github.com/Darkmoonxhubscript/DarkLibV1/blob/main/Icons.luau
 local ServerInvite = AddDiscordInvite(Tab1, {
   Name = "You Server Community",
   Description = "Join our discord community to receive information about the next update",
-  Logo = "rbxassetid://ID_ONLY",
+  Logo = "rbxassetid://Id",
   Invite = "https://discord.gg/ServerCode",
 })
 ```
@@ -209,7 +211,7 @@ local ServerInvite = AddDiscordInvite(Tab1, {
 --[[
 Name = "Name" >> Server Name (String)
 Description = "Description" >> Inform the person why they should join (String)
-Logo = "rbxassetid://ID_ONLY" >> Replace "ID_ONLY" with your server icon ID (String)
+Logo = "rbxassetid://Id" >> Replace "Id" with your server icon ID (String)
 Invite = "https://discord.gg/ServerCode" >> Replace "ServerCode" with your server code. (String)
 ]]
 ```
