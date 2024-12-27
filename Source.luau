@@ -1043,8 +1043,12 @@ end
 function AddMinimizeButton(Configs)
   local ImageId = Configs[1] or Configs.ImageId or "10734897102"
   
+  if not ImageId:find("rbxassetid://") then
+       ImageId = "rbxassetid://" .. ImageId
+       end
+  
   local MinimizeButton = Create("ImageButton", ScreenGui, {
-    Image = "rbxassetid://" .. ImageId,
+    Image = ImageId,
     AnchorPoint = Vector2.new(0, 0),
     Size = UDim2.new(0, 50, 0, 50),
     Position = UDim2.new(0, 117, 0, 68),
@@ -1080,7 +1084,7 @@ end)
 function AddDiscordInvite(Parent, Configs)
   local Name = Configs[1] or Configs.Name or "DarkMoonHub Community"
   local Description = Configs[2] or Configs.Description or "Join our discord community to receive information about the next update"
-  local Logo = Configs[3] or Configs.Icon or "1"
+  local Logo = Configs[3] or Configs.Logo or "10734897102"
   local Invite = Configs[4] or Configs.Invite or "https://discord.gg/YDXM43cBU6"
   
   if not Logo:find("rbxassetid://") then
