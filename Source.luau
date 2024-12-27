@@ -274,7 +274,7 @@ local TweenOpen = TweenService:Create(DialogBackground, TweenInfo.new(0.15, Enum
   TweenOpen:Play()
   TweenOpen.Completed:Wait()
 
-Create("Frame", DialogBackground, {
+local Separator1 = Create("Frame", DialogBackground, {
     Name = "Separator",
     AnchorPoint = Vector2.new(0.5, 0.5),
     Size = UDim2.new(1, 0, 0, 3),
@@ -282,7 +282,7 @@ Create("Frame", DialogBackground, {
     BackgroundColor3 = Color3.fromRGB(65, 65, 65)
   })Corner(Separator)
 
-Create("Frame", DialogBackground, {
+local Separator2 = Create("Frame", DialogBackground, {
     Name = "Separator",
     AnchorPoint = Vector2.new(0.5, 0.5),
     Size = UDim2.new(1, 0, 0, 3),
@@ -355,9 +355,21 @@ NoButton.MouseButton1Click:Connect(function()
 end)
    
    function DialogEnd()
-     local TweenClose = TweenService:Create(DialogBackground, TweenInfo.new(0.15, Enum.EasingStyle.Linear), {Size = UDim2.new(0, 0, 0, 0)})
-  TweenClose:Play()
-  TweenClose.Completed:Wait()
+     local Tween1 = TweenService:Create(DialogBackground, TweenInfo.new(0.15, Enum.EasingStyle.Linear), {Size = UDim2.new(0, 0, 0, 0)})
+     local Tween2 = TweenService:Create(Separator1, TweenInfo.new(0.15, Enum.EasingStyle.Linear), {Size = UDim2.new(0, 0, 0, 0)})
+     local Tween3 = TweenService:Create(Separator2, TweenInfo.new(0.15, Enum.EasingStyle.Linear), {Size = UDim2.new(0, 0, 0, 0)})
+     local Tween4 = TweenService:Create(Title, TweenInfo.new(0.15, Enum.EasingStyle.Linear), {Size = UDim2.new(0, 0, 0, 0)})
+     local Tween5 = TweenService:Create(Description, TweenInfo.new(0.15, Enum.EasingStyle.Linear), {Size = UDim2.new(0, 0, 0, 0)})
+     local Tween6 = TweenService:Create(YesButton, TweenInfo.new(0.15, Enum.EasingStyle.Linear), {Size = UDim2.new(0, 0, 0, 0)})
+     local Tween7 = TweenService:Create(NoButton, TweenInfo.new(0.15, Enum.EasingStyle.Linear), {Size = UDim2.new(0, 0, 0, 0)})
+  Tween1:Play()
+  Tween2:Play()
+  Tween3:Play()
+  Tween4:Play()
+  Tween5:Play()
+  Tween6:Play()
+  Tween7:Play()
+  Tween1.Completed:Wait()
      DialogBackground:Destroy()
    end
 end
