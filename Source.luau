@@ -1204,9 +1204,17 @@ function MakeDialog(Configs)
     BackgroundColor3 = Color3.fromRGB(45, 45, 45)
   })Corner(DialogBackground)
 
+local Separator = Create("Frame", DialogBackground, {
+    Name = "Separator",
+    AnchorPoint = Vector2.new(0.5, 0.5),
+    Size = UDim2.new(0.2, 0, 0.2, 3),
+    Position = UDim2.new(0.5, 0, 0.5, -120),
+    BackgroundColor3 = Color3.fromRGB(65, 65, 65)
+  })Corner(Separator)
+
   local Title = Create("TextLabel", DialogBackground, {
     Text = Title,
-    Size = UDim2.new(0.4, 0, 0.4, 0),
+    Size = UDim2.new(0.4, 384, 0.4, 30),
     Position = UDim2.new(0, 0, 0, 0),
     TextSize = 20,
     Font = Enum.Font.FredokaOne,
@@ -1219,18 +1227,42 @@ function MakeDialog(Configs)
    
    local Description = Create("TextLabel", DialogBackground, {
     Text = Description,
-    Size = UDim2.new(0.4, 0, 0.4, 0),
-    Position = UDim2.new(0, 0, 0, 10),
+    Size = UDim2.new(0, 380, 0, 200),
+    Position = UDim2.new(0, 5, 0, 30),
     TextSize = 25,
     Font = Enum.Font.FredokaOne,
     BackgroundTransparency = 1,
     TextWrapped = false,
     TextColor3 = Color3.fromRGB(120, 120, 120),
     TextXAlignment = Enum.TextXAlignment.Left,
+    TextYAlignment = Enum.TextYAlignment.Top
+  })
+   
+   local YesButton = Create("TextButton", DialogBackground, {
+    Text = "Yes",
+    Size = UDim2.new(0, 100, 0, 50),
+    Position = UDim2.new(0, 5, 0, 30),
+    TextSize = 25,
+    Font = Enum.Font.FredokaOne,
+    BackgroundColor3 = Color3.fromRGB(63, 224, 0),
+    BackgroundTransparency = 0,
+    TextColor3 = Color3.fromRGB(255, 255, 255),
+    TextXAlignment = Enum.TextXAlignment.Center,
     TextYAlignment = Enum.TextYAlignment.Center
   })
    
-   
+   local NoButton = Create("TextButton", DialogBackground, {
+    Text = "No",
+    Size = UDim2.new(0, 100, 0, 50),
+    Position = UDim2.new(0, 5, 0, 30),
+    TextSize = 25,
+    Font = Enum.Font.FredokaOne,
+    BackgroundColor3 = Color3.fromRGB(255, 0, 0),
+    BackgroundTransparency = 0,
+    TextColor3 = Color3.fromRGB(255, 255, 255),
+    TextXAlignment = Enum.TextXAlignment.Center,
+    TextYAlignment = Enum.TextYAlignment.Center
+  })
    
    function DialogEnd()
      DialogBackground:Destroy()
