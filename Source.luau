@@ -1194,7 +1194,7 @@ function MakeDialog(Configs)
   local Title = Configs[1] or Configs.Title or Configs.Name or Configs.Text or " Title"
   local Description = Configs[2] or Configs.Description or "Description"
   local YesCallback = Configs[3] or Configs.YesCallback or function() end
-  local YesCallback = Configs[4] or Configs.NoCallback or function() DialogEnd() end
+  local NoCallback = Configs[4] or Configs.NoCallback or function() DialogEnd() end
   
   local DialogBackground = Create("Frame", ScreenGui, {
     Name = "Dialog",
