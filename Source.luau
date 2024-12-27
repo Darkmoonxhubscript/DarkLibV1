@@ -324,11 +324,6 @@ function NewTab(Config)
     local TabButton
     local TabFrame
      
-     TabIcon = GetIcon(TabIcon)
-    if not TabIcon:find("rbxassetid://") or TabIcon:gsub("rbxassetid://", ""):len() < 6 then
-      TabIcon = false
-    end
-    
     if not FirstTab then
         FirstTab = TabName
         SelectedTab = TabName  
@@ -366,7 +361,7 @@ function NewTab(Config)
   
     local TabIcon = Create("ImageLabel", LeftScrollFrame, {
       Text = "",
-      Image = GetIcon(TabIcon)
+      Image = ""
     })
 
     TabFrame = Create("ScrollingFrame", RightScrollFrame, {
