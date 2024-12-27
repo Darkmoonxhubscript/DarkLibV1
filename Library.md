@@ -1,7 +1,10 @@
 # DarkLib V1
-**__This is a Test Library, After all, it's my first Library__**
+## **TIPS**
+- Where it says  'Icon = "Id"' you can put either just the ID or "rbxassetid://id" both ways work.
+- 
+- Where it also says ' Name = "Text" ' you can put ' Text = "Text" ' both ways work.
 
-## LoadString (IS REQUIRED)
+## LoadString (REQUIRED)
 ```luau
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Darkmoonxhubscript/DarkLibV1/refs/heads/main/Source.luau"))()
 ```
@@ -203,7 +206,7 @@ https://github.com/Darkmoonxhubscript/DarkLibV1/blob/main/Icons.luau
 local ServerInvite = AddDiscordInvite(Tab1, {
   Name = "You Server Community",
   Description = "Join our discord community to receive information about the next update",
-  Logo = "rbxassetid://Id",
+  Logo = "Id",
   Invite = "https://discord.gg/ServerCode",
 })
 ```
@@ -211,7 +214,7 @@ local ServerInvite = AddDiscordInvite(Tab1, {
 --[[
 Name = "Name" >> Server Name (String)
 Description = "Description" >> Inform the person why they should join (String)
-Logo = "rbxassetid://Id" >> Replace "Id" with your server icon ID (String)
+Logo = "Id" >> Replace "Id" with your server icon ID (String)
 Invite = "https://discord.gg/ServerCode" >> Replace "ServerCode" with your server code. (String)
 ]]
 ```
