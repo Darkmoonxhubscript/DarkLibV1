@@ -148,10 +148,10 @@ Create("UIListLayout", NotifyMenu, {
     VerticalAlignment = Enum.VerticalAlignment.Bottom
 })
 
-function NewNotify(Config)
-    local Title = Config.Title or "Notification"
-    local Description = Config.Description or "Description"
-    local Time = Config.Time or 5
+function NewNotify(Configs)
+    local Title = Configs.Title or Configs.Name or Configs.Text or "Notification"
+    local Description = Configs.Description or "Description"
+    local Time = Configs.Time or 5
 
     local Frame1 = Create("Frame", NotifyMenu, {
         Size = UDim2.new(1, 0, 0, 75),
@@ -318,9 +318,9 @@ local Padding = Create("UIPadding", RightScrollFrame, {
 local SelectedTab = "" 
 local FirstTab = nil 
 
-function NewTab(Config)
-    local TabName = Config.Name or "Tab"
-    local TabIcon = Config.Icon or "1"
+function NewTab(Configs)
+    local TabName = Configs.Name or Configs.Text or "Tab"
+    local TabIcon = Configs.Icon or "1"
     local TabButton
     local TabFrame
      
@@ -415,9 +415,9 @@ function NewTab(Config)
     return TabFrame
 end
 
-function AddButton(Parent, Config)
-    local Name = Config[1] or Config.Name or "Button"
-    local Callback = Config.Callback or function() print("Clicked") end
+function AddButton(Parent, Configs)
+    local Name = Configs[1] or Configs.Name or Configs.Text or "Button"
+    local Callback = Configs.Callback or function() print("Clicked") end
     
     local Button = Create("TextButton", Parent, {
         Text = "",
@@ -463,8 +463,8 @@ function AddButton(Parent, Config)
     return Button
 end
 
-function AddSection(Parent, Config)
-    local Name = Config[1] or Config.Name or "Section"
+function AddSection(Parent, Configs)
+    local Name = Configs[1] or Configs.Name or Configs.Text or "Section"
     
     local SectionFrame = Create("Frame", Parent, {
         Size = UDim2.new(0, 490, 0, 40),
@@ -492,10 +492,10 @@ function AddSection(Parent, Config)
     return SectionFrame
 end
 
-function AddToggle(Parent, Config)
-    local Name = Config[1] or Config.Name or "Toggle"
-    local Default = Config[2] or Config.Default or false
-    local Callback = Config.Callback or function() end
+function AddToggle(Parent, Configs)
+    local Name = Configs[1] or Configs.Name or Configs.Text or "Toggle"
+    local Default = Configs[2] or Configs.Default or false
+    local Callback = Configs.Callback or function() end
 
     local ToggleFrame1 = Create("Frame", Parent, {
         Size = UDim2.new(0, 490, 0, 40),
@@ -579,12 +579,12 @@ function AddToggle(Parent, Config)
     return {ToggleActive, Callback, ToggleState}
 end
 
-function AddTextBox(Parent, Config)
-  local Name = Config[1] or Config.Name or "TextBox"
-  local Default = Config[2] or Config.Default or ""
-  local AutoClear = Config[3] or Config.AutoClear or false
-  local PlaceHolder = Config[4] or Config.PlaceHolder or "Input Here"
-  local Callback = Config[5] or Config.Callback or function() end
+function AddTextBox(Parent, Configs)
+  local Name = Configs[1] or Configs.Name or Configs.Text or "TextBox"
+  local Default = Configs[2] or Configs.Default or ""
+  local AutoClear = Configs[3] or Configs.AutoClear or false
+  local PlaceHolder = Configs[4] or Configs.PlaceHolder or "Input Here"
+  local Callback = Configs[5] or Configs.Callback or function() end
   
   local TextBoxFrame = Create("Frame", Parent, {
         Size = UDim2.new(0, 490, 0, 40),
@@ -634,8 +634,8 @@ function AddTextBox(Parent, Config)
      return TextBoxFrame
   end
 
-function AddTextLabel(Parent, Config)
-    local Name = Config[1] or Config.Name or "TextLabel"
+function AddTextLabel(Parent, Configs)
+    local Name = Configs[1] or Configs.Name or Configs.Text or "TextLabel"
     
     local TextFrame = Create("Frame", Parent, {
         Size = UDim2.new(0, 490, 0, 40),
@@ -663,9 +663,9 @@ function AddTextLabel(Parent, Config)
     return TextFrame
 end
 
-function AddParagraph(Parent, Config)
-    local Name = Config[1] or Config.Name or "My Title"
-    local SubText = Config[2] or Config.SubText or "My Paragraph"
+function AddParagraph(Parent, Configs)
+    local Name = Configs[1] or Configs.Name or Configs.Text or "My Title"
+    local SubText = Configs[2] or Configs.SubText or "My Paragraph"
     
     local ParagraphFrame = Create("Frame", Parent, {
         Size = UDim2.new(0, 490, 0, 40),
@@ -708,7 +708,7 @@ function AddParagraph(Parent, Config)
 end
 
 function AddSlider(Parent, Configs)
-    local Name = Configs[1] or Configs.Name or "Slider"
+    local Name = Configs[1] or Configs.Name or Configs.Text or "Slider"
     local Min = Configs[2] or Configs.Min or 0
     local Max = Configs[3] or Configs.Max or 100
     local Default = Configs[5] or Configs.Default or Min
@@ -819,7 +819,7 @@ function AddSlider(Parent, Configs)
 end
 
 function AddDropDown(Parent, Configs)
-    local Name = Configs[1] or Configs.Name or "Dropdown"
+    local Name = Configs[1] or Configs.Name or Configs.Text or "Dropdown"
     local Options = Configs[2] or Configs.Options or {"1", "2"}
     local Default = Configs[3] or Configs.Default or "1"
     local Callback = Configs[4] or Configs.Callback or function() end
@@ -975,7 +975,7 @@ function AddDropDown(Parent, Configs)
 end
 
 function AddFloatToggle(Configs)
-  local Name = Configs[1] or Configs.Name or "Toggle"
+  local Name = Configs[1] or Configs.Name or Configs.Text or "Toggle"
   local Callback = Configs[2] or Configs.Callback or function() end
   
   local Toggle_Atalho = Create("Frame", ScreenGui, {
@@ -1082,7 +1082,7 @@ end)
   end
 
 function AddDiscordInvite(Parent, Configs)
-  local Name = Configs[1] or Configs.Name or "DarkMoonHub Community"
+  local Name = Configs[1] or Configs.Name or Configs.Text or "DarkMoonHub Community"
   local Description = Configs[2] or Configs.Description or "Join our discord community to receive information about the next update"
   local Logo = Configs[3] or Configs.Logo or "10734897102"
   local Invite = Configs[4] or Configs.Invite or "https://discord.gg/YDXM43cBU6"
