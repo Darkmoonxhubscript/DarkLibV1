@@ -320,16 +320,19 @@ local FirstTab = nil
 
 function NewTab(Config)
     local TabName = Config.Name or "Tab"
-    local TabIcon = Config.Icon or "House"
+    local TabIcon = Config.Icon or "1"
     local TabButton
     local TabFrame
+     
+     if not TabIcon:find("rbxassetid://") then
+       TabIcon = "rbxassetid://" .. TabIcon
+       end
      
     if not FirstTab then
         FirstTab = TabName
         SelectedTab = TabName  
     end
  
-    
     TabButton = Create("TextButton", LeftScrollFrame, {
         Name = "TabButton",
         Text = "",
@@ -348,7 +351,7 @@ function NewTab(Config)
     --Stroke(TabButton, Color3.fromRGB(200, 200, 200))
     --Corner(TabButton, UDim.new(0.3, 0))  
     
-    local TabNameLabel = Create("TextLabel", LeftScrollFrame,{
+    local TabNameLabel = Create("TextLabel", TabButton,{
       Text = TabName,
       TextColor3 = Color3.fromRGB(240, 240, 240),
       Font = Enum.Font.FredokaOne,
@@ -359,8 +362,11 @@ function NewTab(Config)
       Position = UDim2.new(0, 0, 0, 0)  
     })
   
-    local TabIcon = Create("ImageLabel", LeftScrollFrame, {
-      Image = "rbxassetid://" .. TabIcon
+    local TabIcon = Create("ImageLabel", TabButton, {
+      Image = TabIcon,
+      Size = UDim2.new(0, 20, 0, 20),
+      Position = UDim2.new(0, 0, 0, 0),
+      BackgroundTransparency = 1
     })
 
     TabFrame = Create("ScrollingFrame", RightScrollFrame, {
@@ -1072,8 +1078,12 @@ end)
 function AddDiscordInvite(Parent, Configs)
   local Name = Configs[1] or Configs.Name or "DarkMoonHub Community"
   local Description = Configs[2] or Configs.Description or "Join our discord community to receive information about the next update"
-  local Logo = Configs[3] or Configs.Icon or "10734897102"
+  local Logo = Configs[3] or Configs.Icon or "1"
   local Invite = Configs[4] or Configs.Invite or "https://discord.gg/YDXM43cBU6"
+  
+  if not Logo:find("rbxassetid://") then
+       Logo = "rbxassetid://" .. Logo
+       end
   
   local DiscordInviteFrame = Create("Frame", Parent, {
         Size = UDim2.new(0, 490, 0, 120),
