@@ -44,7 +44,7 @@ local function Stroke(parent, Colorstk, Thickness)
 end
 
 local ViewportSize = workspace.CurrentCamera.ViewportSize
-local UIScale = ViewportSize.Y / 620
+local UIScale = ViewportSize.Y / 640
 
 local function MakeDrag(Instance)
     local Dragging, DragInput, DragStart, StartPosition
