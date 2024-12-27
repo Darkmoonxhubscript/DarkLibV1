@@ -1188,7 +1188,52 @@ function AddDiscordInvite(Parent, Configs)
         })ClickDelay = false
       end)
   
-  end
+end
+
+function MakeDialog(Configs)
+  local Title = Configs[1] or Configs.Title or Configs.Name or Configs.Text or " Title"
+  local Description = Configs[2] or Configs.Description or "Description"
+  local YesCallback = Configs[3] or Configs.YesCallback or function() end
+  local YesCallback = Configs[4] or Configs.NoCallback or function() DialogEnd() end
+  
+  
+  local DialogBackground = Create("Frame", ScreenGui, {
+    Name = "Dialog",
+    AnchorPoint = UDim.new(0.5, 0.5),
+    Size = UDim2.new(0.4, 0, 0.4, 0),
+    BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+  })Corner(DialogBackground)
+
+  local Title = Create("TextLabel", DialogBackground, {
+    Text = Title,
+    Size = UDim2.new(0.4, 0, 0.4, 0),
+    Position = UDim2.new(0, 0, 0, 0),
+    TextSize = 20,
+    BackgroundTransparency = 1,
+    TextWrapped = false,
+    TextColor3 = Color3.fromRGB(255, 255, 255),
+    TextXAlignment = Enum.TextXAlignment.Center,
+    TextYAlignment = Enum.TextYAlignment.Center
+  })
+   
+   local Description = Create("TextLabel", DialogBackground, {
+    Text = Description,
+    Size = UDim2.new(0.4, 0, 0.4, 0),
+    Position = UDim2.new(0, 0, 0, 5),
+    TextSize = 25,
+    BackgroundTransparency = 1,
+    TextWrapped = false,
+    TextColor3 = Color3.fromRGB(120, 120, 120),
+    TextXAlignment = Enum.TextXAlignment.Center,
+    TextYAlignment = Enum.TextYAlignment.Center
+  })
+   
+   
+   
+   function DialogEnd()
+     DialogBackground:Destroy()
+   end
+end
 
 end
 
