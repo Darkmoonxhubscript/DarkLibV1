@@ -14,22 +14,18 @@ local function SetProps(Instance, Props)
 end
 
 local function Create(...)
-  local args = {...}
-  if type(args) ~= "table" then return end
-  local new = Instance.new(args[1])
-  local Children = {}
-  
-  if type(args[2]) == "table" then
-    SetProps(new, args[2])
-    SetChildren(new, args[3])
-    Children = args[3] or {}
-  elseif typeof(args[2]) == "Instance" then
-    new.Parent = args[2]
-    SetProps(new, args[3])
-    SetChildren(new, args[4])
-    Children = args[4] or {}
-  end
-  return new
+    local args = {...}
+    local new = Instance.new(args[1])
+    local parent = args[2]
+    local props = args[3]
+    
+    if parent then
+        new.Parent = parent
+    end
+    if props then
+        SetProps(new, props)
+    end
+    return new
 end
 
 local function Corner(parent, radius)
