@@ -938,7 +938,7 @@ function AddDropDown(Parent, Configs)
       for _,v in pairs(ListDrop:GetChildren()) do
         if v.Name == "Option" then
           v.TextColor3 = Color3.fromRGB(240, 240, 240)
-          v.BackgroundColor3 = Color3.fromRGB(70, 70, 470)
+          v.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
         end
       end
       Callback(NewOption.Text)
@@ -1196,11 +1196,10 @@ function MakeDialog(Configs)
   local YesCallback = Configs[3] or Configs.YesCallback or function() end
   local YesCallback = Configs[4] or Configs.NoCallback or function() DialogEnd() end
   
-  
   local DialogBackground = Create("Frame", ScreenGui, {
     Name = "Dialog",
-    AnchorPoint = UDim.new(0.5, 0.5),
-    Size = UDim2.new(0.4, 0, 0.4, 0),
+    AnchorPoint = Vector2.new(0.5, 0.5),
+    Size = UDim2.new(0.4, 0, 0.3, 0),
     BackgroundColor3 = Color3.fromRGB(80, 80, 80)
   })Corner(DialogBackground)
 
@@ -1224,7 +1223,7 @@ function MakeDialog(Configs)
     BackgroundTransparency = 1,
     TextWrapped = false,
     TextColor3 = Color3.fromRGB(120, 120, 120),
-    TextXAlignment = Enum.TextXAlignment.Center,
+    TextXAlignment = Enum.TextXAlignment.Left,
     TextYAlignment = Enum.TextYAlignment.Center
   })
    
