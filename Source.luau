@@ -360,7 +360,7 @@ function NewTab(Config)
     })
   
     local TabIcon = Create("ImageLabel", LeftScrollFrame, {
-      Image = ""
+      Image = "rbxassetid://" .. TabIcon
     })
 
     TabFrame = Create("ScrollingFrame", RightScrollFrame, {
@@ -1072,7 +1072,7 @@ end)
 function AddDiscordInvite(Parent, Configs)
   local Name = Configs[1] or Configs.Name or "DarkMoonHub Community"
   local Description = Configs[2] or Configs.Description or "Join our discord community to receive information about the next update"
-  local Logo = Configs[3] or Configs.Icon or "rbxassetid://10734897102"
+  local Logo = Configs[3] or Configs.Icon or "10734897102"
   local Invite = Configs[4] or Configs.Invite or "https://discord.gg/YDXM43cBU6"
   
   local DiscordInviteFrame = Create("Frame", Parent, {
@@ -1128,7 +1128,7 @@ function AddDiscordInvite(Parent, Configs)
   
   local ServerIcon = Create("ImageLabel", DiscordInviteFrame, {
      Name = "ServerIcon",
-     Image = Logo,
+     Image = "rbxassetid://" .. Logo,
      Size = UDim2.new(0, 60, 0, 60),
      Position = UDim2.new(1, -475, 0, 20),
      BackgroundTransparency = 1
