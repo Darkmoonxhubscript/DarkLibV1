@@ -14,18 +14,22 @@ local function SetProps(Instance, Props)
 end
 
 local function Create(...)
-    local args = {...}
-    local new = Instance.new(args[1])
-    local parent = args[2]
-    local props = args[3]
-    
-    if parent then
-        new.Parent = parent
-    end
-    if props then
-        SetProps(new, props)
-    end
-    return new
+  local args = {...}
+  if type(args) ~= "table" then return end
+  local new = Instance.new(args[1])
+  local Children = {}
+  
+  if type(args[2]) == "table" then
+    SetProps(new, args[2])
+    SetChildren(new, args[3])
+    Children = args[3] or {}
+  elseif typeof(args[2]) == "Instance" then
+    new.Parent = args[2]
+    SetProps(new, args[3])
+    SetChildren(new, args[4])
+    Children = args[4] or {}
+  end
+  return new
 end
 
 local function Corner(parent, radius)
@@ -43,6 +47,8 @@ local function Stroke(parent, Colorstk, Thickness)
     return new
 end
 
+local ViewportSize = workspace.CurrentCamera.ViewportSize
+local UIScale = ViewportSize.Y / 450
 
 local function MakeDrag(Instance)
     local Dragging, DragInput, DragStart, StartPosition
@@ -124,9 +130,12 @@ local Title = WindowConfig[1] or WindowConfig.Title or "DarkLib V1"
   
 local ScreenGui = Create("ScreenGui", CoreGui, {
     Name = "DarkLibraryV1",
-    ResetOnSpawn = false
+    ResetOnSpawn = false,
+}, {
+  Create("UIScale", {
+    Scale = UIScale
 })
-
+})
 
 -- Notification
 
