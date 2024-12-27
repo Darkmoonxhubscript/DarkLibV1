@@ -127,10 +127,9 @@ local Title = WindowConfig[1] or WindowConfig.Title or "DarkLib V1"
 local ScreenGui = Create("ScreenGui", CoreGui, {
     Name = "DarkLibraryV1",
     ResetOnSpawn = false,
-}, {
-  Create("UIScale", {
-    Scale = UIScale
 })
+  Create("UIScale", ScreenGui, {
+    Scale = UIScale
 })
 
 -- Notification
